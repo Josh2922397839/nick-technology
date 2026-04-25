@@ -92,8 +92,7 @@
     <!-- Right Column (Hero Image) -->
     <div style="position:relative;">
       <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border-default);aspect-ratio:16/10;">
-        <!-- TODO: Replace with real photo of Mr. Anderson's shop -->
-        <img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=800&q=80" alt="Laptop repair workbench with tools" style="width:100%;height:100%;object-fit:cover;" fetchpriority="high">
+        <img src="images/2024-02-29 (2).jpg" alt="Laptops and computers on display at Nick Technology shop in Portmore" style="width:100%;height:100%;object-fit:cover;" fetchpriority="high">
       </div>
       <!-- Floating availability card -->
       <div style="position:absolute;bottom:16px;left:16px;background:rgba(10,14,26,0.9);backdrop-filter:blur(20px);border:1px solid var(--border-default);border-radius:12px;padding:16px 20px;">
@@ -146,11 +145,13 @@
     <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;">
 
       <!-- Row 1: CCTV Featured (8col) + Phone (4col) -->
-      <div class="service-card featured" style="grid-column:span 8;padding:40px;">
-        <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">CCTV Camera Installation</h3>
-        <p class="body-sm" style="color:var(--text-secondary);max-width:400px;">Professional camera systems, pro install, pro remote access. See your home or business from your phone, anywhere.</p>
-        <span class="card-arrow" style="position:absolute;bottom:24px;right:24px;">→</span>
+      <div class="service-card featured" style="grid-column:span 8;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:40px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">CCTV Camera Installation</h3>
+          <p class="body-sm" style="color:var(--text-secondary);max-width:400px;">Professional camera systems, pro install, pro remote access. See your home or business from your phone, anywhere.</p>
+        </div>
+        <div style="overflow:hidden;"><img src="images/2024-02-29 (1).jpg" alt="CCTV security camera systems available at Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
       <div class="service-card" style="grid-column:span 4;">
         <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
@@ -180,11 +181,13 @@
       </div>
 
       <!-- Row 3: Home Security Featured (6) + Printer (3) + Tablet (3) -->
-      <div class="service-card featured" style="grid-column:span 6;padding:40px;">
-        <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Full Home Security Systems</h3>
-        <p class="body-sm" style="color:var(--text-secondary);max-width:400px;">Cameras, alarms, motion sensors, and app control. One package, installed properly, end to end.</p>
-        <span class="card-arrow" style="position:absolute;bottom:24px;right:24px;">→</span>
+      <div class="service-card featured" style="grid-column:span 6;padding:0;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="height:180px;overflow:hidden;"><img src="images/2024-02-29 (17).jpg" alt="Indoor security cameras and smart home devices at Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div style="padding:24px;">
+          <div class="icon-box green" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Full Home Security Systems</h3>
+          <p class="body-sm" style="color:var(--text-secondary);">Cameras, alarms, motion sensors, and app control. One package, installed properly, end to end.</p>
+        </div>
       </div>
       <div class="service-card" style="grid-column:span 3;">
         <div class="icon-box yellow" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg></div>
@@ -220,17 +223,21 @@
       </div>
 
       <!-- Row 5: Smart TV (5) + Access Control (7) -->
-      <div class="service-card" style="grid-column:span 5;">
-        <div class="icon-box yellow" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Smart TV Setup</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">Wall mount, wiring, streaming apps, network setup. Your TV should work the moment we leave.</p>
-        <span class="card-arrow" style="position:absolute;bottom:24px;right:24px;">→</span>
+      <div class="service-card" style="grid-column:span 5;padding:0;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;"><img src="images/2024-02-29 (10).jpg" alt="Smart TV on display ready for setup and wall mounting" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div style="padding:24px;">
+          <div class="icon-box yellow" style="margin-bottom:12px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Smart TV Setup</h3>
+          <p class="body-sm" style="color:var(--text-secondary);">Wall mount, wiring, streaming apps, network setup. Your TV should work the moment we leave.</p>
+        </div>
       </div>
-      <div class="service-card" style="grid-column:span 7;">
-        <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Access Control Systems</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">Keycard, keypad, fob entry. Control exactly who can go where, with logs of every entry.</p>
-        <span class="card-arrow" style="position:absolute;bottom:24px;right:24px;">→</span>
+      <div class="service-card" style="grid-column:span 7;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:28px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="icon-box green" style="margin-bottom:12px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Access Control Systems</h3>
+          <p class="body-sm" style="color:var(--text-secondary);">Keycard, keypad, fob entry. Control exactly who can go where, with logs of every entry.</p>
+        </div>
+        <div style="overflow:hidden;"><img src="images/2024-02-29.jpg" alt="Smart keypad door lock installed by Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
 
     </div>
@@ -301,6 +308,25 @@
       </div>
     </div>
   </div>
+</section>
+<!-- SHOP GALLERY -->
+<section class="bg-secondary section-pad">
+<div class="container reveal">
+<p class="caption" style="color:var(--brand-primary);margin-bottom:16px;">INSIDE THE SHOP</p>
+<h2 class="font-serif display-lg" style="color:var(--text-primary);margin-bottom:48px;">See the shop. See the work.</h2>
+<div class="shop-gallery" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+  <div style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (15).jpg" alt="Large sound system and entertainment equipment on display at Nick Technology" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (6).jpg" alt="Gaming PC workstation with RGB lighting built and configured in-house" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (10).jpg" alt="Smart TV ready for delivery, setup, and wall mounting" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (20).jpg" alt="Wall display of keyboards, mice, and computer peripherals" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (5).jpg" alt="Canon ink tank printer available for sale and setup" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (22).jpg" alt="Computer mice, chargers, and tech accessories on display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (24).jpg" alt="Laptop bags, phone cases, and carrying accessories wall display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (18).jpg" alt="Forza UPS battery backup units for power protection" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (9).jpg" alt="Nexxt smart Wi-Fi door lock for home access control" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+  <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (25).jpg" alt="Tablets being configured and tested before delivery to customers" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+</div>
+</div>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -490,9 +516,12 @@ Get A Free Quote</a>
   #hero .container{grid-template-columns:1fr!important;flex-direction:column-reverse!important}
   #services .container > div{grid-template-columns:1fr!important}
   #services .service-card{grid-column:span 1!important}
+  #services .service-card[style*="grid-template-columns"]{grid-template-columns:1fr!important}
   #about .container > div{grid-template-columns:1fr!important}
   #areas .container{grid-template-columns:1fr!important}
   #contact .container{grid-template-columns:1fr!important}
+  .shop-gallery{grid-template-columns:repeat(2,1fr)!important}
+  .shop-gallery > div{grid-row:span 1!important}
 }
 @media(min-width:769px){
   #hero .container{grid-template-columns:55% 45%!important}
