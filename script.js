@@ -65,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('cf-message').value;
       const subject = encodeURIComponent('Service Request from ' + name + ' \u2014 ' + service);
       const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phone + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
-      window.location.href = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
+      const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
+      const win = window.open(mailtoUrl, '_blank');
+      if (!win) { window.location.href = mailtoUrl; }
     });
   }
 
