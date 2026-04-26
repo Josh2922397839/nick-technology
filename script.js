@@ -71,11 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Marquee duplication for seamless loop
+  // Marquee duplication for seamless loop + touch support
   const marqueeTrack = document.querySelector('.marquee-track');
   if (marqueeTrack) {
     const clone = marqueeTrack.innerHTML;
     marqueeTrack.innerHTML = clone + clone;
+
+    marqueeTrack.addEventListener('touchstart', () => {
+      marqueeTrack.style.animationPlayState = 'paused';
+    }, { passive: true });
+    marqueeTrack.addEventListener('touchend', () => {
+      marqueeTrack.style.animationPlayState = 'running';
+    }, { passive: true });
   }
 
   // Back to top

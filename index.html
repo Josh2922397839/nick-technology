@@ -398,7 +398,7 @@ Get A Free Quote</a>
 </div>
 </div>
 <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border-default);">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30302.99744893!2d-76.9!3d17.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8edb4014e0e7b2b9%3A0x4e5c9c3e4f4e4e4e!2sGreater%20Portmore%2C%20Jamaica!5e0!3m2!1sen!2sjm!4v1" width="100%" height="350" style="border:0;" allowfullscreen loading="lazy" title="Nick Technology location"></iframe>
+<iframe src="https://maps.google.com/maps?q=17.956461500005616,-76.9040363018525&z=17&output=embed" width="100%" height="350" style="border:0;" allowfullscreen loading="lazy" title="Nick Technology location — 2 North Greater Portmore, East Ascot"></iframe>
 </div>
 </div></section>
 
@@ -528,11 +528,15 @@ Get A Free Quote</a>
   #services .container > div{grid-template-columns:1fr!important}
   #services .service-card{grid-column:span 1!important}
   #services .service-card[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+  #services .service-card.featured[style*="grid-template-columns: 1fr 1fr 1fr"]{grid-template-columns:1fr!important}
   #about .container > div{grid-template-columns:1fr!important}
   #areas .container{grid-template-columns:1fr!important}
   #contact .container{grid-template-columns:1fr!important}
   .shop-gallery{grid-template-columns:repeat(2,1fr)!important}
   .shop-gallery > div{grid-row:span 1!important}
+  /* Portable Power featured card: stack on mobile */
+  .service-card.featured[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  .service-card.featured[style*="grid-template-columns:1fr 1fr 1fr"] > div{min-height:200px}
 }
 @media(min-width:769px){
   #hero .container{grid-template-columns:55% 45%!important}
