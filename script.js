@@ -65,9 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('cf-message').value;
       const subject = encodeURIComponent('Service Request from ' + name + ' \u2014 ' + service);
       const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phone + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
-      const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
-      const win = window.open(mailtoUrl, '_blank');
-      if (!win) { window.location.href = mailtoUrl; }
+      
+      // On mobile, mailto: works perfectly to open the native app
+      // On PC, mailto: often fails if no default mail client (like Outlook) is installed, so we route to Gmail web
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        window.location.href = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
+      } else {
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=COMTEC_ZION@YAHOO.COM&su=' + subject + '&body=' + body;
+        window.open(gmailUrl, '_blank');
+      }
     });
   }
 
