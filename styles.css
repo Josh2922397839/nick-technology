@@ -133,8 +133,10 @@ body {
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
 
 /* Pulsing dot */
-.pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-green); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(16,185,129,0); } }
+.pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-green); animation: pulse-green 2s ease-in-out infinite; transition: background 0.4s; }
+.pulse-dot.closed { background: #EF4444; animation: pulse-red 2s ease-in-out infinite; }
+@keyframes pulse-green { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(16,185,129,0); } }
+@keyframes pulse-red { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(239,68,68,0); } }
 
 /* Process line */
 .process-line { position: relative; }

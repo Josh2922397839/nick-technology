@@ -152,13 +152,13 @@
       <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border-default);aspect-ratio:16/10;">
         <img src="images/2024-02-29 (2).jpg" alt="Laptops and computers on display at Nick Technology shop in Portmore" style="width:100%;height:100%;object-fit:cover;" fetchpriority="high">
       </div>
-      <!-- Floating availability card -->
-      <div style="position:absolute;bottom:16px;left:16px;background:rgba(10,14,26,0.9);backdrop-filter:blur(20px);border:1px solid var(--border-default);border-radius:12px;padding:16px 20px;">
+      <!-- Floating availability card (dynamic) -->
+      <div id="availability-card" style="position:absolute;bottom:16px;left:16px;background:rgba(10,14,26,0.9);backdrop-filter:blur(20px);border:1px solid var(--border-default);border-radius:12px;padding:16px 20px;transition:border-color 0.4s;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <div class="pulse-dot"></div>
-          <span class="caption" style="color:var(--brand-green);font-size:12px;">AVAILABLE TODAY</span>
+          <div id="avail-dot" class="pulse-dot"></div>
+          <span id="avail-label" class="caption" style="font-size:12px;">CHECKING...</span>
         </div>
-        <p class="body-sm" style="color:var(--text-secondary);">Call within 2 hrs for same-day quote</p>
+        <p id="avail-hours" class="body-sm" style="color:var(--text-secondary);">Loading hours...</p>
       </div>
     </div>
   </div>

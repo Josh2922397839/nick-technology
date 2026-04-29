@@ -93,6 +93,118 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // Dynamic availability badge
+  const availDot = document.getElementById('avail-dot');
+  const availLabel = document.getElementById('avail-label');
+  const availHours = document.getElementById('avail-hours');
+  const availCard = document.getElementById('availability-card');
+
+  if (availDot && availLabel && availHours) {
+    const schedule = {
+      1: { open: 8, close: 19, label: 'Mon' },
+      2: { open: 8, close: 19, label: 'Tue' },
+      3: { open: 8, close: 19, label: 'Wed' },
+      4: { open: 8, close: 19, label: 'Thu' },
+      5: { open: 8, close: 19, label: 'Fri' },
+      6: { open: 9, close: 18, label: 'Sat' },
+      0: null
+    };
+
+    function formatHour(h) {
+      if (h === 0 || h === 12) return (h === 0 ? '12' : '12') + (h < 12 ? 'AM' : 'PM');
+      return (h > 12 ? h - 12 : h) + (h >= 12 ? 'PM' : 'AM');
+    }
+
+    function updateAvailability(jamaicaDate) {
+      const day = jamaicaDate.getDay();
+      const hour = jamaicaDate.getHours();
+      const mins = jamaicaDate.getMinutes();
+      const info = schedule[day];
+
+      if (!info) {
+        availDot.classList.add('closed');
+        availLabel.style.color = '#EF4444';
+        availLabel.textContent = 'CLOSED TODAY';
+        availHours.textContent = 'Sunday — Back Monday 8AM';
+        if (availCard) availCard.style.borderColor = 'rgba(239,68,68,0.3)';
+        return;
+      }
+
+      const currentDecimal = hour + mins / 60;
+      const isOpen = currentDecimal >= info.open && currentDecimal < info.close;
+      const dayLabel = info.label;
+      const hoursText = formatHour(info.open) + ' – ' + formatHour(info.close);
+
+      if (isOpen) {
+        const minsLeft = Math.floor((info.close - currentDecimal) * 60);
+        availDot.classList.remove('closed');
+        availLabel.style.color = '#10B981';
+        availLabel.textContent = 'OPEN NOW';
+        if (minsLeft <= 60) {
+          availHours.textContent = dayLabel + ' ' + hoursText + ' · Closes in ' + minsLeft + 'min';
+        } else {
+          availHours.textContent = dayLabel + ' ' + hoursText + ' · Closes ' + formatHour(info.close);
+        }
+        if (availCard) availCard.style.borderColor = 'rgba(16,185,129,0.3)';
+      } else {
+        availDot.classList.add('closed');
+        availLabel.style.color = '#EF4444';
+        availLabel.textContent = 'CLOSED NOW';
+
+        let nextDay = day;
+        let nextInfo = null;
+        for (let i = 0; i < 7; i++) {
+          nextDay = (day + (currentDecimal < (info ? info.open : 0) && i === 0 ? 0 : i + (currentDecimal >= (info ? info.open : 0) ? 1 : 0))) % 7;
+          if (i === 0 && currentDecimal < info.open) { nextDay = day; nextInfo = info; break; }
+          nextDay = (day + i + 1) % 7;
+          if (schedule[nextDay]) { nextInfo = schedule[nextDay]; break; }
+        }
+
+        if (currentDecimal < info.open) {
+          availHours.textContent = dayLabel + ' ' + hoursText + ' · Opens ' + formatHour(info.open);
+        } else if (nextInfo) {
+          const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+          availHours.textContent = 'Opens ' + dayNames[nextDay] + ' ' + formatHour(nextInfo.open) + ' · ' + formatHour(nextInfo.open) + '–' + formatHour(nextInfo.close);
+        }
+        if (availCard) availCard.style.borderColor = 'rgba(239,68,68,0.3)';
+      }
+    }
+
+    function getJamaicaTimeFallback() {
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      return new Date(utc - 5 * 3600000);
+    }
+
+    async function fetchJamaicaTime() {
+      // Plan A: WorldTimeAPI
+      try {
+        const res = await fetch('https://worldtimeapi.org/api/timezone/America/Jamaica', { signal: AbortSignal.timeout(4000) });
+        if (res.ok) {
+          const data = await res.json();
+          return new Date(data.datetime);
+        }
+      } catch (e) {}
+
+      // Plan B: TimeAPI.io
+      try {
+        const res = await fetch('https://timeapi.io/api/time/current/zone?timeZone=America/Jamaica', { signal: AbortSignal.timeout(4000) });
+        if (res.ok) {
+          const data = await res.json();
+          return new Date(data.year, data.month - 1, data.day, data.hour, data.minute, data.seconds);
+        }
+      } catch (e) {}
+
+      // Plan C: client-side calculation (Jamaica is always UTC-5)
+      return getJamaicaTimeFallback();
+    }
+
+    fetchJamaicaTime().then(updateAvailability);
+
+    // Re-check every 60 seconds using fallback to avoid hammering APIs
+    setInterval(() => updateAvailability(getJamaicaTimeFallback()), 60000);
+  }
+
   // Back to top
   const btt = document.getElementById('back-to-top');
   if (btt) {
