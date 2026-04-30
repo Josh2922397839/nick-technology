@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services | Nick Technology | Portmore, Jamaica</title>
+<meta name="description" content="Professional IT repair, CCTV installation, phone repair, and tech services in Portmore, Jamaica. Honest prices, free diagnostics, and a 30-day guarantee.">
+<meta name="theme-color" content="#0A2540">
+<link rel="icon" href="/images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:50;transition:all 0.4s;background:rgba(10, 37, 64, 0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+      <img src="images/nt-logo.png" alt="Nick Technology logo" style="width:40px;height:40px;border-radius:8px;object-fit:cover;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:16px;font-weight:600;color:var(--text-primary);">Nick Technology</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:var(--brand-primary);display:inline-block;"></span>
+        <span class="font-mono" style="font-size:10px;color:var(--text-muted);letter-spacing:0.1em;">NT GROUP</span>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:32px;" class="desktop-nav">
+      <a href="index.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Home</a>
+      <a href="about.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">About</a>
+      <a href="services.html" class="nav-link active" style="font-size:14px;font-weight:500;text-decoration:none;">Services</a>
+      <a href="gallery.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Gallery</a>
+      <a href="reviews.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Reviews</a>
+      <a href="blog.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Blog</a>
+      <a href="contact.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="tel:8764655975" class="btn-cta-yellow desktop-nav">Call 876-465-5975</a>
+      <button id="mobile-btn" style="display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div id="mobile-overlay" class="mobile-overlay">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;">
+    <span style="font-size:16px;font-weight:600;color:var(--text-primary);">Nick Technology</span>
+    <button id="mobile-close" style="background:none;border:none;color:var(--text-primary);cursor:pointer;" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <a href="index.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Home</a>
+  <a href="about.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">About</a>
+  <a href="services.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Services</a>
+  <a href="gallery.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Gallery</a>
+  <a href="reviews.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Reviews</a>
+  <a href="blog.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Blog</a>
+  <a href="contact.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Contact</a>
+  <div style="margin-top:auto;padding-top:32px;">
+    <a href="tel:8764655975" class="btn-cta-yellow" style="width:100%;justify-content:center;padding:18px;">Call 876-465-5975</a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<header style="padding:160px 0 80px;background:var(--bg-secondary);border-bottom:1px solid var(--border-default);">
+  <div class="container reveal">
+    <p class="caption" style="color:var(--brand-primary);margin-bottom:16px;">OUR SERVICES</p>
+    <h1 class="font-serif display-lg" style="color:var(--text-primary);margin-bottom:24px;">Everything we fix, install, or bring back to life.</h1>
+    <p class="body-lg" style="color:var(--text-secondary);max-width:600px;">From dead laptops to full CCTV systems. One shop, one fair price, one guy who actually cares.</p>
+  </div>
+</header>
+
+<!-- GUARANTEE BANNER -->
+<div class="bg-primary" style="padding: 32px 0; border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:24px 32px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="icon-box green" style="width:48px;height:48px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div>
+          <h3 style="color:var(--brand-green);font-size:18px;font-weight:600;">Free Diagnostics &amp; 30-Day Guarantee</h3>
+          <p class="body-sm" style="color:var(--text-secondary);">We tell you the exact price before we touch anything. If we don't fix it right, we'll make it right.</p>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES BENTO GRID -->
+<section id="services" class="bg-primary section-pad">
+  <div class="container reveal">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;">
+
+      <!-- Row 1: CCTV Featured (8col) + Phone (4col) -->
+      <div class="service-card featured" style="grid-column:span 8;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:40px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">CCTV Camera Installation</h3>
+          <p class="body-sm" style="color:var(--text-secondary);max-width:400px;margin-bottom:16px;">Professional camera systems, pro install, pro remote access. See your home or business from your phone, anywhere.</p>
+          <p class="caption" style="color:var(--text-muted);font-size:11px;">STARTING FROM: CUSTOM QUOTE</p>
+        </div>
+        <div style="overflow:hidden;"><img src="images/2024-02-29 (1).jpg" alt="CCTV security camera systems available at Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+      <div class="service-card" style="grid-column:span 4;">
+        <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Phone Repair</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Cracked screen, dying battery, charging port issues. We fix Androids and iPhones while you wait.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $4,500</p>
+      </div>
+
+      <!-- Row 2: Laptop (5) + Data Recovery (4) + Virus (3) -->
+      <div class="service-card" style="grid-column:span 5;">
+        <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="4" rx="2" ry="2"/><line x1="2" x2="22" y1="20" y2="20"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Laptop Repair &amp; Revival</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Won't turn on? Running slow? Screen busted? We diagnose free and tell you straight what it'll cost.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $5,000</p>
+      </div>
+      <div class="service-card" style="grid-column:span 4;">
+        <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Data Recovery</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Accidentally deleted files, crashed hard drive, corrupted cards. We've pulled files back from the brink for years.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $8,000</p>
+      </div>
+      <div class="service-card" style="grid-column:span 3;">
+        <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Virus Removal</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Clean your machine of viruses, spyware, and ransomware safely.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $3,500</p>
+      </div>
+
+      <!-- Row 3: Home Security Featured (6) + Printer (3) + Tablet (3) -->
+      <div class="service-card featured" style="grid-column:span 6;padding:0;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="height:200px;overflow:hidden;"><img src="images/2024-02-29 (17).jpg" alt="Indoor security cameras and smart home devices at Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div style="padding:24px;">
+          <div class="icon-box green" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Full Home Security Systems</h3>
+          <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Cameras, alarms, motion sensors, and app control. One package, installed properly, end to end.</p>
+          <p class="caption" style="color:var(--text-muted);font-size:11px;">STARTING FROM: CUSTOM QUOTE</p>
+        </div>
+      </div>
+      <div class="service-card" style="grid-column:span 3;">
+        <div class="icon-box yellow" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Printer Setup</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Network configuration, ink issues, driver problems. We make printing boring again.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $3,000</p>
+      </div>
+      <div class="service-card" style="grid-column:span 3;">
+        <div class="icon-box yellow" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Tablet Sales &amp; Setup</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">New tablets sold with full setup included. We help you pick the right one.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $3,000</p>
+      </div>
+
+      <!-- Row 4: PC Upgrades (4) + Gate (4) + Intercom (4) -->
+      <div class="service-card" style="grid-column:span 4;">
+        <div class="icon-box blue" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">PC Upgrades</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">More RAM, faster SSD, better GPU. Make your current machine 3x faster for a fraction of buying new.</p>
+        <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $8,000</p>
+      </div>
+      <div class="service-card" style="grid-column:span 4;">
+        <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Automatic Gate Openers</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Residential and commercial. Installed, programmed, and serviced. Drive up, gate opens, that's it.</p>
+        <p class="caption" style="color:var(--text-muted);font-size:11px;">STARTING FROM: CUSTOM QUOTE</p>
+      </div>
+      <div class="service-card" style="grid-column:span 4;">
+        <div class="icon-box green" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Intercom Systems</h3>
+        <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">See and speak to visitors before they come in. Home and office solutions.</p>
+        <p class="caption" style="color:var(--text-muted);font-size:11px;">STARTING FROM: CUSTOM QUOTE</p>
+      </div>
+
+      <!-- Row 5: Smart TV (5) + Access Control (7) -->
+      <div class="service-card" style="grid-column:span 5;padding:0;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="height:200px;overflow:hidden;"><img src="images/2024-02-29 (10).jpg" alt="Smart TV on display ready for setup and wall mounting" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div style="padding:24px;">
+          <div class="icon-box yellow" style="margin-bottom:12px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Smart TV Setup</h3>
+          <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Wall mount, wiring, streaming apps, network setup. Your TV should work the moment we leave.</p>
+          <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $5,000</p>
+        </div>
+      </div>
+      <div class="service-card" style="grid-column:span 7;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="icon-box green" style="margin-bottom:12px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Access Control Systems</h3>
+          <p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Keycard, keypad, fob entry. Control exactly who can go where, with logs of every entry.</p>
+          <p class="caption" style="color:var(--text-muted);font-size:11px;">STARTING FROM: CUSTOM QUOTE</p>
+        </div>
+        <div style="overflow:hidden;"><img src="images/2024-02-29.jpg" alt="Smart keypad door lock installed by Nick Technology" style="width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+
+      <!-- Row 6: Portable Power (12) -->
+      <div class="service-card featured" style="grid-column:span 12;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div style="padding:40px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="icon-box yellow" style="margin-bottom:20px;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Portable Power Solutions</h3>
+          <p class="body-sm" style="color:var(--text-secondary);max-width:360px;margin-bottom:16px;">Forza Titan power stations from 100W to 1200W. Solar panels, battery backup, and off-grid charging. Keep your devices powered anywhere in Jamaica &mdash; even when JPS can't.</p>
+          <p class="caption" style="color:var(--brand-yellow);font-size:11px;">STARTING FROM $25,000</p>
+        </div>
+        <div style="overflow:hidden;"><img src="images/97201c01-357d-4a40-b86f-b776c1df7e98.jpeg" alt="Forza Titan 700W portable power station" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div style="overflow:hidden;"><img src="images/8b96cb35-6692-40a2-ba5f-4d34e4086e63.jpeg" alt="Portable foldable solar panel for off-grid power" style="width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="bg-secondary section-pad" style="text-align:center;border-top:1px solid var(--border-subtle);">
+  <div class="container reveal">
+    <h2 class="font-serif display-md" style="color:var(--text-primary);margin-bottom:24px;">Don't see what you need? Just ask.</h2>
+    <p class="body-lg" style="color:var(--text-secondary);max-width:600px;margin:0 auto 32px;">If it has a wire, a circuit board, or connects to the internet, we can probably fix it or set it up. Reach out for a free diagnostic.</p>
+    <a href="contact.html" class="btn-primary">Contact Us for a Quote</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-primary" style="border-top:1px solid var(--border-default);padding:80px 0 32px;">
+<div class="container">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px;margin-bottom:48px;">
+<div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+<img src="images/nt-logo.png" alt="Nick Technology logo" style="width:36px;height:36px;border-radius:8px;object-fit:cover;">
+<span style="font-weight:600;color:var(--text-primary);">Nick Technology</span>
+</div>
+<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:12px;">NT GROUP</p>
+<p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Honest tech service, based in Portmore. Serving Jamaica since 2005.</p>
+<div style="display:flex;gap:16px;">
+<a href="https://www.facebook.com/NickTechnology/" aria-label="Facebook" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="https://www.instagram.com/nicktechnology/" aria-label="Instagram" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+<a href="https://wa.me/18764655975" aria-label="WhatsApp" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+</div>
+</div>
+<div>
+<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">SERVICES</p>
+<div style="display:flex;flex-direction:column;gap:10px;">
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;transition:color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Computer Repair</a>
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Phone Repair</a>
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">CCTV Install</a>
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Home Security</a>
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Smart TV Setup</a>
+<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Access Control</a>
+</div>
+</div>
+<div>
+<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">COMPANY</p>
+<div style="display:flex;flex-direction:column;gap:10px;">
+<a href="about.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">About</a>
+<a href="index.html#process" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Process</a>
+<a href="index.html#pricing" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Pricing</a>
+<a href="contact.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Contact</a>
+<a href="blog.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Blog & Resources</a>
+</div>
+</div>
+<div>
+<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">GET IN TOUCH</p>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px;">
+<a href="tel:8764655975" style="color:var(--text-secondary);text-decoration:none;">876-465-5975</a>
+<a href="tel:8765354984" style="color:var(--text-secondary);text-decoration:none;">876-535-4984</a>
+<a href="mailto:COMTEC_ZION@YAHOO.COM" style="color:var(--text-secondary);text-decoration:none;">COMTEC_ZION@YAHOO.COM</a>
+<p style="color:var(--text-muted);">2 North Greater Portmore, East Ascot</p>
+<p style="color:var(--text-muted);">Mon–Sat: 8:30am–6:30pm</p>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid var(--border-subtle);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+<p style="color:var(--text-muted);font-size:13px;">&copy; 2026 Nick Technology (NT Group). All rights reserved.</p>
+<p style="color:var(--text-muted);font-size:13px;">Proudly Jamaican. &#127471;&#127474; Built on honest work.</p>
+<a href="#" style="color:var(--text-muted);font-size:13px;text-decoration:none;" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
+</div>
+</div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/18764655975" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed;bottom:24px;right:24px;z-index:50;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s;text-decoration:none;">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Mobile sticky CTA -->
+<a href="tel:8764655975" id="mobile-cta" class="mobile-cta" aria-label="Call Nick Technology">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Call Now: 876-465-5975
+</a>
+
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:88px;right:24px;z-index:45;width:44px;height:44px;border-radius:12px;background:var(--bg-secondary);border:1px solid var(--border-default);color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:all 0.3s;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script src="script.js"></script>
+<style>
+@media(max-width:768px){
+  .desktop-nav{display:none!important}
+  #mobile-btn{display:block!important}
+  #services .container > div{grid-template-columns:1fr!important}
+  #services .service-card{grid-column:span 1!important}
+  #services .service-card[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+  .service-card.featured[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  .service-card.featured[style*="grid-template-columns:1fr 1fr 1fr"] > div{min-height:200px}
+}
+@media(min-width:769px){
+  .desktop-nav{display:flex!important}
+}
+</style>
+</body>
+</html>

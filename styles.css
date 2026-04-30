@@ -1,19 +1,19 @@
 /* Nick Technology V2 — Design System */
 :root {
-  --bg-primary: #0A0E1A;
-  --bg-secondary: #111726;
+  --bg-primary: #0A2540; /* Deep navy blue */
+  --bg-secondary: #061B30; /* Darker navy */
   --bg-warm: #FAF7F2;
-  --bg-accent: #0F1F3D;
-  --text-primary: #F5F7FA;
-  --text-secondary: #B4BCC8;
-  --text-muted: #7A8494;
-  --text-on-warm: #1A1F2E;
-  --text-on-warm-muted: #5C6475;
-  --brand-primary: #2563EB;
-  --brand-yellow: #F5D400;
-  --brand-green: #10B981;
-  --border-subtle: rgba(255,255,255,0.06);
-  --border-default: rgba(255,255,255,0.1);
+  --bg-accent: #0F325A; /* Lighter navy accent */
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D8E0;
+  --text-muted: #94A3B8;
+  --text-on-warm: #0A2540;
+  --text-on-warm-muted: #475569;
+  --brand-primary: #D4A017; /* Warm gold accent */
+  --brand-yellow: #D4A017; /* Warm gold accent */
+  --brand-green: #22C55E; /* Soft green for trust */
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-default: rgba(255,255,255,0.15);
   --border-warm: #E8E0D3;
 }
 

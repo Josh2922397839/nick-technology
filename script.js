@@ -27,19 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // Active nav link
-  const sections = document.querySelectorAll('section[id]');
+  // Active nav link based on current path
+  const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-link');
-  const secObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-  sections.forEach(s => secObs.observe(s));
+  navLinks.forEach(l => {
+    const linkPath = l.getAttribute('href');
+    if (linkPath === currentPath || (currentPath === '/' && linkPath === 'index.html')) {
+      l.classList.add('active');
+    } else {
+      l.classList.remove('active');
+    }
+  });
 
   // Mobile sticky CTA
   const mobileCta = document.getElementById('mobile-cta');
