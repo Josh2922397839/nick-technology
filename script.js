@@ -52,30 +52,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero) ctaObs.observe(hero);
   }
 
-  // Contact form mailto
-  const form = document.getElementById('contact-form');
-  if (form) {
+  // Contact form mailto (shared across pages)
+  const contactForm = document.getElementById('contact-form');
+  const quoteForm = document.getElementById('quote-form');
+
+  const handleFormSubmit = (form, nameId, phoneId, serviceId, msgId) => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('cf-name').value;
-      const phone = document.getElementById('cf-phone').value;
-      const service = document.getElementById('cf-service').value;
-      const message = document.getElementById('cf-message').value;
+      const name = document.getElementById(nameId).value;
+      const phone = document.getElementById(phoneId).value;
+      const service = document.getElementById(serviceId).value;
+      const message = document.getElementById(msgId).value;
       const subject = encodeURIComponent('Service Request from ' + name + ' \u2014 ' + service);
       const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phone + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
       
-      // On mobile, mailto: works perfectly to open the native app
-      // On PC, mailto: often fails if no default mail client (like Outlook) is installed, so we route to Gmail web
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
       
       if (isMobile) {
-        window.location.href = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
+        window.location.href = mailtoUrl;
       } else {
         const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=COMTEC_ZION@YAHOO.COM&su=' + subject + '&body=' + body;
         window.open(gmailUrl, '_blank');
       }
     });
-  }
+  };
+
+  if (contactForm) handleFormSubmit(contactForm, 'cf-name', 'cf-phone', 'cf-service', 'cf-message');
+  if (quoteForm) handleFormSubmit(quoteForm, 'qf-name', 'qf-phone', 'qf-service', 'qf-message');
+
+  // Phone number numeric restriction
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    });
+  });
 
   // Marquee duplication for seamless loop + touch support
   const marqueeTrack = document.querySelector('.marquee-track');
