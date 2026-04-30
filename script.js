@@ -60,11 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById(nameId).value;
-      const phone = document.getElementById(phoneId).value;
+      const phoneInput = document.getElementById(phoneId);
+      const phoneDigits = phoneInput.value.replace(/\D/g, '');
+      
+      if (phoneDigits.length < 10) {
+        alert('Please check your phone number and fill it out properly. (10 digits required)');
+        phoneInput.focus();
+        return;
+      }
+
       const service = document.getElementById(serviceId).value;
       const message = document.getElementById(msgId).value;
       const subject = encodeURIComponent('Service Request from ' + name + ' \u2014 ' + service);
-      const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phone + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
+      const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phoneInput.value + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
       
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
@@ -81,11 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) handleFormSubmit(contactForm, 'cf-name', 'cf-phone', 'cf-service', 'cf-message');
   if (quoteForm) handleFormSubmit(quoteForm, 'qf-name', 'qf-phone', 'qf-service', 'qf-message');
 
-  // Phone number numeric restriction
+  // Phone number auto-formatter: (876) 000-0000
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
     input.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      if (!x[2]) {
+        e.target.value = x[1];
+      } else if (!x[3]) {
+        e.target.value = `(${x[1]}) ${x[2]}`;
+      } else {
+        e.target.value = `(${x[1]}) ${x[2]}-${x[3]}`;
+      }
     });
   });
 
