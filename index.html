@@ -626,7 +626,7 @@
         <p class="body-lg" style="color:var(--text-secondary);margin-bottom:32px;">Fill out the short form below and we'll get back to you within 24 hours with a transparent quote. For immediate assistance, use the WhatsApp button.</p>
         <form id="quote-form" style="display:flex;flex-direction:column;gap:16px;">
           <input type="text" id="qf-name" class="form-input" placeholder="Your Name" required>
-          <input type="tel" id="qf-phone" class="form-input" placeholder="Phone Number / WhatsApp" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+          <input type="tel" id="qf-phone" class="form-input" placeholder="(876) 000-0000" maxlength="10" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
           <select id="qf-service" class="form-input" style="appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394A3B8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 16px center;" required>
             <option value="" disabled selected>What do you need help with?</option>
             <option value="phone">Phone Repair</option>
