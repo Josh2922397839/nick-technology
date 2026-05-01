@@ -39,19 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Mobile sticky CTA
-  const mobileCta = document.getElementById('mobile-cta');
-  if (mobileCta) {
-    const hero = document.getElementById('hero');
-    const ctaObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) mobileCta.classList.add('visible');
-        else mobileCta.classList.remove('visible');
-      });
-    }, { threshold: 0 });
-    if (hero) ctaObs.observe(hero);
-  }
-
   // Contact form mailto (shared across pages)
   const contactForm = document.getElementById('contact-form');
   const quoteForm = document.getElementById('quote-form');
