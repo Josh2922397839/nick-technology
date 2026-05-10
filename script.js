@@ -226,4 +226,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    }
+  });
+
+  // Gallery Filter Tags
+  const filterTags = document.querySelectorAll('.filter-tag');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (filterTags.length && galleryItems.length) {
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        filterTags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+        const filter = tag.dataset.filter;
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+            item.style.position = '';
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // Before/After Slider
+  document.querySelectorAll('.ba-slider').forEach(slider => {
+    const handle = slider.querySelector('.ba-handle');
+    const afterImg = slider.querySelector('.ba-after');
+    let isDragging = false;
+
+    function updateSlider(x) {
+      const rect = slider.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      pos = Math.max(0.05, Math.min(0.95, pos));
+      handle.style.left = (pos * 100) + '%';
+      afterImg.style.clipPath = `inset(0 0 0 ${pos * 100}%)`;
+    }
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+    document.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+
+    slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
+    slider.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
+    slider.addEventListener('touchend', () => { isDragging = false; }, { passive: true });
+  });
+
+  // Lead magnet form
+  const leadForm = document.getElementById('lead-magnet-form');
+  if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = leadForm.querySelector('input[type="email"]').value;
+      if (email) {
+        leadForm.innerHTML = '<p style="color:var(--brand-green);font-weight:600;font-size:18px;">Check your inbox! Your free checklist is on the way.</p>';
+      }
+    });
+  }
 });

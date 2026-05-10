@@ -116,33 +116,40 @@
       <p class="body" style="color:var(--text-secondary);max-width:500px;margin-top:16px;">A look at some of the systems we've set up around Jamaica and devices we've revived.</p>
     </div>
     
-    <!-- Before / After Slider Placeholder -->
-    <div style="margin-bottom:48px;border-radius:16px;overflow:hidden;border:1px solid var(--border-default);background:var(--bg-primary);">
-      <div style="padding:32px;text-align:center;border-bottom:1px solid var(--border-subtle);">
+    <!-- Interactive Before / After Slider -->
+    <div style="margin-bottom:48px;">
+      <div style="text-align:center;margin-bottom:24px;">
         <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:8px;">Command Center Video Wall Installation</h3>
-        <p class="body-sm" style="color:var(--text-secondary);max-width:600px;margin:0 auto;">From bare wall and precision mounting frames to a fully operational, multi-screen monitoring hub.</p>
+        <p class="body-sm" style="color:var(--text-secondary);max-width:600px;margin:0 auto;">Drag the slider to compare. From bare wall to a fully operational, multi-screen monitoring hub.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
-        <div style="position:relative;aspect-ratio:4/3;">
-          <img src="images/THE BEFORE IMAGE.jpeg" alt="Before: Video wall frames mounted on the wall" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;top:16px;left:16px;background:rgba(0,0,0,0.7);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;backdrop-filter:blur(4px);">BEFORE</div>
-        </div>
-        <div style="position:relative;aspect-ratio:4/3;border-left:1px solid var(--border-subtle);">
-          <img src="images/THE NEW AFTER IMAGE YOU MUST USE.jpeg" alt="After: Fully functional video wall displaying feeds" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;top:16px;left:16px;background:rgba(34, 197, 94, 0.9);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;backdrop-filter:blur(4px);box-shadow:0 4px 12px rgba(34, 197, 94, 0.3);">AFTER</div>
-        </div>
+      <div class="ba-slider">
+        <img src="images/THE BEFORE IMAGE.jpeg" alt="Before: Video wall frames mounted on the wall" class="ba-before">
+        <img src="images/THE NEW AFTER IMAGE YOU MUST USE.jpeg" alt="After: Fully functional video wall displaying feeds" class="ba-after">
+        <div class="ba-handle"></div>
+        <span class="ba-label before">BEFORE</span>
+        <span class="ba-label after">AFTER</span>
       </div>
     </div>
 
+    <!-- Gallery Filter Tags -->
+    <div class="gallery-filters">
+      <button class="filter-tag active" data-filter="all">All Work</button>
+      <button class="filter-tag" data-filter="cctv">CCTV</button>
+      <button class="filter-tag" data-filter="networking">Networking</button>
+      <button class="filter-tag" data-filter="repairs">Repairs</button>
+      <button class="filter-tag" data-filter="security">Security</button>
+      <button class="filter-tag" data-filter="shop">Shop</button>
+    </div>
+
     <div class="shop-gallery" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;grid-auto-rows:250px;">
-      <div style="grid-column:span 2;grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.32 PM (2).jpeg" alt="Professional Traffic Monitoring Video Wall" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.29 PM.jpeg" alt="Multi-screen Security Monitoring Hub" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.34 PM.jpeg" alt="Commercial CCTV Installation on Building Exterior" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-28 at 8.36.44 PM.jpeg" alt="Security cameras" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.35 PM (1).jpeg" alt="9-Channel Lorex Monitoring Grid" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/THE VIDEO WALL YOU MUST PUT ON IT.jpeg" alt="Complete video wall installation" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-28 at 8.36.40 PM (2).jpeg" alt="Indoor security setup" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-column:span 3;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.36 PM.jpeg" alt="Full Command Center Video Wall Solution" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="grid-column:span 2;grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.32 PM (2).jpeg" alt="Professional Traffic Monitoring Video Wall" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.29 PM.jpeg" alt="Multi-screen Security Monitoring Hub" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.34 PM.jpeg" alt="Commercial CCTV Installation on Building Exterior" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="security" style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-28 at 8.36.44 PM.jpeg" alt="Security cameras" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.35 PM (1).jpeg" alt="9-Channel Lorex Monitoring Grid" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/THE VIDEO WALL YOU MUST PUT ON IT.jpeg" alt="Complete video wall installation" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="security" style="border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-28 at 8.36.40 PM (2).jpeg" alt="Indoor security setup" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="cctv" style="grid-column:span 3;border-radius:12px;overflow:hidden;"><img src="images/WhatsApp Image 2026-04-29 at 9.49.36 PM.jpeg" alt="Full Command Center Video Wall Solution" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -156,22 +163,21 @@
     </div>
     
     <div class="shop-gallery" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-      <!-- Shop Interior -->
-      <div style="grid-column:span 2;grid-row:span 2;border-radius:12px;overflow:hidden;">
+      <div class="gallery-item" data-category="shop" style="grid-column:span 2;grid-row:span 2;border-radius:12px;overflow:hidden;">
         <img src="images/WhatsApp Image 2026-04-29 at 9.49.34 PM (1).jpeg" alt="Inside the Nick Technology shop in Portmore" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
       </div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (15).jpg" alt="Large sound system and entertainment equipment on display at Nick Technology" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (6).jpg" alt="Gaming PC workstation with RGB lighting built and configured in-house" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (10).jpg" alt="Smart TV ready for delivery, setup, and wall mounting" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (20).jpg" alt="Wall display of keyboards, mice, and computer peripherals" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/428931be-0c69-40b5-b785-59ef5cdf98ee.jpeg" alt="Forza Titan 1200W portable power station with 3 AC outlets and solar input" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (22).jpg" alt="Computer mice, chargers, and tech accessories on display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/97201c01-357d-4a40-b86f-b776c1df7e98.jpeg" alt="Forza Titan 700W portable power station with fast charging and eco-friendly design" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/8b96cb35-6692-40a2-ba5f-4d34e4086e63.jpeg" alt="Portable foldable solar panel for off-grid charging and power stations" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (24).jpg" alt="Laptop bags, phone cases, and carrying accessories wall display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="border-radius:12px;overflow:hidden;"><img src="images/20a1f3e2-65f7-492b-a42b-2f7bf3516828.jpeg" alt="Forza Titan 100W compact portable power station for on-the-go charging" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (9).jpg" alt="Nexxt smart Wi-Fi door lock for home access control" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
-      <div style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (25).jpg" alt="Tablets being configured and tested before delivery to customers" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (15).jpg" alt="Large sound system and entertainment equipment on display at Nick Technology" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="repairs" style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (6).jpg" alt="Gaming PC workstation with RGB lighting built and configured in-house" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="repairs" style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (10).jpg" alt="Smart TV ready for delivery, setup, and wall mounting" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="grid-row:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (20).jpg" alt="Wall display of keyboards, mice, and computer peripherals" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/428931be-0c69-40b5-b785-59ef5cdf98ee.jpeg" alt="Forza Titan 1200W portable power station with 3 AC outlets and solar input" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (22).jpg" alt="Computer mice, chargers, and tech accessories on display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/97201c01-357d-4a40-b86f-b776c1df7e98.jpeg" alt="Forza Titan 700W portable power station with fast charging and eco-friendly design" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/8b96cb35-6692-40a2-ba5f-4d34e4086e63.jpeg" alt="Portable foldable solar panel for off-grid charging and power stations" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (24).jpg" alt="Laptop bags, phone cases, and carrying accessories wall display" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="shop" style="border-radius:12px;overflow:hidden;"><img src="images/20a1f3e2-65f7-492b-a42b-2f7bf3516828.jpeg" alt="Forza Titan 100W compact portable power station for on-the-go charging" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="security" style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (9).jpg" alt="Nexxt smart Wi-Fi door lock for home access control" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="gallery-item" data-category="repairs" style="grid-column:span 2;border-radius:12px;overflow:hidden;"><img src="images/2024-02-29 (25).jpg" alt="Tablets being configured and tested before delivery to customers" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -244,8 +250,6 @@
     WhatsApp
   </a>
 </div>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <!-- Back to top -->
 
