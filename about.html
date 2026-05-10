@@ -14,33 +14,48 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="output.css">
 </head>
-<body>
+<body class='font-sans bg-navy text-text-secondary overflow-x-hidden'>
 
 <!-- Navbar -->
-<nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:50;transition:all 0.4s;background:rgba(10, 37, 64, 0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);">
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-      <img src="images/nt-logo.png" alt="Nick Technology logo" style="width:40px;height:40px;border-radius:8px;object-fit:cover;">
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="font-size:16px;font-weight:600;color:var(--text-primary);">Nick Technology</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:var(--brand-primary);display:inline-block;"></span>
-        <span class="font-mono" style="font-size:10px;color:var(--text-muted);letter-spacing:0.1em;">NT GROUP</span>
+<nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-[400ms] bg-transparent">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 flex items-center justify-between py-5">
+    <a href="#" class="flex items-center gap-3 no-underline">
+      <img src="images/nt-logo.png" alt="Nick Technology logo" class="w-10 h-10 rounded-lg object-cover">
+      <div class="flex items-center gap-1.5">
+        <span class="text-base font-semibold text-text-primary">Nick Technology</span>
+        <span class="w-1 h-1 rounded-full bg-gold inline-block"></span>
+        <span class="font-mono text-[10px] text-text-muted tracking-[0.1em]">NT GROUP</span>
       </div>
     </a>
-    <div style="display:flex;align-items:center;gap:32px;" class="desktop-nav">
-      <a href="index.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Home</a>
-      <a href="about.html" class="nav-link active" style="font-size:14px;font-weight:500;text-decoration:none;">About</a>
-      <a href="services.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Services</a>
-      <a href="gallery.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Gallery</a>
-      <a href="reviews.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Reviews</a>
-      <a href="blog.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Blog</a>
-      <a href="contact.html" class="nav-link" style="font-size:14px;font-weight:500;text-decoration:none;">Contact</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="nav-link active text-sm font-medium no-underline text-text-secondary">Home</a>
+      <a href="about.html" class="nav-link text-sm font-medium no-underline text-text-secondary">About</a>
+      <a href="services.html" class="nav-link text-sm font-medium no-underline text-text-secondary">Services</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium no-underline text-text-secondary">Gallery</a>
+      <a href="reviews.html" class="nav-link text-sm font-medium no-underline text-text-secondary">Reviews</a>
+      <a href="blog.html" class="nav-link text-sm font-medium no-underline text-text-secondary">Blog</a>
+      <a href="contact.html" class="nav-link text-sm font-medium no-underline text-text-secondary">Contact</a>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="tel:8764655975" class="btn-cta-yellow desktop-nav">Call 876-465-5975</a>
-      <button id="mobile-btn" style="display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;" aria-label="Open menu">
+    <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-4 mr-4 border-r border-border-subtle pr-4">
+        <a href="https://www.facebook.com/NickTechnology/" target="_blank" rel="noopener" aria-label="Facebook" class="text-text-secondary transition-colors duration-300 hover:text-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/nicktechnology/" target="_blank" rel="noopener" aria-label="Instagram" class="text-text-secondary transition-colors duration-300 hover:text-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+      </div>
+      <a href="https://wa.me/18764655975" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 text-sm text-text-secondary no-underline hover:text-brand-green transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+      <a href="tel:8764655975" class="hidden md:inline-flex items-center gap-2.5 bg-gold text-black rounded-full px-5 py-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(212,160,23,0.3)] active:scale-[0.98]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 876-465-5975
+      </a>
+      <button id="mobile-btn" class="md:hidden bg-transparent border-none text-text-primary cursor-pointer" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -49,51 +64,51 @@
 
 <!-- Mobile Overlay -->
 <div id="mobile-overlay" class="mobile-overlay">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;">
-    <span style="font-size:16px;font-weight:600;color:var(--text-primary);">Nick Technology</span>
-    <button id="mobile-close" style="background:none;border:none;color:var(--text-primary);cursor:pointer;" aria-label="Close menu">
+  <div class="flex justify-between items-center mb-12">
+    <span class="text-base font-semibold text-text-primary">Nick Technology</span>
+    <button id="mobile-close" class="bg-transparent border-none text-text-primary cursor-pointer" aria-label="Close menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <a href="index.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Home</a>
-  <a href="about.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">About</a>
-  <a href="services.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Services</a>
-  <a href="gallery.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Gallery</a>
-  <a href="reviews.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Reviews</a>
-  <a href="blog.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Blog</a>
-  <a href="contact.html" style="font-size:32px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:16px 0;display:block;border-bottom:1px solid var(--border-subtle);">Contact</a>
-  <div style="margin-top:auto;padding-top:32px;">
-    <a href="tel:8764655975" class="btn-cta-yellow" style="width:100%;justify-content:center;padding:18px;">Call 876-465-5975</a>
+  <a href="index.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Home</a>
+  <a href="about.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">About</a>
+  <a href="services.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Services</a>
+  <a href="gallery.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Gallery</a>
+  <a href="reviews.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Reviews</a>
+  <a href="blog.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Blog</a>
+  <a href="contact.html" class="text-[32px] font-semibold text-text-primary no-underline py-4 block border-b border-border-subtle">Contact</a>
+  <div class="mt-auto pt-8">
+    <a href="tel:8764655975" class="inline-flex items-center gap-2.5 bg-gold text-black rounded-full w-full justify-center py-[18px] font-semibold text-sm cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 active:scale-[0.98]">Call 876-465-5975</a>
   </div>
 </div>
 
 <!-- PAGE HEADER -->
-<header style="padding:160px 0 80px;background:var(--bg-secondary);border-bottom:1px solid var(--border-default);">
-  <div class="container reveal">
-    <p class="caption" style="color:var(--brand-primary);margin-bottom:16px;">ABOUT US</p>
-    <h1 class="font-serif display-lg" style="color:var(--text-primary);">The Story of Nick Technology</h1>
+<header class="pt-40 pb-20 bg-navy-dark border-b border-border-default">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
+    <p class="font-mono text-[13px] leading-[1.4] font-medium tracking-[0.08em] uppercase text-gold mb-4">ABOUT US</p>
+    <h1 class="font-serif text-[clamp(36px,7vw,56px)] leading-[1.05] font-normal tracking-[-0.02em] text-text-primary">The Story of Nick Technology</h1>
   </div>
 </header>
 
 <!-- MEET THE OWNER -->
-<section class="bg-warm section-pad">
-  <div class="container reveal">
-    <div style="display:grid;grid-template-columns:1fr;gap:48px;align-items:center;">
+<section class="bg-[#1A201C] py-16 md:py-24 lg:py-32">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
+    <div class="grid grid-cols-1 md:grid-cols-[40%_60%] gap-12 items-center">
       <!-- Photo -->
-      <div style="position:relative;">
-        <div style="aspect-ratio:4/5;max-width:450px;border-radius:16px;overflow:hidden;border:1px solid var(--border-warm);box-shadow:0 12px 40px rgba(0,0,0,0.1);background:var(--bg-secondary);position:relative;">
-          <img src="images/WhatsApp Image 2026-04-29 at 9.49.37 PM.jpeg" alt="Nicholas Anderson, founder of Nick Technology" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <div class="relative">
+        <div class="aspect-[4/5] max-w-[450px] rounded-2xl overflow-hidden border border-[#2D362F] shadow-[0_12px_40px_rgba(0,0,0,0.1)] bg-navy-dark relative">
+          <img src="images/WhatsApp Image 2026-04-29 at 9.49.37 PM.jpeg" alt="Nicholas Anderson, founder of Nick Technology" class="w-full h-full object-cover object-top block">
         </div>
       </div>
       <!-- Copy -->
       <div>
-        <h2 class="font-serif display-md" style="color:var(--text-on-warm);margin-bottom:24px;">From fixing friends' computers to serving all of Jamaica.</h2>
-        <p class="body-lg" style="color:var(--text-on-warm);margin-bottom:24px;">Hi, I'm Nicholas Anderson.</p>
-        <p class="body" style="color:var(--text-on-warm-muted);margin-bottom:24px;">I didn't start out planning to build a large tech company. More than 20 years ago, I just had a knack for making broken things work again. I started out fixing computers because friends kept bringing me theirs when they crashed or caught a virus. Soon, friends of friends started showing up at my door. Then strangers.</p>
-        <p class="body" style="color:var(--text-on-warm-muted);margin-bottom:32px;">Over two decades later, I'm still doing exactly what I love. Only now, instead of just laptops and desktop PCs, my team and I install complex CCTV setups, set up smart home security networks, automate gates, and recover critical lost data for families and businesses across Jamaica. We've grown, but we're still based right here in Greater Portmore.</p>
+        <h2 class="font-serif text-[clamp(28px,5vw,40px)] leading-[1.1] font-medium tracking-[-0.02em] text-[#E8EDEA] mb-6">From fixing friends' computers to serving all of Jamaica.</h2>
+        <p class="text-lg leading-relaxed text-[#E8EDEA] mb-6">Hi, I'm Nicholas Anderson.</p>
+        <p class="text-base leading-[1.65] text-[#A6B3AA] mb-6">I didn't start out planning to build a large tech company. More than 20 years ago, I just had a knack for making broken things work again. I started out fixing computers because friends kept bringing me theirs when they crashed or caught a virus. Soon, friends of friends started showing up at my door. Then strangers.</p>
+        <p class="text-base leading-[1.65] text-[#A6B3AA] mb-8">Over two decades later, I'm still doing exactly what I love. Only now, instead of just laptops and desktop PCs, my team and I install complex CCTV setups, set up smart home security networks, automate gates, and recover critical lost data for families and businesses across Jamaica. We've grown, but we're still based right here in Greater Portmore.</p>
         
-        <blockquote style="border-left:4px solid var(--brand-yellow);padding-left:24px;margin:0 0 32px 0;">
-          <p class="font-serif display-md" style="color:var(--text-on-warm);font-style:italic;font-size:clamp(20px,3vw,28px);">&ldquo;I know what it's like to get overcharged. I promise I'll work with you so you can get quality service at an affordable cost you actually deserve.&rdquo;</p>
+        <blockquote class="border-l-4 border-gold pl-6 m-0 mb-8">
+          <p class="font-serif text-[clamp(20px,3vw,28px)] leading-[1.1] font-medium tracking-[-0.02em] text-[#E8EDEA] italic">&ldquo;I know what it's like to get overcharged. I promise I'll work with you so you can get quality service at an affordable cost you actually deserve.&rdquo;</p>
         </blockquote>
       </div>
     </div>
@@ -101,179 +116,165 @@
 </section>
 
 <!-- CORE VALUES -->
-<section class="bg-primary section-pad">
-  <div class="container reveal">
-    <div style="text-align:center;margin-bottom:56px;">
-      <p class="caption" style="color:var(--brand-primary);margin-bottom:16px;">OUR PROMISE</p>
-      <h2 class="font-serif display-lg" style="color:var(--text-primary);">Core Values We Never Compromise On</h2>
+<section class="bg-navy py-16 md:py-24 lg:py-32">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
+    <div class="text-center mb-14">
+      <p class="font-mono text-[13px] leading-[1.4] font-medium tracking-[0.08em] uppercase text-gold mb-4">OUR PROMISE</p>
+      <h2 class="font-serif text-[clamp(36px,7vw,56px)] leading-[1.05] font-normal tracking-[-0.02em] text-text-primary">Core Values We Never Compromise On</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;">
-      <div style="background:var(--bg-secondary);padding:32px;border-radius:16px;border:1px solid var(--border-subtle);">
-        <div class="icon-box yellow" style="margin-bottom:20px;">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8">
+      <!-- value 1 -->
+      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#FDF9F0] text-[#D4A017]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:12px;">Honesty</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">We tell you exactly what's wrong. If it's cheaper for you to buy a new device than for us to fix it, we'll tell you that straight to your face.</p>
+        <h3 class="text-xl font-semibold tracking-tight text-text-primary mb-3">Honesty</h3>
+        <p class="text-sm leading-[1.55] text-text-secondary">We tell you exactly what's wrong. If it's cheaper for you to buy a new device than for us to fix it, we'll tell you that straight to your face.</p>
       </div>
-      <div style="background:var(--bg-secondary);padding:32px;border-radius:16px;border:1px solid var(--border-subtle);">
-        <div class="icon-box green" style="margin-bottom:20px;">
+      <!-- value 2 -->
+      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#F0FDF4] text-[#16A34A]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:12px;">Quality</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">We do things right the first time. We don't cut corners on wiring, we don't use knock-off parts, and we test everything thoroughly before handing it back.</p>
+        <h3 class="text-xl font-semibold tracking-tight text-text-primary mb-3">Quality</h3>
+        <p class="text-sm leading-[1.55] text-text-secondary">We do things right the first time. We don't cut corners on wiring, we don't use knock-off parts, and we test everything thoroughly before handing it back.</p>
       </div>
-      <div style="background:var(--bg-secondary);padding:32px;border-radius:16px;border:1px solid var(--border-subtle);">
-        <div class="icon-box blue" style="margin-bottom:20px;">
+      <!-- value 3 -->
+      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#F0F9FF] text-[#0284C7]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:12px;">Fair Pricing</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">No hidden fees. Free diagnostics always. We give you a firm quote before any work begins, so you're never caught off guard.</p>
+        <h3 class="text-xl font-semibold tracking-tight text-text-primary mb-3">Fair Pricing</h3>
+        <p class="text-sm leading-[1.55] text-text-secondary">No hidden fees. Free diagnostics always. We give you a firm quote before any work begins, so you're never caught off guard.</p>
       </div>
-      <div style="background:var(--bg-secondary);padding:32px;border-radius:16px;border:1px solid var(--border-subtle);">
-        <div class="icon-box yellow" style="margin-bottom:20px;">
+      <!-- value 4 -->
+      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#FDF9F0] text-[#D4A017]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 class="heading-3" style="color:var(--text-primary);margin-bottom:12px;">Personal Service</h3>
-        <p class="body-sm" style="color:var(--text-secondary);">You're not a ticket number in a queue. We remember our customers, we know their systems, and we care about getting them back online.</p>
+        <h3 class="text-xl font-semibold tracking-tight text-text-primary mb-3">Personal Service</h3>
+        <p class="text-sm leading-[1.55] text-text-secondary">You're not a ticket number in a queue. We remember our customers, we know their systems, and we care about getting them back online.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MISSION & VISION -->
-<section class="bg-secondary section-pad" style="border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
-  <div class="container reveal">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;">
-      
+<section class="bg-navy-dark py-16 md:py-24 lg:py-32 border-y border-border-subtle">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-12">
       <!-- Mission -->
       <div>
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-          <div class="icon-box blue" style="width:48px;height:48px;">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-[#F0F9FF] text-[#0284C7]">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
-          <h2 class="font-serif display-md" style="color:var(--text-primary);margin:0;">Our Mission</h2>
+          <h2 class="font-serif text-[clamp(28px,5vw,40px)] leading-[1.1] font-medium tracking-[-0.02em] text-text-primary m-0">Our Mission</h2>
         </div>
-        <p class="body-lg" style="color:var(--text-secondary);">To provide honest, reliable, and affordable technology and security solutions to homes and businesses across Jamaica, ensuring no one is left disconnected, overcharged, or unprotected.</p>
+        <p class="text-lg leading-relaxed text-text-secondary">To provide honest, reliable, and affordable technology and security solutions to homes and businesses across Jamaica, ensuring no one is left disconnected, overcharged, or unprotected.</p>
       </div>
 
       <!-- Vision -->
       <div>
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-          <div class="icon-box yellow" style="width:48px;height:48px;">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-[#FDF9F0] text-[#D4A017]">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
           </div>
-          <h2 class="font-serif display-md" style="color:var(--text-primary);margin:0;">Our 5-Year Vision</h2>
+          <h2 class="font-serif text-[clamp(28px,5vw,40px)] leading-[1.1] font-medium tracking-[-0.02em] text-text-primary m-0">Our 5-Year Vision</h2>
         </div>
-        <p class="body-lg" style="color:var(--text-secondary);">Over the next 5 years, we aim to expand Nick Technology into the most trusted independent tech and smart security provider in Jamaica. We envision opening multiple service centers, launching a mobile fleet for rapid on-site repairs, and empowering our local community through youth tech apprenticeships.</p>
+        <p class="text-lg leading-relaxed text-text-secondary">Over the next 5 years, we aim to expand Nick Technology into the most trusted independent tech and smart security provider in Jamaica. We envision opening multiple service centers, launching a mobile fleet for rapid on-site repairs, and empowering our local community through youth tech apprenticeships.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- WHY I ANSWER MY PHONE -->
-<section class="bg-accent section-pad">
-  <div class="container reveal">
-    <div style="max-width:800px;margin:0 auto;text-align:center;">
-      <div class="icon-box yellow" style="margin:0 auto 24px;">
+<section class="bg-[#0D3055] py-16 md:py-24 lg:py-32">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-[#FDF9F0] text-[#D4A017] mx-auto mb-6">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
-      <h2 class="font-serif display-md" style="color:var(--text-primary);margin-bottom:24px;">Why I Still Answer My Own Phone</h2>
-      <p class="body-lg" style="color:var(--text-secondary);margin-bottom:32px;">In a world of automated menus and offshore call centers, when you dial our number, you get me—Nicholas. When you have an emergency with your business security system or a dead laptop with your life's work on it, you don't want to talk to a robot. You want an expert who can solve the problem. That's why I've kept it personal for 20 years.</p>
-      <a href="tel:8764655975" class="btn-primary" style="padding:16px 32px;font-size:16px;">Call Nicholas Now</a>
+      <h2 class="font-serif text-[clamp(28px,5vw,40px)] leading-[1.1] font-medium tracking-[-0.02em] text-text-primary mb-6">Why I Still Answer My Own Phone</h2>
+      <p class="text-lg leading-relaxed text-text-secondary mb-8">In a world of automated menus and offshore call centers, when you dial our number, you get me—Nicholas. When you have an emergency with your business security system or a dead laptop with your life's work on it, you don't want to talk to a robot. You want an expert who can solve the problem. That's why I've kept it personal for 20 years.</p>
+      <a href="tel:8764655975" class="inline-flex items-center gap-2.5 bg-black text-gold border border-gold/30 rounded-full px-8 py-4 font-medium text-base cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] active:scale-[0.98]">Call Nicholas Now</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-primary" style="border-top:1px solid var(--border-default);padding:80px 0 32px;">
-<div class="container">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px;margin-bottom:48px;">
-<div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-<img src="images/nt-logo.png" alt="Nick Technology logo" style="width:36px;height:36px;border-radius:8px;object-fit:cover;">
-<span style="font-weight:600;color:var(--text-primary);">Nick Technology</span>
-</div>
-<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:12px;">NT GROUP</p>
-<p class="body-sm" style="color:var(--text-secondary);margin-bottom:16px;">Honest tech service, based in Portmore. Serving Jamaica since 2005.</p>
-<div style="display:flex;gap:16px;">
-<a href="https://www.facebook.com/NickTechnology/" aria-label="Facebook" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-<a href="https://www.instagram.com/nicktechnology/" aria-label="Instagram" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-<a href="https://wa.me/18764655975" aria-label="WhatsApp" style="color:var(--text-muted);transition:color 0.3s;" onmouseover="this.style.color='var(--brand-yellow)'" onmouseout="this.style.color='var(--text-muted)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-</div>
-</div>
-<div>
-<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">SERVICES</p>
-<div style="display:flex;flex-direction:column;gap:10px;">
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;transition:color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Computer Repair</a>
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Phone Repair</a>
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">CCTV Install</a>
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Home Security</a>
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Smart TV Setup</a>
-<a href="services.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Access Control</a>
-</div>
-</div>
-<div>
-<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">COMPANY</p>
-<div style="display:flex;flex-direction:column;gap:10px;">
-<a href="about.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">About</a>
-<a href="index.html#process" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Process</a>
-<a href="contact.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Contact</a>
-<a href="blog.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;">Blog & Resources</a>
-</div>
-</div>
-<div>
-<p class="caption" style="color:var(--text-muted);font-size:11px;margin-bottom:16px;">GET IN TOUCH</p>
-<div style="display:flex;flex-direction:column;gap:8px;font-size:14px;">
-<a href="tel:8764655975" style="color:var(--text-secondary);text-decoration:none;">876-465-5975</a>
-<a href="tel:8765354984" style="color:var(--text-secondary);text-decoration:none;">876-535-4984</a>
-<a href="mailto:COMTEC_ZION@YAHOO.COM" style="color:var(--text-secondary);text-decoration:none;">COMTEC_ZION@YAHOO.COM</a>
-<p style="color:var(--text-muted);">2 North Greater Portmore, East Ascot</p>
-<p style="color:var(--text-muted);">Mon–Sat: 8:30am–6:30pm</p>
-</div>
-</div>
-</div>
-<div style="border-top:1px solid var(--border-subtle);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
-<p style="color:var(--text-muted);font-size:13px;">&copy; 2026 Nick Technology (NT Group). All rights reserved.</p>
-<p style="color:var(--text-muted);font-size:13px;">Proudly Jamaican. &#127471;&#127474; Built on honest work.</p>
-<a href="#" style="color:var(--text-muted);font-size:13px;text-decoration:none;" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
-</div>
-</div>
+<footer class="bg-navy border-t border-border-default pt-20 pb-8 max-md:pb-16">
+  <div class="max-w-[1152px] mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/nt-logo.png" alt="Nick Technology logo" class="w-9 h-9 rounded-lg object-cover">
+          <span class="font-semibold text-text-primary">Nick Technology</span>
+        </div>
+        <p class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-text-muted mb-3">NT GROUP</p>
+        <p class="text-sm leading-[1.55] text-text-secondary mb-4">Honest tech service, based in Portmore. Serving Jamaica since 2005.</p>
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com/NickTechnology/" aria-label="Facebook" class="text-text-muted transition-colors duration-300 hover:text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/nicktechnology/" aria-label="Instagram" class="text-text-muted transition-colors duration-300 hover:text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="https://wa.me/18764655975" aria-label="WhatsApp" class="text-text-muted transition-colors duration-300 hover:text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-text-muted mb-4">SERVICES</p>
+        <div class="flex flex-col gap-2.5">
+          <a href="services.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Computer Repair</a>
+          <a href="phone-repair-jamaica.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Phone Repair</a>
+          <a href="cctv-installation-jamaica.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">CCTV Install</a>
+          <a href="services.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Home Security</a>
+          <a href="services.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Smart TV Setup</a>
+          <a href="networking-solutions-jamaica.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Networking</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-text-muted mb-4">COMPANY</p>
+        <div class="flex flex-col gap-2.5">
+          <a href="about.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">About</a>
+          <a href="index.html#process" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Process</a>
+          <a href="contact.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Contact</a>
+          <a href="blog.html" class="text-text-secondary no-underline text-sm transition-colors duration-300 hover:text-text-primary">Blog & Resources</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-text-muted mb-4">GET IN TOUCH</p>
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="tel:8764655975" class="text-text-secondary no-underline transition-colors duration-300 hover:text-text-primary">876-465-5975</a>
+          <a href="tel:8765354984" class="text-text-secondary no-underline transition-colors duration-300 hover:text-text-primary">876-535-4984</a>
+          <a href="mailto:COMTEC_ZION@YAHOO.COM" class="text-text-secondary no-underline transition-colors duration-300 hover:text-text-primary">COMTEC_ZION@YAHOO.COM</a>
+          <p class="text-text-muted">2 North Greater Portmore, East Ascot</p>
+          <p class="text-text-muted">Mon–Sat: 8:30am–6:30pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-border-subtle pt-6 flex flex-wrap justify-between items-center gap-4">
+      <p class="text-text-muted text-[13px]">&copy; 2026 Nick Technology (NT Group). All rights reserved.</p>
+      <p class="text-text-muted text-[13px]">Proudly Jamaican. &#127471;&#127474; Built on honest work.</p>
+      <a href="#" class="text-text-muted text-[13px] no-underline transition-colors duration-300 hover:text-text-primary" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
+    </div>
+  </div>
 </footer>
 
-<!-- WhatsApp FAB -->
-<!-- Dual Floating Widget -->
-<div class="floating-widget">
-  <a href="tel:+18764655975" class="floating-btn call" aria-label="Call Nick Technology">
+<!-- Dual Floating Widget (Glassmorphism) -->
+<div class="fixed bottom-6 right-6 z-50 flex bg-navy-dark/90 backdrop-blur-xl rounded-full overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-border-default max-[480px]:bottom-4 max-[480px]:right-1/2 max-[480px]:translate-x-1/2 max-[480px]:w-[calc(100%-32px)] max-[480px]:max-w-[360px]">
+  <a href="tel:+18764655975" class="flex items-center gap-2 px-5 py-3 text-black font-semibold text-sm no-underline transition-colors duration-300 bg-gold hover:bg-[#E5B32A] max-[480px]:flex-1 max-[480px]:justify-center max-[480px]:text-[13px] max-[480px]:px-3.5" aria-label="Call Nick Technology">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call Now
   </a>
-  <a href="https://wa.me/18764655975" target="_blank" rel="noopener" class="floating-btn wa" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/18764655975" target="_blank" rel="noopener" class="flex items-center gap-2 px-5 py-3 text-white font-semibold text-sm no-underline transition-colors duration-300 bg-[#25D366] hover:bg-[#20BA56] max-[480px]:flex-1 max-[480px]:justify-center max-[480px]:text-[13px] max-[480px]:px-3.5" aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     WhatsApp
   </a>
 </div>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <!-- Back to top -->
-
-<!-- Back to top -->
-<button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:88px;right:24px;z-index:45;width:44px;height:44px;border-radius:12px;background:var(--bg-secondary);border:1px solid var(--border-default);color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:all 0.3s;">
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-[88px] right-6 z-[45] w-11 h-11 rounded-xl bg-navy-dark/90 backdrop-blur-xl border border-border-default text-text-primary flex items-center justify-center cursor-pointer opacity-0 pointer-events-none transition-all duration-300">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 
 <script src="script.js"></script>
-<style>
-@media(max-width:768px){
-  .desktop-nav{display:none!important}
-  #mobile-btn{display:block!important}
-  #about .container > div{grid-template-columns:1fr!important}
-}
-@media(min-width:769px){
-  .desktop-nav{display:flex!important}
-  #about .container > div{grid-template-columns:40% 60%!important}
-}
-</style>
 </body>
 </html>

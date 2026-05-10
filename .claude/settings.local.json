@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx @tailwindcss/cli --help)",
+      "PowerShell(New-Item -ItemType Directory -Path \"c:\\\\Users\\\\06jos\\\\Documents\\\\Websites\\\\nick-technology\\\\src\" -Force)"
+    ]
+  }
+}
