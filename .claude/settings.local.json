@@ -5,7 +5,8 @@
       "Bash(npm init *)",
       "Bash(npm install *)",
       "Bash(npx @tailwindcss/cli --help)",
-      "PowerShell(New-Item -ItemType Directory -Path \"c:\\\\Users\\\\06jos\\\\Documents\\\\Websites\\\\nick-technology\\\\src\" -Force)"
+      "PowerShell(New-Item -ItemType Directory -Path \"c:\\\\Users\\\\06jos\\\\Documents\\\\Websites\\\\nick-technology\\\\src\" -Force)",
+      "Bash(npx @tailwindcss/cli -i src/input.css -o output.css --minify)"
     ]
   }
 }

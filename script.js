@@ -1,55 +1,171 @@
-// Nick Technology V2 — Scripts
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Navbar scroll effect
+  // ─── Navbar scroll effect ───
   const nav = document.getElementById('main-nav');
   const handleNavScroll = () => {
-    if (window.scrollY > 100) { nav.classList.add('nav-scrolled'); }
-    else { nav.classList.remove('nav-scrolled'); }
+    if (window.scrollY > 100) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
   };
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-  // Mobile menu
-  const mobileBtn = document.getElementById('mobile-btn');
-  const mobileClose = document.getElementById('mobile-close');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  if (mobileBtn && mobileOverlay) {
-    mobileBtn.addEventListener('click', () => mobileOverlay.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileOverlay.classList.remove('open'));
-    mobileOverlay.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobileOverlay.classList.remove('open'));
-    });
-  }
-
-  // Scroll reveal
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-  // Active nav link based on current path
-  const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(l => {
-    const linkPath = l.getAttribute('href');
-    if (linkPath === currentPath || (currentPath === '/' && linkPath === 'index.html')) {
-      l.classList.add('active');
-    } else {
-      l.classList.remove('active');
+  // ─── Active nav link (robust detection) ───
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+    const linkPage = link.getAttribute('href').split('/').pop().split('#')[0];
+    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+  document.querySelectorAll('.mobile-overlay .nav-item').forEach(link => {
+    const linkPage = link.getAttribute('href').split('/').pop().split('#')[0];
+    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+      link.classList.add('active');
     }
   });
 
-  // Contact form mailto (shared across pages)
-  const contactForm = document.getElementById('contact-form');
-  const quoteForm = document.getElementById('quote-form');
+  // ─── Mobile bottom sheet menu ───
+  const mobileBtn = document.getElementById('mobile-btn');
+  const mobileClose = document.getElementById('mobile-close');
+  const mobileOverlay = document.getElementById('mobile-overlay');
 
+  if (mobileBtn && mobileOverlay) {
+    mobileBtn.addEventListener('click', () => {
+      mobileOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    const closeMenu = () => {
+      mobileOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    mobileOverlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Drag-to-dismiss
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+    const dragHandle = mobileOverlay.querySelector('.drag-handle');
+
+    if (dragHandle) {
+      dragHandle.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      mobileOverlay.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        const diff = currentY - startY;
+        if (diff > 0) {
+          mobileOverlay.style.transform = `translateY(${diff}px)`;
+          mobileOverlay.style.transition = 'none';
+        }
+      }, { passive: true });
+
+      mobileOverlay.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = currentY - startY;
+        mobileOverlay.style.transition = '';
+        if (diff > 120) {
+          closeMenu();
+        } else {
+          mobileOverlay.style.transform = '';
+        }
+      }, { passive: true });
+    }
+  }
+
+  // ─── Staggered scroll reveal ───
+  const staggerDelay = 100;
+  const revealObs = new IntersectionObserver((entries) => {
+    const visibleEntries = entries.filter(e => e.isIntersecting);
+    visibleEntries.forEach((entry, i) => {
+      const delay = entry.target.dataset.delay
+        ? parseInt(entry.target.dataset.delay)
+        : i * staggerDelay;
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay);
+      revealObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .reveal-bounce').forEach(el => {
+    revealObs.observe(el);
+  });
+
+  // ─── Counter animation ───
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = el.dataset.count;
+      if (!target) return;
+
+      const isNumber = /^\d+$/.test(target.replace(/[,+]/g, ''));
+      if (isNumber) {
+        const num = parseInt(target.replace(/[,+]/g, ''));
+        const suffix = target.includes('+') ? '+' : '';
+        const hasComma = target.includes(',');
+        const duration = 1500;
+        const start = performance.now();
+
+        const animate = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(num * eased);
+          el.textContent = (hasComma ? current.toLocaleString() : current) + suffix;
+          if (progress < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+      }
+      el.classList.add('visible');
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+  // ─── Sticky bottom action bar (mobile) ───
+  const bottomBar = document.getElementById('bottom-action-bar');
+  if (bottomBar) {
+    const footer = document.querySelector('footer');
+    let lastScrollY = 0;
+
+    const updateBottomBar = () => {
+      if (!footer) return;
+      const footerRect = footer.getBoundingClientRect();
+      const isNearFooter = footerRect.top < window.innerHeight;
+      const scrollingDown = window.scrollY > lastScrollY;
+      lastScrollY = window.scrollY;
+
+      if (window.scrollY < 300) {
+        bottomBar.classList.add('hidden');
+      } else if (isNearFooter) {
+        bottomBar.classList.add('hidden');
+      } else {
+        bottomBar.classList.remove('hidden');
+      }
+    };
+
+    window.addEventListener('scroll', updateBottomBar, { passive: true });
+    updateBottomBar();
+  }
+
+  // ─── Contact form mailto ───
   const handleFormSubmit = (form, nameId, phoneId, serviceId, msgId) => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById(nameId).value;
       const phoneInput = document.getElementById(phoneId);
       const phoneDigits = phoneInput.value.replace(/\D/g, '');
-      
+
       if (phoneDigits.length < 10) {
         alert('Please check your phone number and fill it out properly. (10 digits required)');
         phoneInput.focus();
@@ -58,12 +174,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const service = document.getElementById(serviceId).value;
       const message = document.getElementById(msgId).value;
-      const subject = encodeURIComponent('Service Request from ' + name + ' \u2014 ' + service);
+      const subject = encodeURIComponent('Service Request from ' + name + ' — ' + service);
       const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phoneInput.value + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
-      
+
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
-      
+
       if (isMobile) {
         window.location.href = mailtoUrl;
       } else {
@@ -73,12 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const contactForm = document.getElementById('contact-form');
+  const quoteForm = document.getElementById('quote-form');
   if (contactForm) handleFormSubmit(contactForm, 'cf-name', 'cf-phone', 'cf-service', 'cf-message');
   if (quoteForm) handleFormSubmit(quoteForm, 'qf-name', 'qf-phone', 'qf-service', 'qf-message');
 
-  // Phone number auto-formatter: (876) 000-0000
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
-  phoneInputs.forEach(input => {
+  // ─── Phone number auto-formatter ───
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
     input.addEventListener('input', (e) => {
       let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
       if (!x[2]) {
@@ -91,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Marquee duplication for seamless loop + touch support
+  // ─── Marquee duplication ───
   const marqueeTrack = document.querySelector('.marquee-track');
   if (marqueeTrack) {
     const clone = marqueeTrack.innerHTML;
@@ -105,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Dynamic availability badge
+  // ─── Dynamic availability badge ───
   const availDot = document.getElementById('avail-dot');
   const availLabel = document.getElementById('avail-label');
   const availHours = document.getElementById('avail-hours');
@@ -189,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function fetchJamaicaTime() {
-      // Plan A: WorldTimeAPI
       try {
         const res = await fetch('https://worldtimeapi.org/api/timezone/America/Jamaica', { signal: AbortSignal.timeout(4000) });
         if (res.ok) {
@@ -198,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } catch (e) {}
 
-      // Plan B: TimeAPI.io
       try {
         const res = await fetch('https://timeapi.io/api/time/current/zone?timeZone=America/Jamaica', { signal: AbortSignal.timeout(4000) });
         if (res.ok) {
@@ -207,17 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } catch (e) {}
 
-      // Plan C: client-side calculation (Jamaica is always UTC-5)
       return getJamaicaTimeFallback();
     }
 
     fetchJamaicaTime().then(updateAvailability);
-
-    // Re-check every 60 seconds using fallback to avoid hammering APIs
     setInterval(() => updateAvailability(getJamaicaTimeFallback()), 60000);
   }
 
-  // Back to top
+  // ─── Back to top ───
   const btt = document.getElementById('back-to-top');
   if (btt) {
     window.addEventListener('scroll', () => {
@@ -227,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  // FAQ Accordion
+  // ─── FAQ Accordion ───
   document.querySelectorAll('.faq-item').forEach(item => {
     const question = item.querySelector('.faq-question');
     if (question) {
@@ -239,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Gallery Filter Tags
+  // ─── Gallery Filter Tags ───
   const filterTags = document.querySelectorAll('.filter-tag');
   const galleryItems = document.querySelectorAll('.gallery-item');
   if (filterTags.length && galleryItems.length) {
@@ -260,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Before/After Slider
+  // ─── Before/After Slider ───
   document.querySelectorAll('.ba-slider').forEach(slider => {
     const handle = slider.querySelector('.ba-handle');
     const afterImg = slider.querySelector('.ba-after');
@@ -277,21 +389,62 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
     document.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
     document.addEventListener('mouseup', () => { isDragging = false; });
-
     slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
     slider.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
     slider.addEventListener('touchend', () => { isDragging = false; }, { passive: true });
   });
 
-  // Lead magnet form
+  // ─── Lead magnet form ───
   const leadForm = document.getElementById('lead-magnet-form');
   if (leadForm) {
     leadForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = leadForm.querySelector('input[type="email"]').value;
       if (email) {
-        leadForm.innerHTML = '<p style="color:var(--brand-green);font-weight:600;font-size:18px;">Check your inbox! Your free checklist is on the way.</p>';
+        leadForm.innerHTML = '<p style="color:#22C55E;font-weight:600;font-size:18px;">Check your inbox! Your free checklist is on the way.</p>';
       }
     });
   }
+
+  // ─── Lazy map loader ───
+  const mapContainer = document.getElementById('mapContainer');
+  if (mapContainer) {
+    const mapSrc = mapContainer.dataset.mapSrc;
+    const loadMapBtn = mapContainer.querySelector('button');
+    const loadMap = () => {
+      if (!mapSrc || mapContainer.classList.contains('loaded')) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = mapSrc;
+      iframe.width = '100%';
+      iframe.height = '320';
+      iframe.style.border = '0';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      mapContainer.appendChild(iframe);
+      mapContainer.classList.add('loaded');
+    };
+
+    if (loadMapBtn) loadMapBtn.addEventListener('click', loadMap);
+
+    const mapObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadMap();
+        mapObs.disconnect();
+      }
+    }, { rootMargin: '200px' });
+    mapObs.observe(mapContainer);
+  }
+
+  // ─── Lazy video loading ───
+  document.querySelectorAll('video[data-src]').forEach(video => {
+    const videoObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        video.src = video.dataset.src;
+        video.load();
+        videoObs.disconnect();
+      }
+    }, { rootMargin: '200px' });
+    videoObs.observe(video);
+  });
 });
