@@ -1,0 +1,12 @@
+node_modules
+.git
+.claude
+.qodo
+src
+package.json
+package-lock.json
+wrangler.jsonc
+.assetsignore
+.gitignore
+*.log
+*.md
