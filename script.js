@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const service = document.getElementById(serviceId).value;
       const message = document.getElementById(msgId).value;
-      const subject = encodeURIComponent('Service Request from ' + name + ' — ' + service);
+      const subject = encodeURIComponent('Service Request from ' + name + ' - ' + service);
       const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phoneInput.value + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
 
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         availDot.classList.add('closed');
         availLabel.style.color = '#EF4444';
         availLabel.textContent = 'CLOSED TODAY';
-        availHours.textContent = 'Sunday — Back Monday 8AM';
+        availHours.textContent = 'Sunday - Back Monday 8AM';
         if (availCard) availCard.style.borderColor = 'rgba(239,68,68,0.3)';
         return;
       }
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentDecimal = hour + mins / 60;
       const isOpen = currentDecimal >= info.open && currentDecimal < info.close;
       const dayLabel = info.label;
-      const hoursText = formatHour(info.open) + ' – ' + formatHour(info.close);
+      const hoursText = formatHour(info.open) + ' - ' + formatHour(info.close);
 
       if (isOpen) {
         const minsLeft = Math.floor((info.close - currentDecimal) * 60);
