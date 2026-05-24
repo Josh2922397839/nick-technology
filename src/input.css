@@ -125,6 +125,15 @@
 
 @layer components {
 
+  /* ─── Navbar Logo ─── */
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
   /* ─── Navbar ─── */
   .nav-scrolled {
     background: rgba(6, 27, 48, 0.75) !important;

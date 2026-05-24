@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Josh2922397839/nick-technology#readme",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0"
   }
 }

@@ -12,23 +12,187 @@
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer Reviews | Nick Technology | Portmore, Jamaica</title>
-<meta name="description" content="Read reviews from real customers in Portmore, Kingston, and Spanish Town. See why people trust Nick Technology for IT repair and CCTV.">
-<meta name="theme-color" content="#0A2540">
-<link rel="icon" href="/images/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="output.css">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+  .review-glass {
+    background: rgba(15, 50, 90, 0.35);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 0 20px rgba(212, 160, 23, 0.03);
+  }
+  .review-glass:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 30px rgba(212, 160, 23, 0.05);
+  }
+
+  .form-glass {
+    background: rgba(15, 50, 90, 0.3);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 40px rgba(212, 160, 23, 0.04);
+  }
+
+  .star-input { cursor: pointer; transition: transform 0.15s ease, color 0.15s ease; }
+  .star-input:hover { transform: scale(1.2); }
+  .star-input.active { color: #D4A017; }
+  .star-input.inactive { color: rgba(255, 255, 255, 0.15); }
+
+  .rating-bar-fill {
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .review-img-thumb {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .review-img-thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .lightbox {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .upload-zone {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+  }
+  .upload-zone:hover,
+  .upload-zone.dragover {
+    border-color: rgba(212, 160, 23, 0.5);
+    background: rgba(212, 160, 23, 0.05);
+  }
+
+  .bento-reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+  .bento-reviews .review-card:nth-child(4n+1) { grid-column: span 2; }
+  .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 2; }
+
+  @media (max-width: 1024px) {
+    .bento-reviews {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-reviews .review-card:nth-child(4n+1),
+    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
+    .bento-reviews .review-card:nth-child(3n+1) { grid-column: span 2; }
+  }
+
+  @media (max-width: 640px) {
+    .bento-reviews {
+      grid-template-columns: 1fr;
+    }
+    .bento-reviews .review-card:nth-child(3n+1),
+    .bento-reviews .review-card:nth-child(4n+1),
+    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
+  }
+
+  .form-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #D4A017;
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .form-input::placeholder { color: #94A3B8; }
+
+  .submit-btn {
+    background: linear-gradient(135deg, #D4A017, #E8B830);
+    color: #061B30;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212, 160, 23, 0.3);
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 16px 28px;
+    border-radius: 14px;
+    font-weight: 500;
+    font-size: 15px;
+    z-index: 200;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .toast.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22C55E;
+  }
+  .toast.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #EF4444;
+  }
+
+  .lds-hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+</style>
 </head>
 <body class='font-sans bg-navy text-text-secondary overflow-x-hidden'>
 
@@ -36,7 +200,7 @@
 <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-[400ms] bg-transparent">
   <div class="max-w-[1152px] mx-auto px-6 lg:px-8 flex items-center justify-between py-5">
     <a href="index.html" class="flex items-center gap-3 no-underline">
-      <img src="images/nt-logo.png" alt="Nick Technology logo" class="w-9 h-9 rounded-lg object-cover">
+      <img src="images/logo-icon-small.png" alt="Nick Technology logo" class="navbar-logo">
       <div class="flex items-center gap-1.5">
         <span class="text-base font-semibold text-text-primary tracking-tight">Nick Technology</span>
         <span class="w-1 h-1 rounded-full bg-gold inline-block"></span>
@@ -70,7 +234,7 @@
   <div class="sheet-content">
     <div class="flex justify-between items-center mb-6">
       <div class="flex items-center gap-2.5">
-        <img src="images/nt-logo.png" alt="Nick Technology logo" class="w-8 h-8 rounded-lg object-cover">
+        <img src="images/logo-icon-small.png" alt="Nick Technology logo" class="w-8 h-8 rounded-lg object-cover">
         <span class="text-base font-semibold text-text-primary">Nick Technology</span>
       </div>
       <button id="mobile-close" class="mobile-menu-toggle" aria-label="Close menu">
@@ -91,7 +255,7 @@
         <span>Directions</span>
       </a>
     </div>
-    
+
     <div class="flex flex-col gap-1 mb-8">
       <a href="index.html" class="nav-item">Home</a>
       <a href="about.html" class="nav-item">About</a>
@@ -126,24 +290,138 @@
   </div>
 </div>
 
-<!-- PAGE HEADER -->
-<header class="pt-40 pb-20 bg-navy-dark border-b border-border-default">
+<!-- PAGE HEADER + RATING OVERVIEW -->
+<header class="pt-40 pb-16 bg-navy-dark border-b border-border-default">
   <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
     <p class="font-mono text-[13px] leading-[1.4] font-medium tracking-[0.08em] uppercase text-gold mb-4">TESTIMONIALS</p>
     <h1 class="font-serif text-[clamp(36px,7vw,56px)] leading-[1.05] font-normal tracking-[-0.02em] text-text-primary mb-6">Don't just take our word for it.</h1>
-    <p class="text-lg leading-relaxed text-text-secondary max-w-[600px]">Hear from families and business owners across Jamaica who trust Nick Technology with their security and devices.</p>
-    <div class="flex items-center gap-4 mt-8">
-      <div class="flex gap-0.5 text-gold text-2xl">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="text-base font-medium text-text-primary">5.0 Average Rating</p>
+    <p class="text-lg leading-relaxed text-text-secondary max-w-[600px] mb-10">Hear from families and business owners across Jamaica who trust Nick Technology with their security and devices.</p>
+
+    <!-- Rating Overview (Google Reviews Style) -->
+    <div class="flex flex-col sm:flex-row gap-8 items-start">
+      <!-- Big Score -->
+      <div class="flex flex-col items-center gap-2 min-w-[140px]">
+        <span id="avg-rating" class="text-[56px] leading-none font-bold text-text-primary">5.0</span>
+        <div id="avg-stars" class="flex gap-0.5 text-gold text-2xl">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <span id="total-reviews" class="text-sm text-text-muted mt-1">8 reviews</span>
+      </div>
+      <!-- Distribution Bars -->
+      <div class="flex flex-col gap-2.5 flex-1 max-w-[400px] w-full">
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-text-secondary w-4 text-right">5</span>
+          <div class="flex-1 h-3 bg-white/5 rounded-full overflow-hidden"><div id="bar-5" class="rating-bar-fill h-full rounded-full bg-gold" style="width: 100%"></div></div>
+          <span id="count-5" class="text-xs text-text-muted w-5 text-right">8</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-text-secondary w-4 text-right">4</span>
+          <div class="flex-1 h-3 bg-white/5 rounded-full overflow-hidden"><div id="bar-4" class="rating-bar-fill h-full rounded-full bg-gold" style="width: 0%"></div></div>
+          <span id="count-4" class="text-xs text-text-muted w-5 text-right">0</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-text-secondary w-4 text-right">3</span>
+          <div class="flex-1 h-3 bg-white/5 rounded-full overflow-hidden"><div id="bar-3" class="rating-bar-fill h-full rounded-full bg-gold" style="width: 0%"></div></div>
+          <span id="count-3" class="text-xs text-text-muted w-5 text-right">0</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-text-secondary w-4 text-right">2</span>
+          <div class="flex-1 h-3 bg-white/5 rounded-full overflow-hidden"><div id="bar-2" class="rating-bar-fill h-full rounded-full bg-gold" style="width: 0%"></div></div>
+          <span id="count-2" class="text-xs text-text-muted w-5 text-right">0</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-text-secondary w-4 text-right">1</span>
+          <div class="flex-1 h-3 bg-white/5 rounded-full overflow-hidden"><div id="bar-1" class="rating-bar-fill h-full rounded-full bg-gold" style="width: 0%"></div></div>
+          <span id="count-1" class="text-xs text-text-muted w-5 text-right">0</span>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- REVIEWS GRID -->
+<!-- WRITE A REVIEW SECTION -->
+<section class="bg-navy py-16 md:py-24 border-b border-border-subtle">
+  <div class="max-w-[720px] mx-auto px-6 md:px-12 reveal">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-[clamp(24px,4vw,36px)] leading-[1.1] font-medium tracking-[-0.02em] text-text-primary mb-3">Share your experience</h2>
+      <p class="text-base leading-relaxed text-text-secondary">Had work done by Nick Technology? Let others know how it went.</p>
+    </div>
+
+    <form id="review-form" class="form-glass rounded-2xl p-8 md:p-10 flex flex-col gap-6" novalidate>
+      <!-- Honeypot -->
+      <div class="lds-hp" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="review-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" id="form-loaded-at" value="">
+
+      <!-- Name -->
+      <div>
+        <label for="review-name" class="block text-sm font-medium text-text-secondary mb-2">Your name</label>
+        <input type="text" id="review-name" class="form-input" placeholder="e.g. Sarah P." required maxlength="60" autocomplete="name">
+      </div>
+
+      <!-- Star Rating -->
+      <div>
+        <label class="block text-sm font-medium text-text-secondary mb-3">Your rating</label>
+        <div id="star-rating" class="flex gap-2" role="radiogroup" aria-label="Star rating">
+          <button type="button" class="star-input inactive" data-star="1" aria-label="1 star">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" class="star-input inactive" data-star="2" aria-label="2 stars">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" class="star-input inactive" data-star="3" aria-label="3 stars">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" class="star-input inactive" data-star="4" aria-label="4 stars">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" class="star-input inactive" data-star="5" aria-label="5 stars">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+        </div>
+        <input type="hidden" id="review-rating" value="0">
+      </div>
+
+      <!-- Review Text -->
+      <div>
+        <label for="review-text" class="block text-sm font-medium text-text-secondary mb-2">Your review</label>
+        <textarea id="review-text" class="form-input resize-none" rows="4" placeholder="Tell us about your experience..." required minlength="10" maxlength="1000"></textarea>
+        <p class="text-xs text-text-muted mt-1.5"><span id="char-count">0</span>/1000</p>
+      </div>
+
+      <!-- Image Upload -->
+      <div>
+        <label class="block text-sm font-medium text-text-secondary mb-2">Upload a photo <span class="text-text-muted font-normal">(optional)</span></label>
+        <div id="upload-zone" class="upload-zone rounded-xl p-6 text-center cursor-pointer">
+          <input type="file" id="review-image" accept="image/jpeg,image/png,image/webp" class="hidden">
+          <div id="upload-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 text-text-muted"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            <p class="text-sm text-text-muted">Click or drag an image here</p>
+            <p class="text-xs text-text-muted mt-1">JPEG, PNG, or WebP (max 5MB)</p>
+          </div>
+          <div id="upload-preview" class="hidden">
+            <img id="preview-img" src="" alt="Upload preview" class="max-h-[200px] rounded-lg mx-auto mb-3 object-contain">
+            <button type="button" id="remove-image" class="text-sm text-text-muted hover:text-white transition-colors">Remove image</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloudflare Turnstile -->
+      <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="dark" data-callback="onTurnstileSuccess"></div>
+
+      <button type="submit" id="submit-review" class="submit-btn w-full flex items-center justify-center gap-2" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg>
+        Submit Review
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- REVIEWS BENTO GRID -->
 <section class="bg-navy py-16 md:py-24 lg:py-32">
   <div class="max-w-[1152px] mx-auto px-6 md:px-12 reveal">
     <!-- Facebook Widget Callout -->
-    <div class="bg-navy-dark border border-border-default rounded-2xl p-8 mb-12 flex flex-wrap items-center justify-between gap-6">
+    <div class="review-glass rounded-2xl p-8 mb-12 flex flex-wrap items-center justify-between gap-6">
       <div class="flex items-center gap-4">
         <div class="w-14 h-14 bg-[#1877F2] rounded-full flex items-center justify-center shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -156,90 +434,8 @@
       <a href="https://www.facebook.com/NickTechnology/" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 bg-[#1877F2] text-white rounded-full px-7 py-3.5 font-medium text-base cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(24,119,242,0.3)] active:scale-[0.98]">See More on Facebook</a>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-      
-      <!-- Review 1 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Laptop wouldn&rsquo;t turn on at all. Three other shops said it was dead. Nick recovered every single file and got it running again in two days.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-navy flex items-center justify-center border border-border-default shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div><p class="font-semibold text-text-primary text-sm">Dr. Kemoya L.</p><p class="text-text-muted text-[13px]">Kingston</p></div>
-        </div>
-      </div>
-
-      <!-- Review 2 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Best price on CCTV I could find, but the work was absolutely top tier. Wires perfectly hidden, and he walked my wife through the app step by step.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#10B981] flex items-center justify-center text-white font-semibold text-sm shrink-0">TJ</div>
-          <div><p class="font-semibold text-text-primary text-sm">Trevor J.</p><p class="text-text-muted text-[13px]">Spanish Town</p></div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Called Nicholas at 8pm when my home security alarm wouldn't set. He answered on the second ring and walked me through the fix over the phone. Didn't even charge me.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#F59E0B] flex items-center justify-center text-white font-semibold text-sm shrink-0">MR</div>
-          <div><p class="font-semibold text-text-primary text-sm">Marsha R.</p><p class="text-text-muted text-[13px]">Portmore</p></div>
-        </div>
-      </div>
-
-      <!-- Review 4 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Brought my iPhone in with a completely shattered screen. Fixed in 30 minutes while I waited. Absolute lifesaver and a very clean shop.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#6366F1] flex items-center justify-center text-white font-semibold text-sm shrink-0">MD</div>
-          <div><p class="font-semibold text-text-primary text-sm">Mark D.</p><p class="text-text-muted text-[13px]">Portmore</p></div>
-        </div>
-      </div>
-
-      <!-- Review 5 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;They installed a 4-camera system at my house. Very professional, no messy wires left behind, and they made sure I knew exactly how to check the cameras on my phone before they left.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#EC4899] flex items-center justify-center text-white font-semibold text-sm shrink-0">SP</div>
-          <div><p class="font-semibold text-text-primary text-sm">Sarah P.</p><p class="text-text-muted text-[13px]">Hellshire</p></div>
-        </div>
-      </div>
-
-      <!-- Review 6 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;My business server went down on a Friday. Nick came out immediately and had us up and running before Monday. Cannot recommend his services enough.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white font-semibold text-sm shrink-0">AW</div>
-          <div><p class="font-semibold text-text-primary text-sm">Andre W.</p><p class="text-text-muted text-[13px]">Kingston</p></div>
-        </div>
-      </div>
-
-      <!-- Review 7 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Fair prices and very honest. He told me it wasn't worth fixing my old tablet and helped me choose a new one instead of just taking my money for a repair.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#14B8A6] flex items-center justify-center text-white font-semibold text-sm shrink-0">JM</div>
-          <div><p class="font-semibold text-text-primary text-sm">Jessica M.</p><p class="text-text-muted text-[13px]">Spanish Town</p></div>
-        </div>
-      </div>
-
-      <!-- Review 8 -->
-      <div class="bg-navy-dark p-8 rounded-2xl border border-border-subtle flex flex-col hover:-translate-y-1 hover:border-border-default hover:bg-white/[0.04] transition-all duration-300">
-        <div class="flex gap-0.5 text-gold mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text-lg leading-relaxed text-text-primary mb-6 flex-grow">&ldquo;Got a smart gate opener installed. Works perfectly with my phone. The team was respectful of my property and cleaned up all their mess after themselves.&rdquo;</p>
-        <div class="border-t border-border-default pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-[#F43F5E] flex items-center justify-center text-white font-semibold text-sm shrink-0">DT</div>
-          <div><p class="font-semibold text-text-primary text-sm">David T.</p><p class="text-text-muted text-[13px]">Portmore</p></div>
-        </div>
-      </div>
-
+    <div id="reviews-grid" class="bento-reviews">
+      <!-- Reviews rendered by JavaScript -->
     </div>
   </div>
 </section>
@@ -270,7 +466,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       <div>
         <div class="flex items-center gap-3 mb-4">
-          <img src="images/nt-logo.png" alt="Nick Technology logo" class="w-9 h-9 rounded-lg object-cover">
+          <img src="images/logo-icon-small.png" alt="Nick Technology logo" class="navbar-logo">
           <span class="font-semibold text-text-primary">Nick Technology</span>
         </div>
         <p class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-text-muted mb-3">NT GROUP</p>
@@ -308,7 +504,7 @@
           <a href="tel:8765354984" class="text-text-secondary no-underline transition-colors duration-300 hover:text-text-primary">876-535-4984</a>
           <a href="mailto:COMTEC_ZION@YAHOO.COM" class="text-text-secondary no-underline transition-colors duration-300 hover:text-text-primary">COMTEC_ZION@YAHOO.COM</a>
           <p class="text-text-muted">2 North Greater Portmore, East Ascot</p>
-          <p class="text-text-muted">Mon–Sat: 8:30am–6:30pm</p>
+          <p class="text-text-muted">Mon-Sat: 8:30am-6:30pm</p>
         </div>
       </div>
     </div>
@@ -319,6 +515,17 @@
     </div>
   </div>
 </footer>
+
+<!-- IMAGE LIGHTBOX -->
+<div id="lightbox" class="lightbox fixed inset-0 z-[200] flex items-center justify-center bg-[rgba(0,0,0,0.85)]" role="dialog" aria-label="Image preview">
+  <button id="lightbox-close" class="absolute top-6 right-6 w-11 h-11 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white cursor-pointer transition-all hover:bg-white/20" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="Review photo enlarged">
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast"></div>
 
 <!-- Desktop Floating Widget -->
 <div class="floating-widget-desktop hidden md:flex fixed bottom-6 right-6 z-50 bg-navy-dark/90 backdrop-blur-xl rounded-full overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-border-default">
@@ -350,5 +557,401 @@
 </button>
 
 <script src="script.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // ── Seed reviews (original static reviews) ──
+  const SEED_REVIEWS = [
+    { id: 's1', name: 'Dr. Kemoya L.', location: 'Kingston', rating: 5, text: 'Laptop wouldn\'t turn on at all. Three other shops said it was dead. Nick recovered every single file and got it running again in two days.', color: null, initials: null, image: null, date: '2025-11-15' },
+    { id: 's2', name: 'Trevor J.', location: 'Spanish Town', rating: 5, text: 'Best price on CCTV I could find, but the work was absolutely top tier. Wires perfectly hidden, and he walked my wife through the app step by step.', color: '#10B981', initials: 'TJ', image: null, date: '2025-10-22' },
+    { id: 's3', name: 'Marsha R.', location: 'Portmore', rating: 5, text: 'Called Nicholas at 8pm when my home security alarm wouldn\'t set. He answered on the second ring and walked me through the fix over the phone. Didn\'t even charge me.', color: '#F59E0B', initials: 'MR', image: null, date: '2025-09-08' },
+    { id: 's4', name: 'Mark D.', location: 'Portmore', rating: 5, text: 'Brought my iPhone in with a completely shattered screen. Fixed in 30 minutes while I waited. Absolute lifesaver and a very clean shop.', color: '#6366F1', initials: 'MD', image: null, date: '2025-08-14' },
+    { id: 's5', name: 'Sarah P.', location: 'Hellshire', rating: 5, text: 'They installed a 4-camera system at my house. Very professional, no messy wires left behind, and they made sure I knew exactly how to check the cameras on my phone before they left.', color: '#EC4899', initials: 'SP', image: null, date: '2025-07-30' },
+    { id: 's6', name: 'Andre W.', location: 'Kingston', rating: 5, text: 'My business server went down on a Friday. Nick came out immediately and had us up and running before Monday. Cannot recommend his services enough.', color: '#8B5CF6', initials: 'AW', image: null, date: '2025-06-19' },
+    { id: 's7', name: 'Jessica M.', location: 'Spanish Town', rating: 5, text: 'Fair prices and very honest. He told me it wasn\'t worth fixing my old tablet and helped me choose a new one instead of just taking my money for a repair.', color: '#14B8A6', initials: 'JM', image: null, date: '2025-05-05' },
+    { id: 's8', name: 'David T.', location: 'Portmore', rating: 5, text: 'Got a smart gate opener installed. Works perfectly with my phone. The team was respectful of my property and cleaned up all their mess after themselves.', color: '#F43F5E', initials: 'DT', image: null, date: '2025-04-12' }
+  ];
+
+  const AVATAR_COLORS = ['#10B981','#F59E0B','#6366F1','#EC4899','#8B5CF6','#14B8A6','#F43F5E','#2563EB','#EF4444','#06B6D4'];
+
+  function getStoredReviews() {
+    try {
+      return JSON.parse(localStorage.getItem('nt_reviews') || '[]');
+    } catch { return []; }
+  }
+
+  function saveReviews(reviews) {
+    try {
+      localStorage.setItem('nt_reviews', JSON.stringify(reviews));
+    } catch {}
+  }
+
+  function getAllReviews() {
+    return [...SEED_REVIEWS, ...getStoredReviews()].sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+
+  function getInitials(name) {
+    return name.split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function renderStars(rating) {
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+      html += i <= rating ? '&#9733;' : '<span style="opacity:0.2">&#9733;</span>';
+    }
+    return html;
+  }
+
+  // ── Update rating overview ──
+  function updateRatingOverview() {
+    const all = getAllReviews();
+    const total = all.length;
+    const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    let sum = 0;
+
+    all.forEach(r => {
+      counts[r.rating] = (counts[r.rating] || 0) + 1;
+      sum += r.rating;
+    });
+
+    const avg = total > 0 ? (sum / total).toFixed(1) : '0.0';
+    document.getElementById('avg-rating').textContent = avg;
+    document.getElementById('total-reviews').textContent = total + (total === 1 ? ' review' : ' reviews');
+
+    const avgStars = document.getElementById('avg-stars');
+    avgStars.innerHTML = renderStars(Math.round(parseFloat(avg)));
+
+    for (let i = 1; i <= 5; i++) {
+      const pct = total > 0 ? (counts[i] / total * 100) : 0;
+      document.getElementById('bar-' + i).style.width = pct + '%';
+      document.getElementById('count-' + i).textContent = counts[i];
+    }
+  }
+
+  // ── Render review cards ──
+  function renderReviews() {
+    const grid = document.getElementById('reviews-grid');
+    const all = getAllReviews();
+
+    grid.innerHTML = all.map(r => {
+      const initials = r.initials || getInitials(r.name);
+      const color = r.color || AVATAR_COLORS[Math.abs(r.name.charCodeAt(0) + r.name.charCodeAt(r.name.length - 1)) % AVATAR_COLORS.length];
+      const hasImage = r.image && r.image.length > 0;
+
+      return '<div class="review-card review-glass rounded-2xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1">' +
+        '<div class="flex items-center justify-between mb-4">' +
+          '<div class="flex gap-0.5 text-gold text-lg">' + renderStars(r.rating) + '</div>' +
+          '<span class="text-xs text-text-muted">' + formatDate(r.date) + '</span>' +
+        '</div>' +
+        '<p class="text-base leading-relaxed text-text-primary mb-5 flex-grow">&ldquo;' + escapeHtml(r.text) + '&rdquo;</p>' +
+        (hasImage ? '<div class="mb-5"><img src="' + escapeHtml(r.image) + '" alt="Photo from ' + escapeHtml(r.name) + '" class="review-img-thumb w-full h-48 object-cover rounded-xl" loading="lazy" onclick="openLightbox(this.src)"></div>' : '') +
+        '<div class="border-t border-white/10 pt-4 flex items-center gap-3 mt-auto">' +
+          (r.initials === null && r.color === null
+            ? '<div class="w-10 h-10 rounded-full bg-navy flex items-center justify-center border border-border-default shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>'
+            : '<div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm shrink-0" style="background:' + color + '">' + escapeHtml(initials) + '</div>'
+          ) +
+          '<div><p class="font-semibold text-text-primary text-sm">' + escapeHtml(r.name) + '</p>' +
+          (r.location ? '<p class="text-text-muted text-[13px]">' + escapeHtml(r.location) + '</p>' : '') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    updateRatingOverview();
+  }
+
+  // ── Image lightbox ──
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  window.openLightbox = function(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+
+  // ── Toast ──
+  function showToast(message, type) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = 'toast ' + type;
+    requestAnimationFrame(function() {
+      toast.classList.add('show');
+    });
+    setTimeout(function() {
+      toast.classList.remove('show');
+    }, 3500);
+  }
+
+  // ── Star rating interaction ──
+  const starRating = document.getElementById('star-rating');
+  const ratingInput = document.getElementById('review-rating');
+  let selectedRating = 0;
+
+  starRating.querySelectorAll('.star-input').forEach(function(star) {
+    star.addEventListener('click', function() {
+      selectedRating = parseInt(this.dataset.star);
+      ratingInput.value = selectedRating;
+      updateStarDisplay(selectedRating);
+      checkFormValidity();
+    });
+
+    star.addEventListener('mouseenter', function() {
+      updateStarDisplay(parseInt(this.dataset.star));
+    });
+  });
+
+  starRating.addEventListener('mouseleave', function() {
+    updateStarDisplay(selectedRating);
+  });
+
+  function updateStarDisplay(rating) {
+    starRating.querySelectorAll('.star-input').forEach(function(s) {
+      var val = parseInt(s.dataset.star);
+      s.classList.toggle('active', val <= rating);
+      s.classList.toggle('inactive', val > rating);
+    });
+  }
+
+  // ── Character counter ──
+  var reviewText = document.getElementById('review-text');
+  var charCount = document.getElementById('char-count');
+  reviewText.addEventListener('input', function() {
+    charCount.textContent = this.value.length;
+    checkFormValidity();
+  });
+
+  // ── Image upload ──
+  var uploadZone = document.getElementById('upload-zone');
+  var fileInput = document.getElementById('review-image');
+  var uploadPlaceholder = document.getElementById('upload-placeholder');
+  var uploadPreview = document.getElementById('upload-preview');
+  var previewImg = document.getElementById('preview-img');
+  var removeImageBtn = document.getElementById('remove-image');
+  var uploadedImageData = null;
+
+  uploadZone.addEventListener('click', function(e) {
+    if (e.target !== removeImageBtn && !removeImageBtn.contains(e.target)) {
+      fileInput.click();
+    }
+  });
+
+  uploadZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    uploadZone.classList.add('dragover');
+  });
+  uploadZone.addEventListener('dragleave', function() {
+    uploadZone.classList.remove('dragover');
+  });
+  uploadZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    if (e.dataTransfer.files.length > 0) handleImageFile(e.dataTransfer.files[0]);
+  });
+
+  fileInput.addEventListener('change', function() {
+    if (this.files.length > 0) handleImageFile(this.files[0]);
+  });
+
+  function handleImageFile(file) {
+    if (!['image/jpeg','image/png','image/webp'].includes(file.type)) {
+      showToast('Please upload a JPEG, PNG, or WebP image.', 'error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image must be under 5MB.', 'error');
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        var maxDim = 800;
+        var w = img.width;
+        var h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else { w = Math.round(w * maxDim / h); h = maxDim; }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        uploadedImageData = canvas.toDataURL('image/jpeg', 0.7);
+        previewImg.src = uploadedImageData;
+        uploadPlaceholder.classList.add('hidden');
+        uploadPreview.classList.remove('hidden');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  removeImageBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    uploadedImageData = null;
+    fileInput.value = '';
+    previewImg.src = '';
+    uploadPreview.classList.add('hidden');
+    uploadPlaceholder.classList.remove('hidden');
+  });
+
+  // ── Anti-spam ──
+  var formLoadedAt = Date.now();
+  document.getElementById('form-loaded-at').value = formLoadedAt;
+
+  var RATE_LIMIT_KEY = 'nt_review_submissions';
+  var MAX_SUBMISSIONS_PER_HOUR = 3;
+
+  function isRateLimited() {
+    try {
+      var submissions = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+      var oneHourAgo = Date.now() - 3600000;
+      submissions = submissions.filter(function(t) { return t > oneHourAgo; });
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(submissions));
+      return submissions.length >= MAX_SUBMISSIONS_PER_HOUR;
+    } catch { return false; }
+  }
+
+  function recordSubmission() {
+    try {
+      var submissions = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+      submissions.push(Date.now());
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(submissions));
+    } catch {}
+  }
+
+  // ── Turnstile callback ──
+  var turnstileToken = null;
+  window.onTurnstileSuccess = function(token) {
+    turnstileToken = token;
+    checkFormValidity();
+  };
+
+  // ── Form validation ──
+  var submitBtn = document.getElementById('submit-review');
+  var reviewName = document.getElementById('review-name');
+
+  reviewName.addEventListener('input', checkFormValidity);
+
+  function checkFormValidity() {
+    var nameValid = reviewName.value.trim().length >= 2;
+    var ratingValid = selectedRating >= 1 && selectedRating <= 5;
+    var textValid = reviewText.value.trim().length >= 10;
+    submitBtn.disabled = !(nameValid && ratingValid && textValid);
+  }
+
+  // ── Form submission ──
+  var reviewForm = document.getElementById('review-form');
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Honeypot check
+    if (document.getElementById('review-website').value.length > 0) return;
+
+    // Time-based check (must have been on page > 3 seconds)
+    if (Date.now() - formLoadedAt < 3000) {
+      showToast('Please take a moment before submitting.', 'error');
+      return;
+    }
+
+    // Rate limit check
+    if (isRateLimited()) {
+      showToast('You have submitted too many reviews recently. Please try again later.', 'error');
+      return;
+    }
+
+    var name = reviewName.value.trim();
+    var text = reviewText.value.trim();
+
+    if (name.length < 2 || name.length > 60) {
+      showToast('Please enter a valid name.', 'error');
+      return;
+    }
+    if (selectedRating < 1 || selectedRating > 5) {
+      showToast('Please select a star rating.', 'error');
+      return;
+    }
+    if (text.length < 10 || text.length > 1000) {
+      showToast('Review must be between 10 and 1000 characters.', 'error');
+      return;
+    }
+
+    var newReview = {
+      id: 'u' + Date.now(),
+      name: name,
+      location: '',
+      rating: selectedRating,
+      text: text,
+      color: AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)],
+      initials: getInitials(name),
+      image: uploadedImageData,
+      date: new Date().toISOString().split('T')[0]
+    };
+
+    var stored = getStoredReviews();
+    stored.push(newReview);
+    saveReviews(stored);
+    recordSubmission();
+
+    // Reset form
+    reviewForm.reset();
+    selectedRating = 0;
+    ratingInput.value = 0;
+    updateStarDisplay(0);
+    charCount.textContent = '0';
+    uploadedImageData = null;
+    previewImg.src = '';
+    uploadPreview.classList.add('hidden');
+    uploadPlaceholder.classList.remove('hidden');
+    submitBtn.disabled = true;
+
+    // Reset Turnstile
+    turnstileToken = null;
+    if (window.turnstile) {
+      var tsEl = document.querySelector('.cf-turnstile');
+      if (tsEl) window.turnstile.reset(tsEl);
+    }
+
+    renderReviews();
+    showToast('Thank you for your review!', 'success');
+
+    // Scroll to reviews grid
+    document.getElementById('reviews-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ── Initial render ──
+  renderReviews();
+})();
+</script>
 </body>
 </html>
