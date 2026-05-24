@@ -1,8 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="112" fill="#0A0E1A"/>
-  <rect x="99" y="148" width="50" height="216" fill="#F5D400"/>
-  <rect x="195" y="148" width="50" height="216" fill="#F5D400"/>
-  <polygon points="99,148 149,148 245,364 195,364" fill="#F5D400"/>
-  <rect x="271" y="148" width="142" height="50" fill="#F5D400"/>
-  <rect x="317" y="148" width="50" height="216" fill="#F5D400"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Microchip Pins -->
+  <path d="M4 8h-4 M4 16h-4 M4 24h-4 M28 8h4 M28 16h4 M28 24h4 M8 4v-4 M16 4v-4 M24 4v-4 M8 28v4 M16 28v4 M24 28v4" stroke="#2563EB" stroke-width="3"/>
+  
+  <!-- Main Chip Body -->
+  <rect width="24" height="24" x="4" y="4" rx="4" fill="#0A0E1A" stroke="#2563EB" stroke-width="2"/>
+  
+  <!-- Inner Circuit Line -->
+  <rect width="18" height="18" x="7" y="7" rx="2" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.6"/>
+  
+  <!-- NT Text -->
+  <text x="16" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="14" fill="#F5D400" text-anchor="middle" letter-spacing="-0.5">NT</text>
 </svg>
