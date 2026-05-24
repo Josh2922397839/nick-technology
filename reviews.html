@@ -812,19 +812,22 @@
       })
     })
     .then(function(res) {
-      return res.text().then(function(text) {
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch (e) {
-          throw new Error('Database server error. Saved locally as backup.');
-        }
-        if (res.ok) {
-          return data;
-        } else {
-          throw new Error(data.error || 'Failed to save review to database.');
-        }
-      });
+      return Promise.all([res.ok, res.text()]);
+    })
+    .then(function(parts) {
+      var isOk = parts[0];
+      var text = parts[1];
+      var data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        throw new Error('Database server error. Saved locally as backup.');
+      }
+      if (isOk) {
+        return data;
+      } else {
+        throw new Error(data.error || 'Failed to save review to database.');
+      }
     })
     .then(function(data) {
       if (data.success && data.review) {
