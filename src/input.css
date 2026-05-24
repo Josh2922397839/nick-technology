@@ -877,30 +877,23 @@
   }
 
   .bento-reviews {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    gap: 20px;
+    column-count: 3;
+    column-gap: 24px;
+    width: 100%;
   }
-  .bento-reviews .review-card:nth-child(4n+1) { grid-column: span 2; }
-  .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 2; }
+  .bento-reviews > * {
+    break-inside: avoid-column;
+    margin-bottom: 24px;
+    /* Translate3d helps prevent rendering glitches in WebKit for columns */
+    transform: translate3d(0,0,0);
+  }
 
   @media (max-width: 1024px) {
-    .bento-reviews {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .bento-reviews .review-card:nth-child(4n+1),
-    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
-    .bento-reviews .review-card:nth-child(3n+1) { grid-column: span 2; }
+    .bento-reviews { column-count: 2; }
   }
 
   @media (max-width: 640px) {
-    .bento-reviews {
-      grid-template-columns: 1fr;
-    }
-    .bento-reviews .review-card:nth-child(3n+1),
-    .bento-reviews .review-card:nth-child(4n+1),
-    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
+    .bento-reviews { column-count: 1; }
   }
 
   .form-input {
@@ -1014,6 +1007,27 @@
   }
   .review-modal-overlay.open .review-modal-content {
     transform: scale(1) translateY(0);
+  }
+  
+  @media (max-width: 640px) {
+    .review-modal-overlay {
+      align-items: flex-end;
+      padding: 0;
+    }
+    .review-modal-content {
+      max-height: 95vh;
+      transform: translateY(100%);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .review-modal-overlay.open .review-modal-content {
+      transform: translateY(0);
+    }
+    .review-modal-content .form-glass {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-bottom: 40px;
+    }
   }
 }
 
