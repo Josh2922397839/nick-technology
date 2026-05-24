@@ -5,7 +5,9 @@
   "main": "script.js",
   "scripts": {
     "dev": "npx @tailwindcss/cli -i src/input.css -o output.css --watch",
-    "build": "npx @tailwindcss/cli -i src/input.css -o output.css --minify"
+    "build": "npx @tailwindcss/cli -i src/input.css -o output.css --minify",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "wrangler": "^4.94.0"
   }
 }

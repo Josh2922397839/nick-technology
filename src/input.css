@@ -801,6 +801,220 @@
     height: 320px;
     border: 0;
   }
+
+  /* ─── Reviews & Forms ─── */
+  .review-glass {
+    background: rgba(15, 50, 90, 0.35);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 0 20px rgba(212, 160, 23, 0.03);
+  }
+  .review-glass:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 30px rgba(212, 160, 23, 0.05);
+  }
+
+  .form-glass {
+    background: rgba(15, 50, 90, 0.3);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 40px rgba(212, 160, 23, 0.04);
+  }
+
+  .star-input { cursor: pointer; transition: transform 0.15s ease, color 0.15s ease; }
+  .star-input:hover { transform: scale(1.2); }
+  .star-input.active { color: #D4A017; }
+  .star-input.inactive { color: rgba(255, 255, 255, 0.15); }
+
+  .rating-bar-fill {
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .review-img-thumb {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .review-img-thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .lightbox {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .upload-zone {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+  }
+  .upload-zone:hover,
+  .upload-zone.dragover {
+    border-color: rgba(212, 160, 23, 0.5);
+    background: rgba(212, 160, 23, 0.05);
+  }
+
+  .bento-reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+  .bento-reviews .review-card:nth-child(4n+1) { grid-column: span 2; }
+  .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 2; }
+
+  @media (max-width: 1024px) {
+    .bento-reviews {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-reviews .review-card:nth-child(4n+1),
+    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
+    .bento-reviews .review-card:nth-child(3n+1) { grid-column: span 2; }
+  }
+
+  @media (max-width: 640px) {
+    .bento-reviews {
+      grid-template-columns: 1fr;
+    }
+    .bento-reviews .review-card:nth-child(3n+1),
+    .bento-reviews .review-card:nth-child(4n+1),
+    .bento-reviews .review-card:nth-child(7n+5) { grid-column: span 1; }
+  }
+
+  .form-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #D4A017;
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .form-input::placeholder { color: #94A3B8; }
+
+  .submit-btn {
+    background: linear-gradient(135deg, #D4A017, #E8B830);
+    color: #061B30;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212, 160, 23, 0.3);
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 16px 28px;
+    border-radius: 14px;
+    font-weight: 500;
+    font-size: 15px;
+    z-index: 200;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .toast.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22C55E;
+  }
+  .toast.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #EF4444;
+  }
+
+  .lds-hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+
+  /* ─── Modal Reviews Form ─── */
+  .review-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+  }
+  .review-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .review-modal-content {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    scrollbar-width: none;
+  }
+  .review-modal-content::-webkit-scrollbar {
+    display: none;
+  }
+  .review-modal-overlay.open .review-modal-content {
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* ═══════════════════════════════════════
