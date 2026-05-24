@@ -114,3 +114,44 @@ export async function onRequestPost(context) {
     });
   }
 }
+
+export async function onRequestDelete(context) {
+  try {
+    const db = context.env.nick_technology_db;
+    if (!db) {
+      return new Response(JSON.stringify({ error: "Database binding 'nick_technology_db' not found" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    const adminSecret = context.env.ADMIN_SECRET;
+    if (!adminSecret) {
+      return new Response(JSON.stringify({ error: "Admin secret is not configured on the server." }), { status: 500 });
+    }
+
+    const authHeader = context.request.headers.get("Authorization");
+    if (!authHeader || authHeader !== `Bearer ${adminSecret}`) {
+      return new Response(JSON.stringify({ error: "Unauthorized. Incorrect admin passcode." }), { status: 401 });
+    }
+
+    const url = new URL(context.request.url);
+    const id = url.searchParams.get("id");
+    if (!id) {
+      return new Response(JSON.stringify({ error: "Review ID is required." }), { status: 400 });
+    }
+
+    await db.prepare("DELETE FROM reviews WHERE id = ?").bind(id).run();
+
+    return new Response(JSON.stringify({ success: true, id }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+}
