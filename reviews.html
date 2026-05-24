@@ -924,7 +924,11 @@
         localStorage.removeItem('adminSecret');
         renderReviews();
       } else {
-        showToast('Failed to delete review.', 'error');
+        res.json().then(function(data) {
+          showToast('Failed: ' + (data.error || 'Unknown error'), 'error');
+        }).catch(function() {
+          showToast('Failed to delete review (Status: ' + res.status + ').', 'error');
+        });
       }
     })
     .catch(function(err) {
