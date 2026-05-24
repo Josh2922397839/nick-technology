@@ -419,7 +419,13 @@
   }
 
   function getAllReviews() {
-    return [...SEED_REVIEWS, ...getStoredReviews(), ...databaseReviews]
+    var deletedSeedIds = JSON.parse(localStorage.getItem('deleted_seed_ids') || '[]');
+    var filteredSeed = SEED_REVIEWS.filter(function(r) { return !deletedSeedIds.includes(r.id); });
+    
+    var locallyHiddenIds = JSON.parse(localStorage.getItem('locally_hidden_ids') || '[]');
+    
+    return [...filteredSeed, ...getStoredReviews(), ...databaseReviews]
+      .filter(function(r) { return !locallyHiddenIds.includes(r.id); })
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   }
 
@@ -908,7 +914,32 @@
 
   // ── Delete Review (Admin) ──
   window.deleteReview = function(id) {
-    if (!confirm('Are you sure you want to delete this review globally?')) return;
+    if (!confirm('Are you sure you want to delete this review?')) return;
+    
+    // Check if it is a seed review (starts with 's')
+    if (id.toString().startsWith('s')) {
+      var deletedSeedIds = JSON.parse(localStorage.getItem('deleted_seed_ids') || '[]');
+      if (!deletedSeedIds.includes(id)) {
+        deletedSeedIds.push(id);
+        localStorage.setItem('deleted_seed_ids', JSON.stringify(deletedSeedIds));
+      }
+      renderReviews();
+      showToast('Seed review removed locally.', 'success');
+      return;
+    }
+
+    // Check if it is a local storage review (exists in nt_reviews)
+    var stored = getStoredReviews();
+    var isLocalReview = stored.some(function(r) { return r.id === id; });
+    if (isLocalReview) {
+      stored = stored.filter(function(r) { return r.id !== id; });
+      saveReviews(stored);
+      renderReviews();
+      showToast('Local review deleted.', 'success');
+      return;
+    }
+
+    // Otherwise, it is a database review
     var secret = localStorage.getItem('adminSecret');
     fetch('/api/reviews?id=' + id, {
       method: 'DELETE',
@@ -924,15 +955,39 @@
         localStorage.removeItem('adminSecret');
         renderReviews();
       } else {
-        res.json().then(function(data) {
-          showToast('Failed: ' + (data.error || 'Unknown error'), 'error');
-        }).catch(function() {
-          showToast('Failed to delete review (Status: ' + res.status + ').', 'error');
-        });
+        // Fallback for local development or testing without API server
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          var locallyHidden = JSON.parse(localStorage.getItem('locally_hidden_ids') || '[]');
+          if (!locallyHidden.includes(id)) {
+            locallyHidden.push(id);
+            localStorage.setItem('locally_hidden_ids', JSON.stringify(locallyHidden));
+          }
+          databaseReviews = databaseReviews.filter(function(r) { return r.id !== id; });
+          renderReviews();
+          showToast('Review removed locally (Server returned status: ' + res.status + ').', 'info');
+        } else {
+          res.json().then(function(data) {
+            showToast('Failed: ' + (data.error || 'Unknown error'), 'error');
+          }).catch(function() {
+            showToast('Failed to delete review (Status: ' + res.status + ').', 'error');
+          });
+        }
       }
     })
     .catch(function(err) {
-      showToast('Error deleting review.', 'error');
+      // Catch network error (e.g., offline or running locally without backend API server)
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        var locallyHidden = JSON.parse(localStorage.getItem('locally_hidden_ids') || '[]');
+        if (!locallyHidden.includes(id)) {
+          locallyHidden.push(id);
+          localStorage.setItem('locally_hidden_ids', JSON.stringify(locallyHidden));
+        }
+        databaseReviews = databaseReviews.filter(function(r) { return r.id !== id; });
+        renderReviews();
+        showToast('Review removed locally (Server offline).', 'info');
+      } else {
+        showToast('Error deleting review.', 'error');
+      }
     });
   };
 
