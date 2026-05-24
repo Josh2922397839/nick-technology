@@ -1,14 +1,22 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "nick-technology",
-  "compatibility_date": "2026-05-24",
-  "observability": {
-    "enabled": true
-  },
-  "assets": {
-    "directory": "."
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "nick-technology",
+	"compatibility_date": "2026-05-24",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "."
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "nick_technology_db",
+			"database_name": "nick-technology-db",
+			"database_id": "54e0af49-10ba-4a21-bd7b-988c16e19cff",
+			"remote": true
+		}
+	]
 }
