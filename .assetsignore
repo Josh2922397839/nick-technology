@@ -2,7 +2,14 @@ node_modules
 .git
 .claude
 .qodo
+.wrangler
+.dev.vars
+.dev.vars*
 src
+functions
+index.js
+schema.sql
+generate-icons.js
 package.json
 package-lock.json
 wrangler.jsonc
