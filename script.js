@@ -81,23 +81,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ─── Staggered scroll reveal ───
-  const staggerDelay = 100;
-  const revealObs = new IntersectionObserver((entries) => {
-    const visibleEntries = entries.filter(e => e.isIntersecting);
-    visibleEntries.forEach((entry, i) => {
-      const delay = entry.target.dataset.delay
-        ? parseInt(entry.target.dataset.delay)
-        : i * staggerDelay;
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, delay);
-      revealObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.1 });
+  // Skipped when motion.js has handed reveals over to GSAP (gsap-motion class).
+  if (!document.documentElement.classList.contains('gsap-motion')) {
+    const staggerDelay = 100;
+    const revealObs = new IntersectionObserver((entries) => {
+      const visibleEntries = entries.filter(e => e.isIntersecting);
+      visibleEntries.forEach((entry, i) => {
+        const delay = entry.target.dataset.delay
+          ? parseInt(entry.target.dataset.delay)
+          : i * staggerDelay;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        revealObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
 
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .reveal-bounce').forEach(el => {
-    revealObs.observe(el);
-  });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .reveal-bounce').forEach(el => {
+      revealObs.observe(el);
+    });
+  }
 
   // ─── Counter animation ───
   const counterObs = new IntersectionObserver((entries) => {

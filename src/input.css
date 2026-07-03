@@ -1242,22 +1242,32 @@
 }
 
 /* ═══════════════════════════════════════
-   6. REDUCED MOTION
+   6. MOTION MODES
    ═══════════════════════════════════════ */
 
+/* When GSAP drives reveals (motion.js adds .gsap-motion to <html>),
+   disable the CSS transitions so the two systems don't double-ease. */
+.gsap-motion .reveal,
+.gsap-motion .reveal-left,
+.gsap-motion .reveal-scale,
+.gsap-motion .reveal-bounce {
+  transition: none;
+}
+.gsap-motion .reveal-bounce { transform: scale(0.85); }
+.gsap-motion .reveal-bounce.visible { animation: none; opacity: 1; }
+
+/* Reduce, don't remove: users who ask for less motion still get gentle
+   opacity fades — continuous/ambient movement and travel are stopped. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
   html { scroll-behavior: auto; }
-  .marquee-track, .hero-mesh-bg, .pulse-dot, .section-divider {
-    animation: none !important;
-  }
+
+  .marquee-track { animation-play-state: paused; }
+  .hero-mesh-bg, .section-divider, .pulse-dot { animation: none; }
+
   .reveal, .reveal-left, .reveal-scale, .reveal-bounce, .count-up {
-    opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+    transition: opacity 0.3s ease;
   }
+  .reveal-bounce.visible { animation: none; opacity: 1; }
 }

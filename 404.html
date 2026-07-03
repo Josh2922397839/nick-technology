@@ -16,7 +16,7 @@
 
 <main class="min-h-screen flex items-center hero-mesh-bg relative overflow-hidden">
   <div class="hero-grid-overlay" aria-hidden="true"></div>
-  <div class="max-w-[720px] mx-auto px-6 py-24 w-full text-center relative">
+  <div class="max-w-[720px] mx-auto px-6 py-24 w-full text-center relative" data-hero-stagger>
     <p class="font-mono text-[13px] leading-[1.4] font-medium tracking-[0.08em] uppercase text-gold mb-6">ERROR 404 &middot; SIGNAL LOST</p>
     <h1 class="font-serif text-[clamp(44px,10vw,84px)] leading-none font-normal tracking-[-0.02em] text-text-primary mb-6">This page is <span class="text-gradient-gold">off the grid</span>.</h1>
     <p class="text-lg leading-relaxed text-text-secondary max-w-[480px] mx-auto mb-10">The page you&rsquo;re looking for was moved, renamed, or never existed. But we&rsquo;re still right here in Portmore.</p>
@@ -33,5 +33,8 @@
   </div>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="motion.js" defer></script>
 </body>
 </html>
