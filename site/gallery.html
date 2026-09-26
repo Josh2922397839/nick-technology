@@ -29,7 +29,10 @@
     (function (d) {
       var h = d.documentElement;
       h.classList.add('js');
-      try { if (!sessionStorage.getItem('nt-booted') && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('is-booting'); } catch (e) {}
+      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
+      if (window.__NT_LITE) h.classList.add('no-anim');
+      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
       // Safety net: if the animation stack never initialises, show everything.
       setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
     })(document);
@@ -190,7 +193,7 @@
 
     <div class="nav__actions">
       <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
-      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" data-magnetic>
+      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" aria-label="Call Nick Technology" data-magnetic>
         <svg class="icon"><use href="#i-call"/></svg>
         <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
       </a>
@@ -248,21 +251,21 @@
         <p class="eyebrow mono"><span class="idx">01</span> Watch us work</p>
         <h2 class="h2" data-split>Straight from <em>the bench.</em></h2>
       </div>
-      <p class="sec-head__aside" data-reveal>Clips play as you scroll. Tap the speaker to turn the sound on.</p>
+      <p class="sec-head__aside" data-reveal>Tap Play to watch a clip. Tap the speaker to turn the sound on.</p>
     </div>
     <div class="reels-row" data-stagger>
       <figure class="reel" data-reel>
-        <video src="/assets/video/work-1.mp4" muted loop playsinline preload="metadata" aria-label="Technician working on a TV at the shop"></video>
+        <video poster="/assets/img/shop-workstation.webp" data-src="/assets/video/work-1.mp4" muted loop playsinline preload="none" aria-label="Technician working on a TV at the shop"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Shop · Diagnostics</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
       <figure class="reel" data-reel>
-        <video src="/assets/video/work-2.mp4" muted loop playsinline preload="metadata" aria-label="Repairing a TV panel at the bench"></video>
+        <video poster="/assets/img/shop-desk.webp" data-src="/assets/video/work-2.mp4" muted loop playsinline preload="none" aria-label="Repairing a TV panel at the bench"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Bench · Panel repair</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
       <figure class="reel reel--wide" data-reel>
-        <video src="/assets/video/work-3.mp4" muted loop playsinline preload="metadata" aria-label="New smart TV ready for setup"></video>
+        <video poster="/assets/img/shop-smart-tv.webp" data-src="/assets/video/work-3.mp4" muted loop playsinline preload="none" aria-label="New smart TV ready for setup"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Setup · Smart TV</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
@@ -587,7 +590,6 @@
       <a href="/about.html">About Nicholas</a>
       <a href="/gallery.html">Gallery</a>
       <a href="/reviews.html">Reviews</a>
-      <a href="/reviews.html#manage">Manage reviews</a>
       <a href="/blog.html">Blog &amp; tips</a>
       <a href="/contact.html">Contact</a>
     </div>
@@ -629,10 +631,6 @@
 </button>
 
 
-<script src="/assets/vendor/gsap.min.js" defer></script>
-<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/vendor/SplitText.min.js" defer></script>
-<script src="/assets/vendor/lenis.min.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

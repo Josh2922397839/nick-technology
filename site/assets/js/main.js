@@ -13,8 +13,9 @@
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const lightweight = !!w.__NT_LITE;
   const hasGSAP = !!(w.gsap && w.ScrollTrigger);
-  const animated = hasGSAP && !reduced;
+  const animated = hasGSAP && !reduced && !lightweight;
 
   w.__NT_READY = true;
   if (!animated) html.classList.add('no-anim');
@@ -66,6 +67,7 @@
   }
 
   function paintStatus() {
+    if (d.hidden) return;
     const s = shopStatus();
     const today = jmNow().day;
     $$('[data-status]').forEach((el) => {
@@ -78,17 +80,19 @@
   }
 
   function tickClocks() {
+    if (d.hidden) return;
     const t = jmNow();
     const clock = fmt12(t.h * 60 + t.m);
     $$('[data-clock]').forEach((el) => { el.textContent = clock; });
-    const stamp = `${pad(t.h)}:${pad(t.m)}:${pad(t.s)}`;
+    const stamp = `${pad(t.h)}:${pad(t.m)}${lightweight ? '' : `:${pad(t.s)}`}`;
     $$('[data-feed-time]').forEach((el) => { el.textContent = stamp; });
   }
 
   paintStatus();
   tickClocks();
-  setInterval(tickClocks, 1000);
-  setInterval(paintStatus, 30000);
+  setInterval(tickClocks, lightweight ? 60000 : 1000);
+  setInterval(paintStatus, 60000);
+  d.addEventListener('visibilitychange', () => { if (!d.hidden) { tickClocks(); paintStatus(); } });
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   /* ------------------------------------------------------------------
@@ -109,7 +113,8 @@
     else target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
   };
 
-  const samePage = (url) => url.pathname.replace(/index\.html$/, '') === location.pathname.replace(/index\.html$/, '');
+  const pagePath = path => path.replace(/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '');
+  const samePage = (url) => url.origin === location.origin && pagePath(url.pathname) === pagePath(location.pathname);
   d.addEventListener('click', (e) => {
     const a = e.target.closest('a[href*="#"]');
     if (!a || a.hasAttribute('data-to-top')) return;
@@ -138,7 +143,7 @@
   function onScroll(y) {
     if (nav) {
       nav.classList.toggle('is-scrolled', y > 24);
-      if (!html.classList.contains('menu-open') && Math.abs(y - lastY) > 4) {
+      if (!lightweight && !html.classList.contains('menu-open') && Math.abs(y - lastY) > 4) {
         nav.classList.toggle('is-hidden', y > lastY && y > 420);
       }
     }
@@ -153,7 +158,14 @@
     if (dock) dock.classList.toggle('is-visible', y > innerHeight * 0.55);
   }
   if (lenis) lenis.on('scroll', (e) => onScroll(e.scroll));
-  else addEventListener('scroll', () => onScroll(scrollY), { passive: true });
+  else {
+    let scheduled = false;
+    addEventListener('scroll', () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => { onScroll(scrollY); scheduled = false; });
+    }, { passive: true });
+  }
   onScroll(scrollY);
 
   const links = $('.nav__links');
@@ -180,25 +192,41 @@
   const menu = $('[data-menu]');
   if (burger && menu) {
     menu.inert = true;
-    const setMenu = (open) => {
+    const background = [$('#main'), $('.footer'), dock].filter(Boolean);
+    const setMenu = (open, restoreFocus = true) => {
       html.classList.toggle('menu-open', open);
       burger.setAttribute('aria-expanded', String(open));
       burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       menu.setAttribute('aria-hidden', String(!open));
       menu.inert = !open;
-      if (open) { nav.classList.remove('is-hidden'); lenis && lenis.stop(); }
-      else lenis && lenis.start();
+      background.forEach(el => { el.inert = open; });
+      if (open) {
+        nav.classList.remove('is-hidden'); lenis && lenis.stop();
+        $('a', menu)?.focus();
+      } else {
+        lenis && lenis.start();
+        if (restoreFocus) burger.focus();
+      }
     };
     burger.addEventListener('click', () => setMenu(!html.classList.contains('menu-open')));
-    $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
-    d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && html.classList.contains('menu-open')) setMenu(false); });
-    matchMedia('(min-width: 1181px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+    $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false, false)));
+    d.addEventListener('keydown', (e) => {
+      if (!html.classList.contains('menu-open')) return;
+      if (e.key === 'Escape') { setMenu(false); return; }
+      if (e.key === 'Tab') {
+        const focusables = [burger, ...$$('a[href], button', menu)];
+        const current = focusables.indexOf(d.activeElement);
+        const next = (current + (e.shiftKey ? -1 : 1) + focusables.length) % focusables.length;
+        e.preventDefault(); focusables[next].focus();
+      }
+    });
+    matchMedia('(min-width: 1181px)').addEventListener('change', (e) => { if (e.matches && html.classList.contains('menu-open')) setMenu(false, false); });
   }
 
   /* ------------------------------------------------------------------
      Custom cursor (fine pointers only)
      ------------------------------------------------------------------ */
-  if (finePointer && !reduced) {
+  if (finePointer && !reduced && !lightweight) {
     const cur = $('.cursor');
     const dot = $('.cursor__dot');
     const ring = $('.cursor__ring');
@@ -245,7 +273,7 @@
       el.addEventListener('pointerleave', () => { xTo(0); yTo(0); });
     });
   }
-  if (finePointer) {
+  if (finePointer && !lightweight) {
     d.addEventListener('pointermove', (e) => {
       const el = e.target.closest && e.target.closest('[data-spot]');
       if (!el) return;
@@ -259,6 +287,7 @@
      Marquees (reviews): clone until the loop is seamless
      ------------------------------------------------------------------ */
   $$('[data-marquee]').forEach((m) => {
+    if (lightweight) return;
     const track = $('.marquee__track', m);
     const originals = [...track.children];
     const gap = 16;
@@ -278,18 +307,24 @@
   /* ------------------------------------------------------------------
      Videos: play only when visible; reel sound toggles
      ------------------------------------------------------------------ */
+  const videos = $$('video');
+  const playVideo = async v => {
+    if (!v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.load(); }
+    if (lightweight) videos.forEach(other => { if (other !== v) other.pause(); });
+    try { await v.play(); } catch (_) { /* Poster and play control remain available. */ }
+  };
   const videoIO = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
       const v = en.target;
-      if (en.isIntersecting && !reduced) v.play().catch(() => {});
+      if (en.isIntersecting && !lightweight && !reduced && !d.hidden) playVideo(v);
       else if (!en.isIntersecting) v.pause();
     });
   }, { threshold: 0.2 });
-  $$('video').forEach((v) => {
+  videos.forEach((v) => {
     v.muted = true;
-    if (reduced) { v.removeAttribute('autoplay'); v.pause(); }
     videoIO.observe(v);
   });
+  d.addEventListener('visibilitychange', () => { if (d.hidden) videos.forEach(v => v.pause()); });
   const setSoundIcon = (btn, on) => {
     $('use', btn).setAttribute('href', on ? '#i-sound' : '#i-mute');
     btn.setAttribute('aria-label', on ? 'Mute' : 'Turn sound on');
@@ -297,6 +332,17 @@
   $$('[data-reel]').forEach((reel) => {
     const v = $('video', reel);
     const btn = $('[data-reel-sound]', reel);
+    const play = d.createElement('button');
+    play.type = 'button'; play.className = 'reel__play';
+    const title = v.getAttribute('aria-label') || 'Work video';
+    const updatePlay = () => {
+      play.textContent = v.paused ? '▶ Play' : 'Ⅱ Pause';
+      play.setAttribute('aria-label', `${v.paused ? 'Play' : 'Pause'}: ${title}`);
+      reel.classList.toggle('is-playing', !v.paused);
+    };
+    updatePlay(); reel.append(play);
+    v.addEventListener('play', updatePlay); v.addEventListener('pause', updatePlay);
+    play.addEventListener('click', e => { e.stopPropagation(); v.paused ? playVideo(v) : v.pause(); });
     btn && btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const turnOn = v.muted;
@@ -308,9 +354,9 @@
       });
       v.muted = !turnOn;
       setSoundIcon(btn, turnOn);
-      if (turnOn) v.play().catch(() => {});
+      if (turnOn) playVideo(v);
     });
-    reel.addEventListener('click', () => { v.paused ? v.play().catch(() => {}) : v.pause(); });
+    reel.addEventListener('click', () => { v.paused ? playVideo(v) : v.pause(); });
   });
 
   /* ------------------------------------------------------------------
@@ -609,12 +655,16 @@
     const count = $('[data-seq-count]', seq);
     const label = $('[data-seq-label]', seq);
     const meter = $('.seq__meter', seq);
-    const labels = steps.map((s) => $('h3', s).textContent);
+    const labels = steps.map((s) => $('.seq__title', s).textContent);
     let cur = -1;
     const setStep = (i) => {
       if (i === cur) return;
       cur = i;
-      steps.forEach((s, k) => s.classList.toggle('is-active', k === i));
+      steps.forEach((s, k) => {
+        s.classList.toggle('is-active', k === i);
+        $('button', s)?.setAttribute('aria-pressed', String(k === i));
+      });
+      imgs.forEach((im, k) => im.setAttribute('aria-hidden', String(k !== i)));
       if (count) count.textContent = pad(i + 1);
       if (label) label.textContent = labels[i];
       if (!animated) {

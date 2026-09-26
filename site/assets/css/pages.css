@@ -205,6 +205,7 @@
 .rating-hero__facts div + div { padding-left: 18px; border-left: 1px solid var(--line); }
 .rating-hero__facts b { display: block; font-family: var(--f-display); font-stretch: 66%; font-weight: 800; font-size: 40px; line-height: 0.9; }
 .rating-hero__facts span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.rating-hero__facts b span { font: inherit; letter-spacing: inherit; color: inherit; }
 .review-wall { columns: 3 330px; column-gap: 16px; }
 .review-wall .review { width: auto; break-inside: avoid; margin-bottom: 16px; }
 .review-wall .review:nth-child(3n + 1) blockquote { font-size: 19px; }
@@ -378,7 +379,7 @@
 .review-compose { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
 .review-rating { border: 0; padding: 0; margin: 20px 0; min-width: 0; }
 .review-rating legend { font-size: 15px; margin-bottom: 10px; }
-.review-rating__options { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.review-rating__options { display: grid; width: 100%; grid-template-columns: repeat(5, minmax(44px, 1fr)); gap: 8px; }
 .review-rating__options label { position: relative; cursor: pointer; }
 .review-rating__options input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .review-rating__options span { display: block; text-align: center; padding: 12px 4px; border: 1px solid var(--line-2); border-radius: 10px; color: var(--text-2); white-space: nowrap; }
@@ -404,7 +405,7 @@
 .review-dialog { width: min(540px, calc(100% - 32px)); max-height: calc(100dvh - 40px); overflow: auto; padding: 40px 28px 28px; border: 1px solid var(--line-2); border-radius: 20px; background: var(--bg-2); color: var(--text); }
 .review-dialog::backdrop { background: rgba(3, 4, 6, .88); backdrop-filter: blur(8px); }
 .review-dialog h2 { font-family: var(--f-display); font-size: 28px; line-height: 1.2; margin-bottom: 12px; }
-.review-dialog__close { position: absolute; right: 10px; top: 6px; width: 40px; height: 40px; font-size: 28px; }
+.review-dialog__close { position: absolute; right: 10px; top: 6px; width: 44px; height: 44px; font-size: 28px; }
 .review-dialog__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .review-dialog--photo { width: min(1100px, calc(100% - 32px)); }
 .review-dialog--photo img { margin: auto; max-height: 78dvh; object-fit: contain; }
@@ -413,3 +414,35 @@
 #write-review { scroll-margin-top: 110px; }
 @media (max-width: 900px) { .review-compose { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .review-rating__options { gap: 5px; } .review-compose .form { padding: 22px 16px; } .review-toolbar__actions { gap: 10px; } }
+@media (max-width: 360px) { .review-rating__options { gap: 3px; } }
+
+[data-review-unlock] { touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+@media (max-width: 760px) {
+  .page-hero { padding-top: calc(var(--nav-h) + 24px); padding-bottom: 44px; }
+  .page-hero__title { font-size: clamp(38px, 12vw, 62px); line-height: .97; margin-block: 20px; }
+  .page-hero__inner { gap: 28px; }
+  .page-hero__ctas { margin-top: 22px; gap: 10px; }
+  .page-hero__ctas .btn { min-height: 52px; height: auto; padding: 14px 18px; flex: 1 1 100%; }
+  .page-hero--cover { min-height: 0; padding-top: calc(var(--nav-h) + 76px); }
+  .band { padding-block: 56px; }
+  .band--tight { padding-block: 40px; }
+  .feature, .share, .contact-card { padding: 22px; min-height: 0; }
+  .chapter { padding-block: 28px; }
+  .chapter__img { margin-top: 20px; }
+  .pill-btn, .filter-bar button { min-height: 44px; }
+  .review-toolbar { gap: 18px; margin-bottom: 24px; }
+  .review-toolbar__actions { width: 100%; }
+  .review-toolbar__actions > a { flex: 1; }
+  .review { padding: 22px; min-width: 0; overflow-wrap: anywhere; }
+  .review-wall { columns: 1; }
+  .review-compose { gap: 24px; }
+  .review-dialog { padding: 52px 18px 24px; max-height: calc(100dvh - 24px); }
+  .review-dialog__actions .btn { flex: 1 1 100%; }
+  .review-photo-preview button { min-height: 44px; padding-inline: 4px; }
+  .form .field input, .form .field textarea, .form .field select { font-size: 16px; }
+  .form { min-width: 0; padding: 22px; }
+  .field textarea { min-height: 148px; }
+  .contact-card a { overflow-wrap: anywhere; }
+  .reader__header, .reader__body { padding-inline: 20px; }
+  .article { overflow-wrap: anywhere; }
+}

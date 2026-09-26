@@ -29,7 +29,10 @@
     (function (d) {
       var h = d.documentElement;
       h.classList.add('js');
-      try { if (!sessionStorage.getItem('nt-booted') && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('is-booting'); } catch (e) {}
+      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
+      if (window.__NT_LITE) h.classList.add('no-anim');
+      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
       // Safety net: if the animation stack never initialises, show everything.
       setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
     })(document);
@@ -190,7 +193,7 @@
 
     <div class="nav__actions">
       <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
-      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" data-magnetic>
+      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" aria-label="Call Nick Technology" data-magnetic>
         <svg class="icon"><use href="#i-call"/></svg>
         <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
       </a>
@@ -262,27 +265,27 @@
         <div class="wall__frame">
           <div class="wall__grid">
             <figure class="feed" data-feed data-cursor="view">
-              <img src="/assets/img/wall-coast-sm.webp" alt="Six-screen video wall installed by Nick Technology" width="800" height="389">
+              <img src="/assets/img/wall-coast-sm.webp" srcset="/assets/img/wall-coast-feed.webp 320w, /assets/img/wall-coast-sm.webp 800w" sizes="(max-width: 760px) 30vw, (max-width: 1180px) 240px, 200px" decoding="async" alt="Six-screen video wall installed by Nick Technology" width="800" height="389">
               <figcaption class="feed__hud mono"><span>CAM 01</span><span class="feed__rec">REC</span><span class="feed__name">Command room</span><time data-feed-time></time></figcaption>
             </figure>
             <figure class="feed" data-feed data-cursor="view">
-              <video src="/assets/video/work-2.mp4" muted loop playsinline autoplay preload="metadata" aria-label="Technician repairing a TV panel at the bench"></video>
+              <video poster="/assets/img/shop-desk.webp" data-src="/assets/video/work-2.mp4" muted loop playsinline preload="none" aria-label="Technician repairing a TV panel at the bench"></video>
               <figcaption class="feed__hud mono"><span>CAM 02</span><span class="feed__rec">LIVE</span><span class="feed__name">Repair bench</span><time data-feed-time></time></figcaption>
             </figure>
             <figure class="feed" data-feed data-cursor="view">
-              <img src="/assets/img/install-pole.webp" alt="Security camera installed high on a utility pole" width="757" height="1600">
+              <img src="/assets/img/install-pole.webp" srcset="/assets/img/install-pole-feed.webp 320w, /assets/img/install-pole.webp 757w" sizes="(max-width: 760px) 30vw, (max-width: 1180px) 240px, 200px" decoding="async" alt="Security camera installed high on a utility pole" width="757" height="1600">
               <figcaption class="feed__hud mono"><span>CAM 03</span><span class="feed__rec">REC</span><span class="feed__name">Perimeter</span><time data-feed-time></time></figcaption>
             </figure>
             <figure class="feed" data-feed data-cursor="view">
-              <img src="/assets/img/nicholas-shop.webp" alt="Nicholas Anderson in the Nick Technology shop" width="720" height="949">
+              <img src="/assets/img/nicholas-shop.webp" srcset="/assets/img/nicholas-shop-feed.webp 320w, /assets/img/nicholas-shop.webp 720w" sizes="(max-width: 760px) 30vw, (max-width: 1180px) 240px, 200px" decoding="async" alt="Nicholas Anderson in the Nick Technology shop" width="720" height="949">
               <figcaption class="feed__hud mono"><span>CAM 04</span><span class="feed__rec">REC</span><span class="feed__name">Front desk</span><time data-feed-time></time></figcaption>
             </figure>
             <figure class="feed" data-feed data-cursor="view">
-              <img src="/assets/img/wall-live-sm.webp" alt="Command centre with a live video wall" width="800" height="600">
+              <img src="/assets/img/wall-live-sm.webp" srcset="/assets/img/wall-live-feed.webp 320w, /assets/img/wall-live-sm.webp 800w" sizes="(max-width: 760px) 30vw, (max-width: 1180px) 240px, 200px" decoding="async" alt="Command centre with a live video wall" width="800" height="600">
               <figcaption class="feed__hud mono"><span>CAM 05</span><span class="feed__rec">REC</span><span class="feed__name">Street view</span><time data-feed-time></time></figcaption>
             </figure>
             <figure class="feed" data-feed data-cursor="view">
-              <img src="/assets/img/install-camera-sm.webp" alt="Technician mounting a CCTV camera on a wall" width="800" height="1067">
+              <img src="/assets/img/install-camera-sm.webp" srcset="/assets/img/install-camera-feed.webp 320w, /assets/img/install-camera-sm.webp 800w" sizes="(max-width: 760px) 30vw, (max-width: 1180px) 240px, 200px" decoding="async" alt="Technician mounting a CCTV camera on a wall" width="800" height="1067">
               <figcaption class="feed__hud mono"><span>CAM 06</span><span class="feed__rec">REC</span><span class="feed__name">On site</span><time data-feed-time></time></figcaption>
             </figure>
           </div>
@@ -543,18 +546,18 @@
         <p class="eyebrow mono"><span class="idx">↳</span> See the results</p>
         <h2 class="h2" id="seq-title" data-split>From bare wall to <em>command centre.</em></h2>
         <ol class="seq__steps">
-          <li class="is-active" data-seq-step>
+          <li class="is-active" data-seq-step><button type="button" aria-pressed="true">
             <span class="mono">01</span>
-            <div><h3>Brackets &amp; cabling</h3><p>Mounts levelled and power and signal runs planned before a single screen goes up.</p></div>
-          </li>
-          <li data-seq-step>
+            <span><span class="seq__title">Brackets &amp; cabling</span><span class="seq__description">Mounts levelled and power and signal runs planned before a single screen goes up.</span></span>
+          </button></li>
+          <li data-seq-step><button type="button" aria-pressed="false">
             <span class="mono">02</span>
-            <div><h3>Screens mounted</h3><p>Six panels hung, aligned edge to edge, and tested one at a time.</p></div>
-          </li>
-          <li data-seq-step>
+            <span><span class="seq__title">Screens mounted</span><span class="seq__description">Six panels hung, aligned edge to edge, and tested one at a time.</span></span>
+          </button></li>
+          <li data-seq-step><button type="button" aria-pressed="false">
             <span class="mono">03</span>
-            <div><h3>Live &amp; monitoring</h3><p>Feeds up on the wall, and the owner can watch everything from their phone.</p></div>
-          </li>
+            <span><span class="seq__title">Live &amp; monitoring</span><span class="seq__description">Feeds up on the wall, and the owner can watch everything from their phone.</span></span>
+          </button></li>
         </ol>
         <div class="seq__meter" aria-hidden="true"><span></span></div>
       </div>
@@ -684,17 +687,17 @@
     </div>
     <div class="work__reels" data-stagger>
       <figure class="reel" data-reel>
-        <video src="/assets/video/work-2.mp4" muted loop playsinline preload="metadata" aria-label="Repairing a TV panel at the bench"></video>
+        <video poster="/assets/img/shop-desk.webp" data-src="/assets/video/work-2.mp4" muted loop playsinline preload="none" aria-label="Repairing a TV panel at the bench"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Bench · Panel repair</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
       <figure class="reel" data-reel>
-        <video src="/assets/video/work-1.mp4" muted loop playsinline preload="metadata" aria-label="Technician working on a TV at the shop"></video>
+        <video poster="/assets/img/shop-workstation.webp" data-src="/assets/video/work-1.mp4" muted loop playsinline preload="none" aria-label="Technician working on a TV at the shop"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Shop · Diagnostics</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
       <figure class="reel reel--wide" data-reel>
-        <video src="/assets/video/work-3.mp4" muted loop playsinline preload="metadata" aria-label="New smart TV ready for setup"></video>
+        <video poster="/assets/img/shop-smart-tv.webp" data-src="/assets/video/work-3.mp4" muted loop playsinline preload="none" aria-label="New smart TV ready for setup"></video>
         <figcaption class="mono"><span class="rec-dot"></span> Setup · Smart TV</figcaption>
         <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
       </figure>
@@ -1073,7 +1076,6 @@
       <a href="/about.html">About Nicholas</a>
       <a href="/gallery.html">Gallery</a>
       <a href="/reviews.html">Reviews</a>
-      <a href="/reviews.html#manage">Manage reviews</a>
       <a href="/blog.html">Blog &amp; tips</a>
       <a href="/contact.html">Contact</a>
     </div>
@@ -1115,10 +1117,6 @@
 </button>
 
 
-<script src="/assets/vendor/gsap.min.js" defer></script>
-<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/vendor/SplitText.min.js" defer></script>
-<script src="/assets/vendor/lenis.min.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

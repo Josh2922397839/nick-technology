@@ -29,7 +29,7 @@
       <div class="review-upload">
         <label for="review-photos">Add photos <span class="muted">(optional)</span></label>
         <p id="review-photo-help" class="review-help">Up to 3 photos. JPEG, PNG or WebP, up to 5 MB each.</p>
-        <input id="review-photos" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="review-photo-help">
+        <input id="review-photos" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="review-photo-help review-photo-error">
         <div class="review-photo-previews" id="review-photo-previews"></div>
         <p class="form-error" id="review-photo-error" role="alert"></p>
       </div>
@@ -48,7 +48,7 @@
   <p class="muted">Enter your existing admin key to delete customer reviews.</p>
   <form id="review-admin-form">
     <div class="field" style="margin-top: 24px;">
-      <input id="review-admin-key" type="password" placeholder=" " autocomplete="off" required>
+      <input id="review-admin-key" type="password" placeholder=" " autocomplete="off" aria-describedby="review-admin-error" required>
       <label for="review-admin-key">Admin key</label>
     </div>
     <p class="form-error" id="review-admin-error" role="alert"></p>

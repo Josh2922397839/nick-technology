@@ -12,11 +12,15 @@ Run `npm ci`, then `npm run build` and `npm test`. Use `npm run preview` for a l
 
 For Cloudflare Git integration, connect `Josh2922397839/nick-technology`, production branch `main`, project root `/`, build command `npm run build`, deploy command `npx wrangler deploy --keep-vars`. Future pushes to `main` then publish automatically.
 
+## Mobile behavior
+
+Phones, tablets, reduced-motion visits and data-saving connections use the lightweight layout without the four desktop motion libraries or the loading animation. Videos load when tapped on these devices; desktop videos load only when visible. The homepage uses smaller responsive feed images. Mobile navigation supports keyboard focus and Escape, review photo preparation runs sequentially to limit memory use, and native page scrolling keeps forms and anchors accessible.
+
 ## Reviews and the admin key
 
 Open https://nicktechnologygroup.com/reviews.html to read or publish a review with up to three photos (JPEG, PNG, WebP; 5 MB per input photo). Photos are resized in the browser and saved in the existing D1 reviews table. Old single-photo reviews remain compatible. Submission failures keep the form and never claim a review was published.
 
-Open https://nicktechnologygroup.com/reviews.html#manage or click **Manage reviews** on the Reviews page or in the footer. Enter the existing `ADMIN_SECRET` key. After the server validates it, delete buttons appear on customer reviews. **Lock management** hides them; reloading also locks management. The key is held in memory only and is never included in public site files or GitHub.
+Open https://nicktechnologygroup.com/reviews and quickly click or tap the **“Don't just take our word for it.”** heading three times. Keyboard users can focus the heading and press Enter three times. Enter the existing `ADMIN_SECRET` key in the prompt. After the server validates it, delete buttons appear on customer reviews. **Lock management** hides them; reloading also locks management. The key is held in memory only and is never included in public site files or GitHub.
 
 The existing local key is in the ignored `.dev.vars` file. Cloudflare keeps the production key under **Workers & Pages → nick-technology → Settings → Variables and Secrets → ADMIN_SECRET**. Cloudflare does not display the stored secret value; keep your local copy. Do not replace or commit it.
 

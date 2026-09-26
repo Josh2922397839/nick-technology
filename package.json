@@ -8,7 +8,7 @@
     "build": "node scripts/build.mjs",
     "deploy": "npm run build && wrangler deploy --keep-vars",
     "preview": "npm run build && wrangler dev",
-    "test": "node --test tests/reviews.test.mjs"
+    "test": "node --test tests/*.test.mjs"
   },
   "repository": {
     "type": "git",

@@ -29,7 +29,10 @@
     (function (d) {
       var h = d.documentElement;
       h.classList.add('js');
-      try { if (!sessionStorage.getItem('nt-booted') && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('is-booting'); } catch (e) {}
+      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
+      if (window.__NT_LITE) h.classList.add('no-anim');
+      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
       // Safety net: if the animation stack never initialises, show everything.
       setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
     })(document);
@@ -190,7 +193,7 @@
 
     <div class="nav__actions">
       <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
-      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" data-magnetic>
+      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" aria-label="Call Nick Technology" data-magnetic>
         <svg class="icon"><use href="#i-call"/></svg>
         <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
       </a>
@@ -443,7 +446,6 @@
       <a href="/about.html">About Nicholas</a>
       <a href="/gallery.html">Gallery</a>
       <a href="/reviews.html">Reviews</a>
-      <a href="/reviews.html#manage">Manage reviews</a>
       <a href="/blog.html">Blog &amp; tips</a>
       <a href="/contact.html">Contact</a>
     </div>
@@ -485,10 +487,6 @@
 </button>
 
 
-<script src="/assets/vendor/gsap.min.js" defer></script>
-<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/vendor/SplitText.min.js" defer></script>
-<script src="/assets/vendor/lenis.min.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

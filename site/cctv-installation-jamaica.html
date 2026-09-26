@@ -29,7 +29,10 @@
     (function (d) {
       var h = d.documentElement;
       h.classList.add('js');
-      try { if (!sessionStorage.getItem('nt-booted') && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('is-booting'); } catch (e) {}
+      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
+      if (window.__NT_LITE) h.classList.add('no-anim');
+      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
       // Safety net: if the animation stack never initialises, show everything.
       setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
     })(document);
@@ -190,7 +193,7 @@
 
     <div class="nav__actions">
       <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
-      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" data-magnetic>
+      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" aria-label="Call Nick Technology" data-magnetic>
         <svg class="icon"><use href="#i-call"/></svg>
         <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
       </a>
@@ -317,18 +320,18 @@
         <p class="eyebrow mono"><span class="idx">↳</span> See the results</p>
         <h2 class="h2" id="seq-title" data-split>From bare wall to <em>command centre.</em></h2>
         <ol class="seq__steps">
-          <li class="is-active" data-seq-step>
+          <li class="is-active" data-seq-step><button type="button" aria-pressed="true">
             <span class="mono">01</span>
-            <div><h3>Brackets &amp; cabling</h3><p>Mounts levelled and power and signal runs planned before a single screen goes up.</p></div>
-          </li>
-          <li data-seq-step>
+            <span><span class="seq__title">Brackets &amp; cabling</span><span class="seq__description">Mounts levelled and power and signal runs planned before a single screen goes up.</span></span>
+          </button></li>
+          <li data-seq-step><button type="button" aria-pressed="false">
             <span class="mono">02</span>
-            <div><h3>Screens mounted</h3><p>Six panels hung, aligned edge to edge, and tested one at a time.</p></div>
-          </li>
-          <li data-seq-step>
+            <span><span class="seq__title">Screens mounted</span><span class="seq__description">Six panels hung, aligned edge to edge, and tested one at a time.</span></span>
+          </button></li>
+          <li data-seq-step><button type="button" aria-pressed="false">
             <span class="mono">03</span>
-            <div><h3>Live &amp; monitoring</h3><p>Feeds up on the wall, and the owner can watch everything from their phone.</p></div>
-          </li>
+            <span><span class="seq__title">Live &amp; monitoring</span><span class="seq__description">Feeds up on the wall, and the owner can watch everything from their phone.</span></span>
+          </button></li>
         </ol>
         <div class="seq__meter" aria-hidden="true"><span></span></div>
       </div>
@@ -490,7 +493,6 @@
       <a href="/about.html">About Nicholas</a>
       <a href="/gallery.html">Gallery</a>
       <a href="/reviews.html">Reviews</a>
-      <a href="/reviews.html#manage">Manage reviews</a>
       <a href="/blog.html">Blog &amp; tips</a>
       <a href="/contact.html">Contact</a>
     </div>
@@ -532,10 +534,6 @@
 </button>
 
 
-<script src="/assets/vendor/gsap.min.js" defer></script>
-<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/vendor/SplitText.min.js" defer></script>
-<script src="/assets/vendor/lenis.min.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

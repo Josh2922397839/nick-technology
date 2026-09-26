@@ -10,7 +10,6 @@
   const photoError = $('#review-photo-error');
   const submit = $('#review-submit');
   const fileInput = $('#review-photos');
-  const manager = $('#review-manage');
   const signout = $('#review-signout');
   // Retire the old site's indefinitely stored admin credential.
   try { localStorage.removeItem('adminSecret'); } catch (_) { /* storage may be disabled */ }
@@ -42,8 +41,6 @@
   function render() {
     grid.replaceChildren();
     $('#review-count').textContent = `${reviews.length} customer review${reviews.length === 1 ? '' : 's'}`;
-    manager.textContent = adminKey ? 'Management unlocked' : 'Manage reviews';
-    manager.disabled = Boolean(adminKey);
     signout.hidden = !adminKey;
     if (!reviews.length) grid.append(make('p', 'muted', 'Be the first to share your experience here.'));
     for (const review of reviews) {
@@ -121,7 +118,21 @@
   async function compressPhoto(file) {
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) throw new Error('Choose JPEG, PNG or WebP photos.');
     if (file.size > 5 * 1024 * 1024) throw new Error('Each photo must be 5 MB or smaller.');
-    const bitmap = await createImageBitmap(file);
+    // Decode one photo at a time, with a fallback for older phone browsers.
+    let bitmap;
+    let objectURL;
+    if (typeof createImageBitmap === 'function') bitmap = await createImageBitmap(file);
+    else {
+      objectURL = URL.createObjectURL(file);
+      bitmap = new Image();
+      try {
+        await new Promise((resolve, reject) => {
+          bitmap.onload = resolve;
+          bitmap.onerror = () => reject(new Error('Unable to read this photo.'));
+          bitmap.src = objectURL;
+        });
+      } catch (error) { URL.revokeObjectURL(objectURL); throw error; }
+    }
     try {
       const scale = Math.min(1, 1000 / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
@@ -135,7 +146,7 @@
         if (data.length <= 250000) return data;
       }
       throw new Error('This photo is too detailed. Please choose a smaller image.');
-    } finally { bitmap.close(); }
+    } finally { bitmap.close?.(); if (objectURL) URL.revokeObjectURL(objectURL); }
   }
   fileInput.addEventListener('change', async () => {
     photoError.textContent = '';
@@ -143,7 +154,11 @@
     fileInput.value = '';
     if (files.length + photos.length > 3) { photoError.textContent = 'You can attach up to 3 photos. Remove a photo before adding more.'; return; }
     processingPhotos = true; fileInput.disabled = true; setSubmitState(); renderPreviews();
-    try { photos.push(...await Promise.all(files.map(compressPhoto))); }
+    try {
+      const prepared = [];
+      for (const file of files) prepared.push(await compressPhoto(file));
+      photos.push(...prepared);
+    }
     catch (error) { photoError.textContent = error.message || 'Unable to read this photo. Choose another image.'; }
     finally { processingPhotos = false; fileInput.disabled = false; renderPreviews(); setSubmitState(); }
   });
@@ -184,8 +199,30 @@
     finally { posting = false; fileInput.disabled = false; resetSecurity(); renderPreviews(); setSubmitState(); }
   });
   const adminDialog = $('#review-admin-dialog');
-  manager.addEventListener('click', () => { $('#review-admin-error').textContent = ''; adminDialog.showModal(); });
-  document.querySelector('.page-hero__title')?.addEventListener('click', event => { if (event.detail === 3 && !adminKey) manager.click(); });
+  const unlockArea = $('[data-review-unlock]');
+  let unlockHits = 0, lastUnlockHit = 0;
+  function unlockGesture(event) {
+    if (adminKey || adminDialog.open || (event.type === 'click' && event.button !== 0)) return;
+    const now = Date.now();
+    unlockHits = now - lastUnlockHit < 650 ? unlockHits + 1 : 1;
+    lastUnlockHit = now;
+    if (unlockHits < 3) return;
+    unlockHits = 0;
+    $('#review-admin-error').textContent = '';
+    $('#review-admin-key').value = '';
+    $('#review-admin-key').removeAttribute('aria-invalid');
+    unlockArea.focus();
+    adminDialog.showModal();
+    $('#review-admin-key').focus();
+  }
+  // Explicit counting also supports phones, where click.detail may always be 1.
+  unlockArea?.addEventListener('click', unlockGesture);
+  unlockArea?.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === ' ') && !event.repeat) {
+      event.preventDefault(); unlockGesture(event);
+    }
+  });
+  adminDialog.addEventListener('close', () => { $('#review-admin-key').value = ''; });
   $('#review-admin-form').addEventListener('submit', async event => {
     event.preventDefault();
     const input = $('#review-admin-key');
@@ -195,7 +232,7 @@
       const key = input.value;
       await api('/api/reviews/admin', { headers: { Authorization: `Bearer ${key}` } });
       adminKey = key; input.value = ''; adminDialog.close(); render();
-    } catch (error) { $('#review-admin-error').textContent = error.message; }
+    } catch (error) { $('#review-admin-error').textContent = error.message; input.setAttribute('aria-invalid', 'true'); input.focus(); }
     finally { button.disabled = false; }
   });
   signout.addEventListener('click', () => { adminKey = ''; pendingDelete = null; render(); });
@@ -214,6 +251,5 @@
   });
   document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
   for (const dialog of document.querySelectorAll('.review-dialog')) dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
-  if (location.hash === '#manage') manager.click();
   loadReviews(); loadConfiguration();
 })();

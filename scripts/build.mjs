@@ -41,7 +41,7 @@ for (const file of (await readdir(join(src, 'pages'))).sort()) {
     return values[key];
   });
   // Keep navigation and assets working even on nested 404 URLs.
-  html = html.replace(/\b(href|src|poster)="((?:assets\/|[\w-]+\.html)[^"]*)"/g, '$1="/$2"');
+  html = html.replace(/\b(href|src|data-src|poster)="((?:assets\/|[\w-]+\.html)[^"]*)"/g, '$1="/$2"');
   html = html.replace(/srcset="([^"]*)"/g, (_, value) => `srcset="${value.replace(/(^|,\s*)(assets\/)/g, '$1/$2')}"`);
   await writeFile(join(out, file), html);
   if (!['404', 'thank-you'].includes(name)) pages.push(path);
