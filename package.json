@@ -4,10 +4,11 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i src/input.css -o output.css --watch",
-    "build": "npx @tailwindcss/cli -i src/input.css -o output.css --minify",
-    "deploy": "wrangler deploy",
-    "preview": "wrangler dev"
+    "dev": "npm run build && wrangler dev",
+    "build": "node scripts/build.mjs",
+    "deploy": "npm run build && wrangler deploy --keep-vars",
+    "preview": "npm run build && wrangler dev",
+    "test": "node --test tests/reviews.test.mjs"
   },
   "repository": {
     "type": "git",

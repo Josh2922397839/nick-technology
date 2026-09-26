@@ -1,0 +1,111 @@
+<!--
+title: Gallery | CCTV Installs, Repairs & Our Shop | Nick Technology Jamaica
+description: See real CCTV installations, video walls, repairs and the Nick Technology shop in Portmore, Jamaica. Drag the before-and-after slider and browse the full gallery.
+og_image: assets/img/wall-coast.webp
+-->
+
+<section class="page-hero page-hero--solo">
+  <div class="hero__bg" aria-hidden="true"><div class="hero__grid"></div><div class="hero__glow"></div></div>
+  <div class="container page-hero__inner">
+    <div>
+      <nav class="crumbs mono" aria-label="Breadcrumb" data-hero-in><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Gallery</span></nav>
+      <h1 class="page-hero__title">
+        <span class="hero__line"><span>Proof is in</span></span>
+        <span class="hero__line"><span>the <em>pictures.</em></span></span>
+      </h1>
+      <p class="lead" data-hero-in>Step inside the shop, see finished CCTV installs up close, and watch the work happen. No stock photos. Every image is ours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top: 0;">
+  <div class="container">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow mono"><span class="idx">01</span> Watch us work</p>
+        <h2 class="h2" data-split>Straight from <em>the bench.</em></h2>
+      </div>
+      <p class="sec-head__aside" data-reveal>Clips play as you scroll. Tap the speaker to turn the sound on.</p>
+    </div>
+    <div class="reels-row" data-stagger>
+      <figure class="reel" data-reel>
+        <video src="assets/video/work-1.mp4" muted loop playsinline preload="metadata" aria-label="Technician working on a TV at the shop"></video>
+        <figcaption class="mono"><span class="rec-dot"></span> Shop · Diagnostics</figcaption>
+        <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
+      </figure>
+      <figure class="reel" data-reel>
+        <video src="assets/video/work-2.mp4" muted loop playsinline preload="metadata" aria-label="Repairing a TV panel at the bench"></video>
+        <figcaption class="mono"><span class="rec-dot"></span> Bench · Panel repair</figcaption>
+        <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
+      </figure>
+      <figure class="reel reel--wide" data-reel>
+        <video src="assets/video/work-3.mp4" muted loop playsinline preload="metadata" aria-label="New smart TV ready for setup"></video>
+        <figcaption class="mono"><span class="rec-dot"></span> Setup · Smart TV</figcaption>
+        <button class="reel__sound" type="button" aria-label="Turn sound on" data-reel-sound><svg class="icon"><use href="#i-mute"/></svg></button>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container ba-wrap">
+    <div>
+      <p class="eyebrow mono"><span class="idx">02</span> Before &amp; after</p>
+      <h2 class="h2" data-split>Drag to see <em>the difference.</em></h2>
+      <p class="lead" data-reveal style="margin-top: 24px;">A command-centre video wall, from bare brackets to a fully working monitoring hub. Drag the handle, or use your arrow keys.</p>
+    </div>
+    <div class="ba" data-ba data-cursor="drag" data-reveal>
+      <img src="assets/img/wall-brackets.webp" alt="Before: empty wall with video-wall mounting brackets" width="1599" height="1200" loading="lazy">
+      <img class="ba__after" src="assets/img/wall-live.webp" alt="After: the finished video wall showing live feeds" width="1600" height="1200" loading="lazy">
+      <span class="ba__line" aria-hidden="true"></span>
+      <span class="ba__knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+      <span class="ba__label ba__label--before mono" aria-hidden="true">Before</span>
+      <span class="ba__label ba__label--after mono" aria-hidden="true">After</span>
+      <input type="range" min="0" max="100" value="50" aria-label="Before and after comparison: slide to reveal">
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow mono"><span class="idx">03</span> The full archive</p>
+        <h2 class="h2" data-split>Installs, repairs <em>&amp; the shop.</em></h2>
+      </div>
+      <p class="sec-head__aside" data-reveal>Filter by category and tap any photo to open it full screen.</p>
+    </div>
+
+    <div class="filter-bar" data-filter-bar="gallery-grid" role="group" aria-label="Filter photos">
+      <button type="button" data-filter="all" aria-pressed="true">All work</button>
+      <button type="button" data-filter="cctv" aria-pressed="false"><svg class="icon"><use href="#i-cctv"/></svg>CCTV &amp; security</button>
+      <button type="button" data-filter="power" aria-pressed="false"><svg class="icon"><use href="#i-bolt"/></svg>Power</button>
+      <button type="button" data-filter="phone" aria-pressed="false"><svg class="icon"><use href="#i-phone"/></svg>Phones &amp; tablets</button>
+      <button type="button" data-filter="computer" aria-pressed="false"><svg class="icon"><use href="#i-laptop"/></svg>Computers &amp; electronics</button>
+      <button type="button" data-filter="furniture" aria-pressed="false">Chairs &amp; furniture</button>
+      <span class="filter-bar__count mono"><b data-filter-count>37</b> photos</span>
+    </div>
+
+    <div class="masonry" id="gallery-grid">
+{{> gallery-grid}}
+    </div>
+  </div>
+</section>
+
+<dialog class="lightbox" data-lightbox data-lenis-prevent aria-label="Photo viewer">
+  <div class="lightbox__top">
+    <span class="lightbox__count mono" data-lb-count>01 / 01</span>
+    <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="lightbox__stage">
+    <img data-lb-img src="" alt="">
+    <button class="icon-btn lightbox__nav lightbox__nav--prev" type="button" data-lb-prev aria-label="Previous photo"><svg class="icon"><use href="#i-arrow-l"/></svg></button>
+    <button class="icon-btn lightbox__nav lightbox__nav--next" type="button" data-lb-next aria-label="Next photo"><svg class="icon"><use href="#i-arrow-r"/></svg></button>
+  </div>
+  <div class="lightbox__bottom">
+    <p class="lightbox__cap" data-lb-cap></p>
+    <a class="link-arrow" href="https://www.instagram.com/nicktechnology/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-instagram"/></svg> More on Instagram</a>
+  </div>
+</dialog>
+
+{{> cta-band}}

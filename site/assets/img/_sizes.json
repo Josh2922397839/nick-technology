@@ -1,0 +1,166 @@
+{
+ "wall-live": [
+  1600,
+  1200
+ ],
+ "wall-brackets": [
+  1599,
+  1200
+ ],
+ "wall-mounted": [
+  1599,
+  1200
+ ],
+ "wall-coast": [
+  1599,
+  777
+ ],
+ "install-pole": [
+  757,
+  1600
+ ],
+ "install-ladder": [
+  1200,
+  1599
+ ],
+ "install-camera": [
+  1200,
+  1600
+ ],
+ "on-site": [
+  1599,
+  777
+ ],
+ "nicholas-shop": [
+  720,
+  949
+ ],
+ "nicholas-portrait": [
+  640,
+  640
+ ],
+ "forza-titan-100": [
+  1600,
+  1200
+ ],
+ "forza-titan-1200": [
+  1600,
+  1200
+ ],
+ "forza-titan-700": [
+  1600,
+  1200
+ ],
+ "solar-panel": [
+  1600,
+  1200
+ ],
+ "shop-cctv-stock": [
+  243,
+  244
+ ],
+ "shop-smart-tv": [
+  243,
+  244
+ ],
+ "shop-gaming-setup": [
+  243,
+  406
+ ],
+ "shop-speaker": [
+  243,
+  304
+ ],
+ "shop-ups": [
+  243,
+  174
+ ],
+ "shop-printer-cart": [
+  243,
+  244
+ ],
+ "shop-sound-system": [
+  243,
+  304
+ ],
+ "shop-printers": [
+  243,
+  174
+ ],
+ "shop-indoor-cams": [
+  243,
+  174
+ ],
+ "shop-ups-display": [
+  243,
+  304
+ ],
+ "shop-floor": [
+  243,
+  174
+ ],
+ "shop-laptop": [
+  243,
+  203
+ ],
+ "shop-peripherals": [
+  243,
+  406
+ ],
+ "shop-office-chair": [
+  243,
+  406
+ ],
+ "shop-accessories": [
+  243,
+  174
+ ],
+ "shop-gaming-chair": [
+  243,
+  406
+ ],
+ "shop-bags": [
+  243,
+  304
+ ],
+ "phones-bench": [
+  243,
+  406
+ ],
+ "phones-bench-2": [
+  243,
+  406
+ ],
+ "shop-audio": [
+  243,
+  174
+ ],
+ "shop-power-stock": [
+  243,
+  174
+ ],
+ "shop-canon-printer": [
+  243,
+  174
+ ],
+ "shop-workstation": [
+  243,
+  406
+ ],
+ "shop-desk": [
+  243,
+  174
+ ],
+ "shop-tablet": [
+  243,
+  203
+ ],
+ "shop-smart-lock": [
+  243,
+  406
+ ],
+ "smart-lock-installed": [
+  243,
+  406
+ ]
+}

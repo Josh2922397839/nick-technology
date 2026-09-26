@@ -1,0 +1,52 @@
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Nick Technology Group, home">
+      <span class="brand__mark"><img src="assets/img/nt-mark.webp" alt="" width="40" height="40"></span>
+      <span class="brand__text"><b>Nick Technology</b><small>Group · Portmore</small></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <span class="nav__pill" aria-hidden="true"></span>
+      <a href="index.html" {{active:home}}>Home</a>
+      <a href="about.html" {{active:about}}>About</a>
+      <a href="services.html" {{active:services}}>Services</a>
+      <a href="gallery.html" {{active:gallery}}>Gallery</a>
+      <a href="reviews.html" {{active:reviews}}>Reviews</a>
+      <a href="blog.html" {{active:blog}}>Blog</a>
+      <a href="contact.html" {{active:contact}}>Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
+      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" data-magnetic>
+        <svg class="icon"><use href="#i-call"/></svg>
+        <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
+      </a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-menu aria-hidden="true">
+  <div class="menu__bg" aria-hidden="true"></div>
+  <div class="menu__inner">
+    <p class="menu__label mono">Menu / Navigate</p>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="index.html" {{active:home}}><span class="mono">01</span>Home</a>
+      <a href="about.html" {{active:about}}><span class="mono">02</span>About</a>
+      <a href="services.html" {{active:services}}><span class="mono">03</span>Services</a>
+      <a href="gallery.html" {{active:gallery}}><span class="mono">04</span>Gallery</a>
+      <a href="reviews.html" {{active:reviews}}><span class="mono">05</span>Reviews</a>
+      <a href="blog.html" {{active:blog}}><span class="mono">06</span>Blog</a>
+      <a href="contact.html" {{active:contact}}><span class="mono">07</span>Contact</a>
+    </nav>
+    <div class="menu__quick">
+      <a href="tel:+18764655975"><svg class="icon"><use href="#i-call"/></svg>Call</a>
+      <a href="https://wa.me/18764655975" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+      <a href="https://maps.google.com/?q=Nick+technology+group+Portmore" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>Directions</a>
+    </div>
+    <p class="menu__foot mono"><span class="status" data-status><i></i><span data-status-text>Checking hours</span></span> · Mon–Sat 8:30–6:30</p>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-JM" data-page="{{page}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="#06080c">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="{{url}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nick Technology Group">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="https://nicktechnologygroup.com/{{og_image}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <script>
+    (function (d) {
+      var h = d.documentElement;
+      h.classList.add('js');
+      try { if (!sessionStorage.getItem('nt-booted') && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('is-booting'); } catch (e) {}
+      // Safety net: if the animation stack never initialises, show everything.
+      setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
+    })(document);
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Nick Technology Group",
+    "alternateName": "NT Group",
+    "image": "https://nicktechnologygroup.com/assets/img/wall-live.webp",
+    "logo": "https://nicktechnologygroup.com/assets/img/nt-logo.png",
+    "url": "https://nicktechnologygroup.com/",
+    "telephone": "+1-876-465-5975",
+    "email": "COMTEC_ZION@YAHOO.COM",
+    "founder": { "@type": "Person", "name": "Nicholas Anderson" },
+    "foundingDate": "2005",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2 North Greater Portmore, East Ascot",
+      "addressLocality": "Portmore",
+      "addressRegion": "Saint Catherine",
+      "addressCountry": "JM"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:30",
+      "closes": "18:30"
+    }],
+    "areaServed": ["Portmore", "Kingston", "Spanish Town", "Saint Catherine", "Jamaica"],
+    "sameAs": ["https://www.facebook.com/NickTechnology/", "https://www.instagram.com/nicktechnology/"]
+  }
+  </script>
+</head>
+<body class="{{bodyclass}}">
+{{> sprite}}
+<a class="skip-link" href="#main">Skip to content</a>
+{{> preloader}}
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><span class="cursor__label"></span></span></div>
+
+{{> header}}
+
+<main id="main">
+{{content}}
+</main>
+
+{{> footer}}
+{{> dock}}
+
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
