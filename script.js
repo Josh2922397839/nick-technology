@@ -161,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBottomBar();
   }
 
-  // ─── Contact form mailto ───
+  // ─── Contact / quote form → WhatsApp ───
   const handleFormSubmit = (form, nameId, phoneId, serviceId, msgId) => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById(nameId).value;
+      const name = document.getElementById(nameId).value.trim();
       const phoneInput = document.getElementById(phoneId);
       const phoneDigits = phoneInput.value.replace(/\D/g, '');
 
@@ -176,19 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const service = document.getElementById(serviceId).value;
-      const message = document.getElementById(msgId).value;
-      const subject = encodeURIComponent('Service Request from ' + name + ' - ' + service);
-      const body = encodeURIComponent('Name: ' + name + '\nPhone: ' + phoneInput.value + '\nService Needed: ' + service + '\n\nMessage:\n' + message);
-
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      const mailtoUrl = 'mailto:COMTEC_ZION@YAHOO.COM?subject=' + subject + '&body=' + body;
-
-      if (isMobile) {
-        window.location.href = mailtoUrl;
-      } else {
-        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=COMTEC_ZION@YAHOO.COM&su=' + subject + '&body=' + body;
-        window.open(gmailUrl, '_blank');
-      }
+      const message = document.getElementById(msgId).value.trim();
+      const text = 'Hi Nicholas, I\'m ' + name + '. Need help with ' + service + '. ' + message + ' My number: ' + phoneInput.value;
+      window.open('https://wa.me/18764655975?text=' + encodeURIComponent(text), '_blank', 'noopener');
     });
   };
 
@@ -232,19 +222,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const availCard = document.getElementById('availability-card');
 
   if (availDot && availLabel && availHours) {
+    // Keep in sync with footer + LocalBusiness JSON-LD: Mon–Sat 8:30am–6:30pm
     const schedule = {
-      1: { open: 8, close: 19, label: 'Mon' },
-      2: { open: 8, close: 19, label: 'Tue' },
-      3: { open: 8, close: 19, label: 'Wed' },
-      4: { open: 8, close: 19, label: 'Thu' },
-      5: { open: 8, close: 19, label: 'Fri' },
-      6: { open: 9, close: 18, label: 'Sat' },
+      1: { open: 8.5, close: 18.5, label: 'Mon' },
+      2: { open: 8.5, close: 18.5, label: 'Tue' },
+      3: { open: 8.5, close: 18.5, label: 'Wed' },
+      4: { open: 8.5, close: 18.5, label: 'Thu' },
+      5: { open: 8.5, close: 18.5, label: 'Fri' },
+      6: { open: 8.5, close: 18.5, label: 'Sat' },
       0: null
     };
 
     function formatHour(h) {
-      if (h === 0 || h === 12) return (h === 0 ? '12' : '12') + (h < 12 ? 'AM' : 'PM');
-      return (h > 12 ? h - 12 : h) + (h >= 12 ? 'PM' : 'AM');
+      const hours = Math.floor(h);
+      const minutes = Math.round((h - hours) * 60);
+      const suffix = hours >= 12 ? 'PM' : 'AM';
+      const display = (hours % 12) === 0 ? 12 : hours % 12;
+      const minStr = minutes ? ':' + String(minutes).padStart(2, '0') : '';
+      return display + minStr + suffix;
     }
 
     function updateAvailability(jamaicaDate) {
@@ -257,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         availDot.classList.add('closed');
         availLabel.style.color = '#EF4444';
         availLabel.textContent = 'CLOSED TODAY';
-        availHours.textContent = 'Sunday - Back Monday 8AM';
+        availHours.textContent = 'Sunday - Back Monday 8:30AM';
         if (availCard) availCard.style.borderColor = 'rgba(239,68,68,0.3)';
         return;
       }
@@ -397,15 +392,15 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('touchend', () => { isDragging = false; }, { passive: true });
   });
 
-  // ─── Lead magnet form ───
+  // ─── Lead magnet form (WhatsApp until a real email send exists) ───
   const leadForm = document.getElementById('lead-magnet-form');
   if (leadForm) {
     leadForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = leadForm.querySelector('input[type="email"]').value;
-      if (email) {
-        leadForm.innerHTML = '<p style="color:#22C55E;font-weight:600;font-size:18px;">Check your inbox! Your free checklist is on the way.</p>';
-      }
+      const email = leadForm.querySelector('input[type="email"]').value.trim();
+      if (!email) return;
+      const text = 'Hi Nicholas, send me the home security checklist. My email: ' + email;
+      window.open('https://wa.me/18764655975?text=' + encodeURIComponent(text), '_blank', 'noopener');
     });
   }
 
