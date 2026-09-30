@@ -1,14 +1,14 @@
 <div class="dock" data-dock>
-  <a class="dock__btn dock__btn--call" href="tel:+18764655975"><svg class="icon"><use href="#i-call"/></svg>Call now</a>
-  <a class="dock__btn dock__btn--wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  <a class="dock__call" href="tel:+18764655975" data-track="call_dock">
+    <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>
+    <span><b>Call now</b><small>(876) 465-5975</small></span>
+  </a>
+  <a class="dock__wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_dock">
+    <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span>
+  </a>
 </div>
 
-<a class="fab" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="Chat with Nicholas on WhatsApp" data-magnetic>
-  <svg class="icon"><use href="#i-whatsapp"/></svg>
+<a class="fab" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="Chat with Nicholas on WhatsApp" data-track="whatsapp_fab">
+  <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
   <span class="fab__tip">Chat with Nicholas</span>
 </a>
-
-<button class="to-top" type="button" aria-label="Back to top" data-to-top>
-  <svg class="to-top__ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" pathLength="1"/></svg>
-  <svg class="icon"><use href="#i-arrow-up"/></svg>
-</button>

@@ -1,39 +1,36 @@
-<section class="seq" data-seq aria-labelledby="seq-title">
-  <div class="seq__pin">
-    <div class="container seq__grid">
-      <div class="seq__copy">
-        <p class="eyebrow mono"><span class="idx">↳</span> See the results</p>
-        <h2 class="h2" id="seq-title" data-split>From bare wall to <em>command centre.</em></h2>
-        <ol class="seq__steps">
-          <li class="is-active" data-seq-step><button type="button" aria-pressed="true">
-            <span class="mono">01</span>
-            <span><span class="seq__title">Brackets &amp; cabling</span><span class="seq__description">Mounts levelled and power and signal runs planned before a single screen goes up.</span></span>
-          </button></li>
-          <li data-seq-step><button type="button" aria-pressed="false">
-            <span class="mono">02</span>
-            <span><span class="seq__title">Screens mounted</span><span class="seq__description">Six panels hung, aligned edge to edge, and tested one at a time.</span></span>
-          </button></li>
-          <li data-seq-step><button type="button" aria-pressed="false">
-            <span class="mono">03</span>
-            <span><span class="seq__title">Live &amp; monitoring</span><span class="seq__description">Feeds up on the wall, and the owner can watch everything from their phone.</span></span>
-          </button></li>
-        </ol>
-        <div class="seq__meter" aria-hidden="true"><span></span></div>
-      </div>
+<section class="section seq" data-seq aria-labelledby="seq-title">
+  <div class="container seq__grid">
+    <div class="seq__copy">
+      <p class="eyebrow"><span class="idx">↳</span> See the results</p>
+      <h2 class="h2" id="seq-title" data-reveal>From bare wall to <em>command centre.</em></h2>
+      <p class="lead seq__lead" data-reveal>A real install in three stages. Tap a stage, or let it play.</p>
+      <ol class="seq__steps">
+        <li><button class="seq__step is-active" type="button" data-seq-step aria-pressed="true" aria-controls="seq-screen">
+          <span class="seq__num">01</span>
+          <span class="seq__txt"><span class="seq__title">Brackets &amp; cabling</span><span class="seq__description">Mounts levelled, power and signal runs planned before a single screen goes up.</span></span>
+          <i class="seq__timer" aria-hidden="true"></i>
+        </button></li>
+        <li><button class="seq__step" type="button" data-seq-step aria-pressed="false" aria-controls="seq-screen">
+          <span class="seq__num">02</span>
+          <span class="seq__txt"><span class="seq__title">Screens mounted</span><span class="seq__description">Six panels hung, aligned edge to edge, and tested one at a time.</span></span>
+          <i class="seq__timer" aria-hidden="true"></i>
+        </button></li>
+        <li><button class="seq__step" type="button" data-seq-step aria-pressed="false" aria-controls="seq-screen">
+          <span class="seq__num">03</span>
+          <span class="seq__txt"><span class="seq__title">Live &amp; monitoring</span><span class="seq__description">Feeds up on the wall, and the owner can watch everything from their phone.</span></span>
+          <i class="seq__timer" aria-hidden="true"></i>
+        </button></li>
+      </ol>
+    </div>
 
-      <div class="seq__stage">
-        <div class="seq__screen" data-cursor="view">
-          <img class="seq__img is-on" data-seq-img src="assets/img/wall-brackets.webp" srcset="assets/img/wall-brackets-sm.webp 800w, assets/img/wall-brackets.webp 1600w" sizes="(min-width: 1000px) 55vw, 92vw" alt="Stage one: empty wall with six video-wall mounting brackets installed" width="1599" height="1200" loading="lazy">
-          <img class="seq__img" data-seq-img src="assets/img/wall-mounted.webp" srcset="assets/img/wall-mounted-sm.webp 800w, assets/img/wall-mounted.webp 1600w" sizes="(min-width: 1000px) 55vw, 92vw" alt="Stage two: six screens mounted edge to edge, powered off" width="1599" height="1200" loading="lazy">
-          <img class="seq__img" data-seq-img src="assets/img/wall-live.webp" srcset="assets/img/wall-live-sm.webp 800w, assets/img/wall-live.webp 1600w" sizes="(min-width: 1000px) 55vw, 92vw" alt="Stage three: finished command centre with the video wall live" width="1600" height="1200" loading="lazy">
-          <div class="seq__flash" aria-hidden="true"></div>
-          <div class="seq__scan" aria-hidden="true"></div>
-          <div class="hud-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <div class="seq__hud mono" aria-hidden="true">
-            <span><b class="rec-dot"></b> Stage <b data-seq-count>01</b>/03</span>
-            <span data-seq-label>Brackets &amp; cabling</span>
-          </div>
-        </div>
+    <div class="seq__screen" id="seq-screen" aria-live="polite">
+      <div class="seq__frame is-on" data-seq-img><img src="assets/img/wall-brackets-sm.webp" srcset="assets/img/wall-brackets-sm.webp 800w, assets/img/wall-brackets.webp 1600w" sizes="(min-width: 1100px) 55vw, 94vw" alt="Stage one: empty wall with six video-wall mounting brackets installed" width="1599" height="1200" loading="lazy" decoding="async"></div>
+      <div class="seq__frame" data-seq-img><img src="assets/img/wall-mounted-sm.webp" srcset="assets/img/wall-mounted-sm.webp 800w, assets/img/wall-mounted.webp 1600w" sizes="(min-width: 1100px) 55vw, 94vw" alt="Stage two: six screens mounted edge to edge, powered off" width="1599" height="1200" loading="lazy" decoding="async"></div>
+      <div class="seq__frame" data-seq-img><img src="assets/img/wall-live-sm.webp" srcset="assets/img/wall-live-sm.webp 800w, assets/img/wall-live.webp 1600w" sizes="(min-width: 1100px) 55vw, 94vw" alt="Stage three: finished command centre with the video wall live" width="1600" height="1200" loading="lazy" decoding="async"></div>
+      <div class="hud-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="seq__hud" aria-hidden="true">
+        <span><b class="rec-dot"></b> Stage <b data-seq-count>01</b>/03</span>
+        <span data-seq-label>Brackets &amp; cabling</span>
       </div>
     </div>
   </div>

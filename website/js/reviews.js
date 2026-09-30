@@ -88,7 +88,7 @@
       }
       grid.append(card);
     }
-    window.ScrollTrigger?.refresh();
+
   }
   async function loadReviews() {
     try {

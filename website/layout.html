@@ -18,26 +18,14 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
-
-  <script>
-    (function (d) {
-      var h = d.documentElement;
-      h.classList.add('js');
-      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
-      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
-      if (window.__NT_LITE) h.classList.add('no-anim');
-      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
-      // Safety net: if the animation stack never initialises, show everything.
-      setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
-    })(document);
-  </script>
-
+  <link rel="preload" href="/assets/fonts/anybody-800-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif-italic-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Everything needed for the first screen is inlined; the rest loads without blocking. -->
+  <style>{{critical_css}}</style>
+  <link rel="stylesheet" href="{{site_css}}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{site_css}}"></noscript>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__NT)document.documentElement.classList.add('dock-on')},4000)</script>
+  <script type="module" src="{{app_js}}"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,11 +61,6 @@
 <body class="{{bodyclass}}">
 {{> sprite}}
 <a class="skip-link" href="#main">Skip to content</a>
-{{> preloader}}
-<div class="grain" aria-hidden="true"></div>
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
-<div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><span class="cursor__label"></span></span></div>
-
 {{> header}}
 
 <main id="main">
@@ -86,7 +69,5 @@
 
 {{> footer}}
 {{> dock}}
-
-<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

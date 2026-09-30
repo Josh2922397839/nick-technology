@@ -14,13 +14,13 @@ og_image: assets/img/nicholas-shop.webp
         <span class="hero__line"><span><em>Nick</em> Technology</span></span>
       </h1>
       <p class="lead" data-hero-in>From fixing friends' computers to protecting homes and businesses across Jamaica. Same man, same honesty, twenty-plus years on.</p>
-      <div class="page-hero__ctas" data-hero-in>
-        <a class="btn btn--copper" href="tel:+18764655975" data-magnetic><svg class="icon"><use href="#i-call"/></svg><span class="btn__label" data-text="Call Nicholas">Call Nicholas</span></a>
-        <a class="btn btn--ghost" href="#story" data-magnetic><span class="btn__label" data-text="Read the story">Read the story</span><svg class="icon"><use href="#i-arrow-r"/></svg></a>
+      <div class="page-hero__ctas" data-hero-cta data-hero-in>
+        <a class="btn btn--copper cta-call" href="tel:+18764655975" data-track="call_hero"><svg class="icon" aria-hidden="true"><use href="#i-call"/></svg><span><b>Call (876) 465-5975</b><small>You'll talk to Nicholas himself</small></span></a>
+        <a class="btn btn--ghost btn--lg" href="#story">Read the story<svg class="icon" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
       </div>
     </div>
-    <div class="page-hero__media" data-hero-in data-cursor="view">
-      <img src="assets/img/nicholas-shop.webp" alt="Nicholas Anderson standing in the Nick Technology shop" width="720" height="949" data-parallax="6">
+    <div class="page-hero__media" data-hero-in>
+      <img src="assets/img/nicholas-shop.webp" alt="Nicholas Anderson standing in the Nick Technology shop" width="720" height="949">
       <div class="hud-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="feed__hud mono" aria-hidden="true"><span>CAM 04</span><span class="feed__rec">REC</span><span class="feed__name">Founder · Est. 2005</span><time data-feed-time></time></div>
     </div>
@@ -66,6 +66,8 @@ og_image: assets/img/nicholas-shop.webp
   </div>
 </section>
 
+{{> cta-inline}}
+
 <section class="section theme-paper">
   <div class="container">
     <blockquote class="big-quote" data-reveal>
@@ -79,29 +81,29 @@ og_image: assets/img/nicholas-shop.webp
   <div class="container">
     <div class="sec-head sec-head--split">
       <div>
-        <p class="eyebrow mono"><span class="idx">01</span> Our promise</p>
-        <h2 class="h2" data-split>Values we never <em>compromise on.</em></h2>
+        <p class="eyebrow"><span class="idx">01</span> Our promise</p>
+        <h2 class="h2" data-reveal>Values we never <em>compromise on.</em></h2>
       </div>
       <p class="sec-head__aside" data-reveal>These four rules decide every quote, every repair and every install that leaves the shop.</p>
     </div>
     <div class="grid-4" data-stagger>
       <article class="card" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-eye"/></svg></span><span class="card__num mono">01</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></span><span class="card__num mono">01</span></div>
         <h3>Honesty</h3>
         <p>We tell you exactly what's wrong. If buying new makes more sense than repairing, we'll tell you straight.</p>
       </article>
       <article class="card" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-award"/></svg></span><span class="card__num mono">02</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span><span class="card__num mono">02</span></div>
         <h3>Quality</h3>
         <p>Done right the first time. No shortcuts on wiring, no knock-off parts, and everything tested before it comes back to you.</p>
       </article>
       <article class="card" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-tag"/></svg></span><span class="card__num mono">03</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span><span class="card__num mono">03</span></div>
         <h3>Fair pricing</h3>
         <p>Free diagnostics and a firm quote before any work begins, so you're never caught off guard. No hidden fees.</p>
       </article>
       <article class="card" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-handshake"/></svg></span><span class="card__num mono">04</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-handshake"/></svg></span><span class="card__num mono">04</span></div>
         <h3>Personal service</h3>
         <p>You're not a ticket number. We remember our customers, know their systems and care about getting them back online.</p>
       </article>
@@ -126,22 +128,22 @@ og_image: assets/img/nicholas-shop.webp
 
 <section class="section theme-paper phone-line">
   <div class="container">
-    <p class="eyebrow mono"><span class="idx">02</span> A personal line</p>
-    <h2 class="h2" data-split>Why I still answer <em>my own phone.</em></h2>
+    <p class="eyebrow"><span class="idx">02</span> A personal line</p>
+    <h2 class="h2" data-reveal>Why I still answer <em>my own phone.</em></h2>
     <p class="lead" data-reveal>Automated menus and offshore call centres are everywhere. When your business cameras go down, or a dead laptop is holding your life's work, you don't want a robot. You want an expert who can solve the problem. That's why it's stayed personal for twenty years.</p>
-    <a class="phone-line__number" href="tel:+18764655975" data-reveal><svg class="icon"><use href="#i-call"/></svg>876-465-5975</a>
+    <a class="phone-line__number" href="tel:+18764655975" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>876-465-5975</a>
   </div>
 </section>
 
 <section class="band band--tight">
   <div class="container">
     <ul class="creds" data-stagger>
-      <li><svg class="icon"><use href="#i-grad"/></svg>CompTIA certified</li>
-      <li><svg class="icon"><use href="#i-cctv"/></svg>Hikvision partner</li>
-      <li><svg class="icon"><use href="#i-rec"/></svg>Dahua authorized</li>
-      <li><svg class="icon"><use href="#i-shield"/></svg>Licensed business</li>
-      <li><svg class="icon"><use href="#i-award"/></svg>20+ years experience</li>
-      <li><svg class="icon"><use href="#i-heart"/></svg>Family-run &amp; local</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-grad"/></svg>CompTIA certified</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-cctv"/></svg>Hikvision partner</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-rec"/></svg>Dahua authorized</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Licensed business</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>20+ years experience</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>Family-run &amp; local</li>
     </ul>
   </div>
 </section>

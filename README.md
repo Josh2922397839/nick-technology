@@ -2,19 +2,42 @@
 
 Production website: https://nicktechnologygroup.com/
 
-The redesign from `Documents/Best/nick-tech` is integrated here. Edit page templates in `website/pages`, reusable sections in `website/partials`, and styles/scripts/images in `site/assets`. `npm run build` assembles the pages into `site`; Cloudflare serves only that directory. Node is the only build runtime required.
+## Where things live
+
+| Edit this | For |
+|---|---|
+| `website/pages/*.html` | Page content (front-matter comment at the top sets title and description) |
+| `website/partials/*.html` | Shared blocks: header, footer, call dock, map, call strips, reviews, sequence |
+| `website/css/critical.css` | First-screen styles, **inlined** into every page (header, heroes, buttons, call dock, motion) |
+| `website/css/site.css` | Everything below the first screen, loaded without blocking and cached for a year |
+| `website/js/app.mjs` | Site behaviour; `website/js/core.mjs` holds the tested logic (shop hours, quote messages) |
+| `website/js/reviews.js` | Reviews page (API, photo uploads, protected management) |
+| `site/assets/img`, `video`, `fonts` | Static media, served as-is |
+
+`npm run build` assembles everything into `site/`, which is the only directory Cloudflare serves. CSS and JS are bundled and minified with esbuild and written to `site/assets/build/` with content-hashed names (for example `app.cda4b3a023.js`), so browsers cache them for a year and still get every update instantly. The build also writes `site/_headers` (cache and security headers), `robots.txt` and `sitemap.xml`. Node is the only build runtime required.
+
+`npm run images` re-creates the small, pre-cropped image variants (`*-feed.webp`, `*-md.webp`) from the full-size photos.
+
+## Built for calls on slow phones
+
+- **Call first:** every page leads with a large "Call (876) 465-5975" button. On phones a sticky Call/WhatsApp bar appears as soon as that button scrolls away, the header always has a labelled Call button, and call strips sit mid-page.
+- **Live status:** badges show "Open now", "Closing soon" or "Closed now" from Portmore time (Mon–Sat 8:30–6:30).
+- **Fast first screen:** no render-blocking stylesheets or third-party requests. Two small self-hosted fonts (about 40 KB total, trimmed to one weight) replace four Google font families. The body text uses the phone's own font.
+- **Light script:** about 15 KB of JavaScript in total, with no animation libraries, no preloader and no scroll listeners.
+- **Clean motion:** animations are CSS transitions on opacity and movement only, started when content scrolls into view. Loops (ticker, video wall, network diagram) pause offscreen. Everything respects "reduce motion".
+- **Nothing heavy until asked:** offscreen sections skip rendering (`content-visibility`). Videos never download until tapped on phones or on data-saver connections. Google Maps loads only when requested.
+
+## Measuring calls
+
+Every call, WhatsApp and email link pushes an event to `window.dataLayer` (`call_click`, `whatsapp_click`, `email_click`, with a `cta` value such as `call_hero`, `call_dock` or `call_band`). The quote forms push `quote_whatsapp` or `quote_email`. If you add Google Tag Manager or GA4, these arrive automatically, so you can see which buttons produce calls.
 
 ## Development and deployment
 
-Run `npm ci`, then `npm run build` and `npm test`. Use `npm run preview` for a local Worker. Local development uses local D1, never the production database. To initialise it: `npx wrangler d1 execute nick-technology-db --local --file schema.sql`.
+Run `npm ci`, then `npm run build` and `npm test`. Tests cover the review API, the hours logic, a smoke test that runs the built site script, and checks on the built pages (every page has a call link and the call dock, every referenced file exists, no render-blocking assets). Use `npm run preview` for a local Worker. Local development uses local D1, never the production database. To initialise it: `npx wrangler d1 execute nick-technology-db --local --file schema.sql`.
 
 `npm run deploy` rebuilds and deploys the existing `nick-technology` Worker, retaining its secrets and database binding. The database ID and both production domains are unchanged.
 
 For Cloudflare Git integration, connect `Josh2922397839/nick-technology`, production branch `main`, project root `/`, build command `npm run build`, deploy command `npx wrangler deploy --keep-vars`. Future pushes to `main` then publish automatically.
-
-## Mobile behavior
-
-Phones, tablets, reduced-motion visits and data-saving connections use the lightweight layout without the four desktop motion libraries or the loading animation. Videos load when tapped on these devices; desktop videos load only when visible. The homepage uses smaller responsive feed images. Mobile navigation supports keyboard focus and Escape, review photo preparation runs sequentially to limit memory use, and native page scrolling keeps forms and anchors accessible.
 
 ## Reviews and the admin key
 

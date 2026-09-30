@@ -18,26 +18,14 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
-
-  <script>
-    (function (d) {
-      var h = d.documentElement;
-      h.classList.add('js');
-      window.__NT_LITE = matchMedia('(max-width: 1180px), (pointer: coarse), (prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
-      h.dataset.motion = window.__NT_LITE ? 'light' : 'full';
-      if (window.__NT_LITE) h.classList.add('no-anim');
-      try { if (!window.__NT_LITE && !sessionStorage.getItem('nt-booted')) h.classList.add('is-booting'); } catch (e) {}
-      // Safety net: if the animation stack never initialises, show everything.
-      setTimeout(function () { if (!window.__NT_READY) { h.classList.add('no-anim'); h.classList.remove('is-booting'); } }, 4500);
-    })(document);
-  </script>
-
+  <link rel="preload" href="/assets/fonts/anybody-800-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif-italic-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Everything needed for the first screen is inlined; the rest loads without blocking. -->
+  <style>@font-face{font-family:Anybody;src:url(/assets/fonts/anybody-800-v1.woff2) format("woff2");font-weight:800;font-stretch:58% 100%;font-display:swap}@font-face{font-family:"Instrument Serif";src:url(/assets/fonts/instrument-serif-italic-v1.woff2) format("woff2");font-style:italic;font-weight:400;font-display:swap}:root{--bg: #06080c;--bg-1: #0a0e15;--bg-2: #0f1520;--bg-3: #151d2b;--line: rgba(236, 230, 220, .09);--line-2: rgba(236, 230, 220, .17);--text: #ece6dc;--text-2: #b9b3aa;--muted: #8d95a3;--copper: #e2894a;--copper-2: #f7b37a;--copper-3: #b0592a;--glow: rgba(226, 137, 74, .38);--live: #3fe08c;--rec: #ff4a3d;--amber: #ffc24a;--wa: #25d366;--paper: #ece5d8;--ink: #0c1017;--f-display: "Anybody", "Arial Narrow", "Roboto Condensed", "Avenir Next Condensed", sans-serif-condensed, "Bahnschrift SemiCondensed", sans-serif;--f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;--f-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;--f-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;--ease: cubic-bezier(.16, 1, .3, 1);--r: 18px;--r-lg: 26px;--pad: 18px;--max: 1320px;--nav-h: 74px}@media(min-width:820px){:root{--pad: clamp(24px, 4vw, 56px);--nav-h: 90px}}*,*:before,*:after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg);scroll-padding-top:calc(var(--nav-h) + 8px)}@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}@media(min-width:820px){body{font-size:17px}}img,svg,video{display:block;max-width:100%}img,video{height:auto}a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:rgba(226,137,74,.2)}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}h1,h2,h3,p,figure,blockquote,dl,dd,ol,ul{margin:0}ol,ul{padding:0;list-style:none}::selection{background:var(--copper);color:#160b04}:focus-visible{outline:2px solid var(--copper-2);outline-offset:3px;border-radius:6px}[hidden]{display:none!important}.sprite{position:absolute;width:0;height:0;overflow:hidden}.icon{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.container{width:min(100% - 2 * var(--pad),var(--max));margin-inline:auto}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}.skip-link{position:fixed;left:12px;top:-60px;z-index:100;padding:10px 16px;border-radius:10px;background:var(--copper);color:#160b04;font-weight:700}.skip-link:focus{top:12px}.mono{font-family:var(--f-mono)}.muted{color:var(--muted)}.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 16px;font:600 11.5px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--copper-2)}.idx{display:inline-grid;place-items:center;min-width:28px;height:22px;padding:0 6px;border:1px solid rgba(226,137,74,.42);border-radius:6px;font-size:10px;color:var(--copper)}.h2,.display,.hero__title,.page-hero__title{font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}.h2{font-size:clamp(34px,9.6vw,54px);font-stretch:70%;line-height:.96}.display{font-size:clamp(44px,12.5vw,76px);font-stretch:64%;line-height:.9}.h2 em,.display em,.hero__title em,.page-hero__title em{font-family:var(--f-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.005em;color:var(--copper-2);font-size:1.08em;line-height:.8}.lead{max-width:580px;font-size:16.5px;line-height:1.6;color:var(--text-2)}.lead strong{color:var(--text);font-weight:650}@media(min-width:820px){.h2{font-size:clamp(44px,5.4vw,86px);line-height:.92}.display{font-size:clamp(64px,8.2vw,140px);line-height:.86}.lead{font-size:clamp(17px,1.3vw,20px)}}.btn{--fg: var(--text);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:50px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15px;line-height:1.15;letter-spacing:.01em;text-align:center;color:var(--fg);touch-action:manipulation;transition:transform .18s var(--ease),box-shadow .3s,background-color .3s,border-color .3s}.btn:active{transform:scale(.97)}.btn .icon{width:19px;height:19px}.btn--copper{--fg: #1a0e06;background:linear-gradient(180deg,var(--copper-2),var(--copper));box-shadow:0 8px 22px -10px var(--glow),inset 0 1px #fff6}.btn--wa{--fg: #03230f;background:linear-gradient(180deg,#4be07f,var(--wa))}.btn--ghost{background:#ffffff0a;border:1px solid var(--line-2)}.btn--ink{--fg: var(--paper);background:var(--ink)}.btn--sm{min-height:42px;padding:0 16px;font-size:14px}.btn--lg{min-height:56px;padding:0 26px;font-size:16px}.btn--block{width:100%}@media(hover:hover){.btn:hover{transform:translateY(-2px)}.btn--copper:hover{box-shadow:0 14px 30px -10px #e2894a99,inset 0 1px #fff6}.btn--ghost:hover{border-color:#e2894a99;background:#e2894a14}}.cta-call{justify-content:flex-start;gap:14px;min-height:66px;padding:10px 22px;border-radius:18px;text-align:left}.cta-call .icon{width:26px;height:26px}.cta-call b{display:block;font:800 22px/1.02 var(--f-display);font-stretch:76%;text-transform:uppercase;letter-spacing:.01em}.cta-call small{display:block;margin-top:4px;font-size:13px;font-weight:600;opacity:.8}.link-arrow{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:650;font-size:15px;text-decoration:underline;text-decoration-color:#e2894a80;text-underline-offset:5px}.link-arrow:hover{color:var(--copper-2);text-decoration-color:currentColor}.link-arrow .icon{transition:transform .25s var(--ease)}.link-arrow:hover .icon{transform:translate(3px)}.tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;font:600 10px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;background:#e2894a29;color:var(--copper-2);border:1px solid rgba(226,137,74,.38)}.status{display:inline-flex;align-items:center;gap:8px;font:600 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);white-space:nowrap}.status i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}.status[data-state=open] i{background:var(--live);box-shadow:0 0 10px var(--live);color:var(--live)}.status[data-state=soon] i{background:var(--amber);box-shadow:0 0 10px var(--amber);color:var(--amber)}.status[data-state=closed] i{background:var(--rec)}.status--lg{font-size:12px}.status--lg i{width:10px;height:10px}.rec-dot,.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;flex:none;background:var(--rec);box-shadow:0 0 8px var(--rec)}.live-dot{background:var(--live);box-shadow:0 0 8px var(--live)}.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:max(8px,env(safe-area-inset-top)) var(--pad) 0}.nav__inner{max-width:calc(var(--max) + 40px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;height:58px;padding:0 7px 0 9px;border-radius:18px;border:1px solid transparent;transition:background-color .3s,border-color .3s}.nav.is-scrolled .nav__inner,.menu-open .nav__inner{background:#090c12f5;border-color:var(--line)}.brand{display:inline-flex;align-items:center;gap:10px;min-width:0}.brand__mark{width:36px;height:36px;border-radius:10px;flex:none;box-shadow:0 0 0 1px #e2894a66}.brand__text{display:flex;flex-direction:column;min-width:0;line-height:1.05}.brand__text b{font:800 15px/1 var(--f-display);font-stretch:82%;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}.brand__text small{margin-top:4px;font:600 9px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-2);white-space:nowrap}.nav__links,.nav__status,.nav__call-long{display:none}.nav__actions{display:flex;align-items:center;gap:8px}.nav__call{min-height:44px;padding:0 15px;font-size:14.5px}.burger{position:relative;flex:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:#ffffff0a}.burger span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}.burger span:first-child{top:16px}.burger span:last-child{top:25px}.menu-open .burger span:first-child{top:20.5px;transform:rotate(45deg)}.menu-open .burger span:last-child{top:20.5px;transform:rotate(-45deg)}@media(max-width:359px){.brand__text small{display:none}.nav__call{padding:0 12px}}@media(min-width:480px){.nav__call-long{display:inline}.nav__call-short{display:none}}@media(min-width:1100px){.nav{padding-top:14px}.nav__inner{height:64px;padding:0 10px 0 12px}.nav.is-scrolled .nav__inner{background:#090c12e6}.brand__mark{width:40px;height:40px}.brand__text b{font-size:16px}.nav__links{display:flex;gap:2px;padding:4px;border-radius:999px;background:#ffffff08;border:1px solid var(--line)}.nav__links a{padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--text-2);transition:color .2s,background-color .2s}.nav__links a:hover{color:var(--text);background:#ffffff0d}.nav__links a.is-active{color:var(--text);background:#e2894a29;box-shadow:inset 0 0 0 1px #e2894a59}.burger{display:none}}@media(min-width:1280px){.nav__status{display:inline-flex}}.menu{position:fixed;inset:0;z-index:45;overflow-y:auto;overscroll-behavior:contain;background:#07090e;opacity:0;transition:opacity .22s ease}.menu.is-open{opacity:1}.menu__inner{min-height:100%;display:flex;flex-direction:column;gap:12px;padding:calc(var(--nav-h) + 14px) var(--pad) max(24px,env(safe-area-inset-bottom))}.menu__call{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:linear-gradient(180deg,var(--copper-2),var(--copper));color:#1a0e06}.menu__call .icon{width:26px;height:26px}.menu__call b{display:block;font:800 22px/1.05 var(--f-display);font-stretch:78%;text-transform:uppercase}.menu__call small{display:block;margin-top:2px;font-size:13.5px;font-weight:600;opacity:.8}.menu__wa{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border-radius:14px;background:var(--wa);color:#03230f;font-weight:700}.menu__wa .icon{width:20px;height:20px}.menu__links{display:flex;flex-direction:column;margin-top:6px}.menu__links a{display:flex;align-items:baseline;gap:14px;min-height:52px;padding:12px 0;border-bottom:1px solid var(--line);font:800 30px/1 var(--f-display);font-stretch:68%;text-transform:uppercase;transform:translateY(8px);opacity:0;transition:opacity .3s,transform .35s var(--ease),color .2s}.menu.is-open .menu__links a{opacity:1;transform:none}.menu__links a:nth-child(2){transition-delay:.03s}.menu__links a:nth-child(3){transition-delay:.06s}.menu__links a:nth-child(4){transition-delay:.09s}.menu__links a:nth-child(5){transition-delay:.12s}.menu__links a:nth-child(6){transition-delay:.15s}.menu__links a:nth-child(7){transition-delay:.18s}.menu__links a span{font:600 11px var(--f-mono);color:var(--copper)}.menu__links a.is-active{color:var(--copper-2)}.menu__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:16px}.menu__foot a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:650;color:var(--copper-2)}html.menu-open,html.menu-open body{overflow:hidden}.hero{position:relative;overflow:hidden;padding:calc(var(--nav-h) + 16px) 0 40px}.hero__bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 45% at 90% 8%,rgba(226,137,74,.2),transparent 70%),radial-gradient(60% 40% at 0% 100%,rgba(42,111,201,.15),transparent 70%)}.hero__grid,.hero__glow{display:none}.hero__inner{position:relative;display:grid;gap:30px}.hero__kicker{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-bottom:14px}.hero__kicker .status{color:var(--text)}.hero__kicker-place{font:600 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-2)}.hero__title{margin-bottom:16px;font-size:clamp(46px,14.4vw,76px);font-stretch:66%;line-height:.88}.hero__title small{display:block;margin-bottom:12px;font:600 12px/1.45 var(--f-mono);letter-spacing:.06em;color:var(--text-2)}.hero__line{display:block;overflow:hidden;padding-bottom:.05em;margin-bottom:-.05em}.hero__line>span{display:inline-block}.hero__title em{font-size:1.13em}.hero__lead{max-width:540px;font-size:16.5px;color:var(--text-2)}.hero__lead strong{color:var(--text);font-weight:650}.hero__ctas{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px}.hero__call{width:100%}.hero__ctas .btn--wa{flex:1 1 auto}.hero__proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:20px}.hero__proof li{display:flex;align-items:baseline;gap:7px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#ffffff06;font-size:13px;line-height:1.2;color:var(--text-2)}.hero__proof b{font:800 19px/1 var(--f-display);font-stretch:72%;color:var(--text);white-space:nowrap}.hero__proof b span{margin-left:2px;font-size:.8em;color:#f5b301}.hero__wall{position:relative;max-width:620px}.wall__frame{padding:6px;border-radius:14px;background:linear-gradient(160deg,#1b2331,#0a0e15 60%);border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 60px -30px #000000e6}.wall__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}.feed{position:relative;aspect-ratio:4 / 3;overflow:hidden;border-radius:4px;background:#0d1219}.feed:nth-child(n+5){display:none}.feed img,.feed video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.feed:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}.feed__hud{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;padding:6px 7px;font:600 9px/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:#ffffffeb;text-shadow:0 1px 2px #000}.feed__rec{justify-self:end;display:inline-flex;align-items:center;gap:4px;color:#ff9a92}.feed__rec:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--rec)}.feed__name{grid-row:3;align-self:end}.feed__hud time{grid-row:3;justify-self:end;align-self:end;font-variant-numeric:tabular-nums}.wall__bar{display:flex;justify-content:space-between;margin-top:10px;padding:0 4px;font:600 9.5px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.wall__bar span{display:inline-flex;align-items:center;gap:7px}.hero__badge{display:none}@media(min-width:600px){.wall__grid{grid-template-columns:repeat(3,minmax(0,1fr))}.feed:nth-child(n+5){display:block}.hero__proof{grid-template-columns:repeat(4,auto);justify-content:start}}@media(min-width:1100px){.hero{display:flex;align-items:center;min-height:min(100svh,980px);padding:calc(var(--nav-h) + 30px) 0 60px}.hero__grid{display:block;position:absolute;inset:0;background-image:linear-gradient(rgba(236,230,220,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(236,230,220,.045) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 70%)}.hero__inner{grid-template-columns:1.02fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}.hero__title{font-size:clamp(64px,7.2vw,124px)}.hero__lead{font-size:18.5px}.hero__call{width:auto}.hero__ctas .btn--wa{flex:0 0 auto}.hero__wall{max-width:none;padding:36px 0 24px;perspective:1600px}.wall{transform:rotateY(calc(-13deg + var(--ry, 0deg))) rotateX(calc(5deg + var(--rx, 0deg)));transition:transform .8s var(--ease)}.wall__frame{padding:10px;border-radius:18px;box-shadow:0 70px 120px -40px #000000f2,0 0 110px -30px var(--glow)}.wall__grid{gap:6px}.hero__badge{position:absolute;top:0;right:-10px;z-index:2;display:grid;place-items:center;width:132px;height:132px;border-radius:50%;background:radial-gradient(circle,#121a27 58%,transparent 59%)}.hero__badge svg{position:absolute;inset:0}.hero__badge text{fill:var(--copper-2);font:600 11.5px var(--f-mono);letter-spacing:2.4px}.hero__badge span{font:800 38px/.8 var(--f-display);font-stretch:70%;text-align:center}.hero__badge sup{font-size:.5em;color:var(--copper);vertical-align:.8em}.hero__badge small{display:block;margin-top:6px;font:600 9px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}}.page-hero{position:relative;overflow:hidden;padding:calc(var(--nav-h) + 20px) 0 44px}.page-hero__inner{position:relative;display:grid;gap:28px;align-items:end}.page-hero__title{margin:16px 0 18px;font-size:clamp(40px,12.4vw,66px);font-stretch:64%;line-height:.9}.page-hero__title em{font-size:1.1em}.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:600 10.5px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.crumbs a{padding:6px 0}.crumbs a:hover,.crumbs [aria-current]{color:var(--copper-2)}.page-hero__ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.page-hero__ctas .btn{flex:1 1 100%}.page-hero__media{position:relative;overflow:hidden;aspect-ratio:16 / 11;border-radius:var(--r-lg);border:1px solid var(--line-2);background:var(--bg-2)}.page-hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.page-hero__media:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 60%,rgba(6,8,12,.6))}.page-hero__media .feed__hud{padding:14px 16px;font-size:10px}.page-hero--cover{display:flex;align-items:flex-end;min-height:min(88svh,820px);padding-top:calc(var(--nav-h) + 90px)}.page-hero__cover{position:absolute;inset:0;background:#080b10}.page-hero__cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}.page-hero__cover:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px),linear-gradient(180deg,rgba(6,8,12,.5),rgba(6,8,12,.15) 35%,rgba(6,8,12,.94) 88%,var(--bg))}.page-hero--cover .page-hero__inner{z-index:1;width:100%}.cover-hud{position:absolute;z-index:1;top:calc(var(--nav-h) + 18px);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;gap:12px;font:600 10px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#ffffffe0;pointer-events:none}.cover-hud span{display:inline-flex;align-items:center;gap:8px}@media(max-width:599px){.cover-hud span:last-child{display:none}}@media(min-width:600px){.page-hero__ctas .btn{flex:0 0 auto}}@media(min-width:820px){.page-hero__title{font-size:clamp(56px,7.8vw,128px);line-height:.86}}@media(min-width:1100px){.page-hero{padding:calc(var(--nav-h) + clamp(44px,6vw,96px)) 0 clamp(64px,7vw,110px)}.page-hero .hero__grid{display:block;position:absolute;inset:0;background-image:linear-gradient(rgba(236,230,220,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(236,230,220,.04) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 15%,transparent 65%);mask-image:radial-gradient(ellipse at 70% 30%,#000 15%,transparent 65%)}.page-hero__inner{grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,88px)}.page-hero--solo .page-hero__inner{grid-template-columns:1fr}.page-hero__media{aspect-ratio:4 / 5}}.dock{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:40;display:flex;gap:8px;padding:7px;border-radius:20px;background:#090c12f7;border:1px solid var(--line-2);box-shadow:0 18px 40px -12px #000;transition:transform .35s var(--ease),visibility .35s}.js .dock{transform:translateY(calc(100% + 24px));visibility:hidden}.dock-on .dock{transform:none;visibility:visible}html.menu-open .dock,body:has(dialog[open]) .dock,body:has(input:focus,textarea:focus,select:focus) .dock{transform:translateY(calc(100% + 24px));visibility:hidden}.dock__call{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:14px;background:linear-gradient(180deg,var(--copper-2),var(--copper));color:#1a0e06}.dock__call .icon{width:24px;height:24px}.dock__call b{display:block;font:800 18px/1 var(--f-display);font-stretch:80%;text-transform:uppercase}.dock__call small{display:block;margin-top:2px;font-size:13px;font-weight:700;opacity:.82}.dock__wa{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:82px;min-height:54px;border-radius:14px;background:var(--wa);color:#03230f;font-size:11.5px;font-weight:700}.dock__wa .icon{width:22px;height:22px}.fab{display:none}@media(min-width:1100px){.dock{display:none}.fab{position:fixed;right:24px;bottom:24px;z-index:40;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;box-shadow:0 12px 30px -8px #25d3668c;transition:transform .3s var(--ease)}.fab:hover{transform:scale(1.07)}.fab .icon{width:28px;height:28px}.fab__tip{position:absolute;right:70px;padding:8px 12px;border-radius:10px;background:var(--bg-2);border:1px solid var(--line-2);color:var(--text);font-size:13.5px;font-weight:600;white-space:nowrap;opacity:0;transform:translate(6px);transition:opacity .25s,transform .3s var(--ease);pointer-events:none}.fab:hover .fab__tip,.fab:focus-visible .fab__tip{opacity:1;transform:none}}main>section:nth-of-type(n+3){content-visibility:auto;contain-intrinsic-size:auto 900px}main>aside{content-visibility:auto;contain-intrinsic-size:auto 280px}.footer{content-visibility:auto;contain-intrinsic-size:auto 760px}@media(prefers-reduced-motion:no-preference){.hero__line>span{animation:line-in .85s var(--ease) both}.hero__line:nth-of-type(2)>span{animation-delay:.07s}.hero__line:nth-of-type(3)>span{animation-delay:.14s}[data-hero-in]{animation:fade-up .7s var(--ease) .16s both}.hero__ctas[data-hero-in],.page-hero__ctas[data-hero-in]{animation-delay:.24s}.hero__proof[data-hero-in]{animation-delay:.32s}.feed{animation:power-on .6s var(--ease) both}.feed:nth-child(1){animation-delay:.2s}.feed:nth-child(2){animation-delay:.32s}.feed:nth-child(3){animation-delay:.26s}.feed:nth-child(4){animation-delay:.4s}.feed:nth-child(5){animation-delay:.36s}.feed:nth-child(6){animation-delay:.46s}.wall .feed.is-switching img,.wall.is-live .feed.is-switching img{animation:switch .42s steps(3) 1}.is-live .feed__rec:before,.is-live .rec-dot,.is-live.rec-dot{animation:blink 1.4s steps(2,jump-none) infinite}.status--pulse[data-state=open] i:after,.status--pulse[data-state=soon] i:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid currentColor;animation:ping 2.4s var(--ease) infinite}.cta-call .icon,.dock__call .icon{animation:ring 5s ease-in-out 2.5s infinite}@media(min-width:1100px){.wall.is-live .feed img{animation:kenburns 16s ease-in-out infinite alternate}.wall.is-live~.hero__badge svg{animation:spin 24s linear infinite}}.motion [data-reveal]:not(.is-in),.motion [data-stagger]>:not(.is-in){opacity:0;translate:0 18px}.motion .is-revealing{transition:opacity .6s var(--ease),translate .75s var(--ease);transition-delay:var(--d, 0s)}}@keyframes line-in{0%{transform:translateY(105%)}}@keyframes fade-up{0%{opacity:0;transform:translateY(14px)}}@keyframes power-on{0%{opacity:0;transform:scaleY(.03)}55%{opacity:1;transform:scaleY(1)}}@keyframes switch{33%{opacity:.6;transform:translate(-3%) skew(-6deg)}66%{opacity:.8;transform:translate(2%) skew(4deg)}}@keyframes blink{50%{opacity:.25}}@keyframes ping{0%{transform:scale(.6);opacity:.9}to{transform:scale(2.3);opacity:0}}@keyframes ring{0%,86%,to{transform:rotate(0)}88%{transform:rotate(-14deg)}90%{transform:rotate(12deg)}92%{transform:rotate(-10deg)}94%{transform:rotate(8deg)}96%{transform:rotate(-4deg)}}@keyframes kenburns{0%{transform:scale(1.02)}to{transform:scale(1.14) translate(-2%,-1.5%)}}@keyframes spin{to{transform:rotate(360deg)}}</style>
+  <link rel="stylesheet" href="/assets/build/site.d35bcc7013.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/assets/build/site.d35bcc7013.css"></noscript>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__NT)document.documentElement.classList.add('dock-on')},4000)</script>
+  <script type="module" src="/assets/build/app.a180bf1a65.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -104,6 +92,7 @@
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M7 5h3.6v14H7zM13.4 5H17v14h-3.4z"/></symbol>
     <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
     <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></symbol>
     <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
@@ -136,93 +125,50 @@
 </svg>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="boot" aria-hidden="true" data-boot>
-  <div class="boot__half boot__half--top"></div>
-  <div class="boot__half boot__half--bottom"></div>
-  <div class="boot__core">
-    <svg class="boot__traces" viewBox="0 0 600 360" fill="none">
-      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path pathLength="1" d="M252 150H170l-30-30H60"/>
-        <path pathLength="1" d="M252 180H120l-24 24H30"/>
-        <path pathLength="1" d="M252 210H190l-40 40h-70"/>
-        <path pathLength="1" d="M348 150h82l30-30h110"/>
-        <path pathLength="1" d="M348 180h132l24 24h66"/>
-        <path pathLength="1" d="M348 210h62l40 40h70"/>
-        <path pathLength="1" d="M300 132V70l-26-26V14"/>
-        <path pathLength="1" d="M300 228v62l26 26v30"/>
-      </g>
-      <g fill="currentColor">
-        <circle cx="60" cy="120" r="4"/><circle cx="30" cy="204" r="4"/><circle cx="80" cy="250" r="4"/>
-        <circle cx="570" cy="120" r="4"/><circle cx="570" cy="204" r="4"/><circle cx="520" cy="250" r="4"/>
-        <circle cx="274" cy="14" r="4"/><circle cx="326" cy="346" r="4"/>
-      </g>
-    </svg>
-    <div class="boot__logo"><img src="/assets/img/nt-mark.webp" alt="" width="96" height="96"></div>
-    <div class="boot__log mono">
-      <p><span>NT//GROUP</span><span>SYSTEM CHECK</span></p>
-      <p data-boot-line><span>CAMERAS</span><span class="ok">ONLINE</span></p>
-      <p data-boot-line><span>NETWORK</span><span class="ok">ONLINE</span></p>
-      <p data-boot-line><span>HONEST PRICING</span><span class="ok">ENABLED</span></p>
-    </div>
-    <div class="boot__bar"><span></span></div>
-    <div class="boot__pct mono"><span data-boot-pct>000</span>%</div>
-  </div>
-</div>
-
-<div class="grain" aria-hidden="true"></div>
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
-<div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><span class="cursor__label"></span></span></div>
-
 <header class="nav" data-nav>
   <div class="nav__inner">
     <a class="brand" href="/index.html" aria-label="Nick Technology Group, home">
-      <span class="brand__mark"><img src="/assets/img/nt-mark.webp" alt="" width="40" height="40"></span>
-      <span class="brand__text"><b>Nick Technology</b><small>Group · Portmore</small></span>
+      <img class="brand__mark" src="/assets/img/nt-mark.webp" alt="" width="40" height="40">
+      <span class="brand__text"><b>Nick Technology</b><small>Portmore · Est. 2005</small></span>
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <span class="nav__pill" aria-hidden="true"></span>
       <a href="/index.html" >Home</a>
-      <a href="/about.html" >About</a>
       <a href="/services.html" class="is-active" aria-current="page">Services</a>
-      <a href="/gallery.html" >Gallery</a>
       <a href="/reviews.html" >Reviews</a>
+      <a href="/gallery.html" >Gallery</a>
+      <a href="/about.html" >About</a>
       <a href="/blog.html" >Blog</a>
       <a href="/contact.html" >Contact</a>
     </nav>
 
     <div class="nav__actions">
-      <span class="status" data-status><i></i><span data-status-text>Checking hours</span></span>
-      <a class="btn btn--copper btn--sm nav__call" href="tel:+18764655975" aria-label="Call Nick Technology" data-magnetic>
-        <svg class="icon"><use href="#i-call"/></svg>
-        <span class="btn__label" data-text="(876) 465-5975">(876) 465-5975</span>
+      <span class="status nav__status" data-status><i></i><span data-status-text>Mon–Sat 8:30–6:30</span></span>
+      <a class="btn btn--copper nav__call" href="tel:+18764655975" data-track="call_header" aria-label="Call Nick Technology at 876-465-5975">
+        <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg><span class="nav__call-short">Call</span><span class="nav__call-long">(876) 465-5975</span>
       </a>
-      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-burger>
-        <span></span><span></span>
-      </button>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-burger><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<div class="menu" id="menu" data-menu aria-hidden="true">
-  <div class="menu__bg" aria-hidden="true"></div>
+<div class="menu" id="menu" data-menu hidden>
   <div class="menu__inner">
-    <p class="menu__label mono">Menu / Navigate</p>
+    <a class="menu__call" href="tel:+18764655975" data-track="call_menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>
+      <span><b>Call Nicholas</b><small>(876) 465-5975 · he answers his own phone</small></span>
+    </a>
+    <a class="menu__wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_menu"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp Nicholas</a>
     <nav class="menu__links" aria-label="Mobile">
-      <a href="/index.html" ><span class="mono">01</span>Home</a>
-      <a href="/about.html" ><span class="mono">02</span>About</a>
-      <a href="/services.html" class="is-active" aria-current="page"><span class="mono">03</span>Services</a>
-      <a href="/gallery.html" ><span class="mono">04</span>Gallery</a>
-      <a href="/reviews.html" ><span class="mono">05</span>Reviews</a>
-      <a href="/blog.html" ><span class="mono">06</span>Blog</a>
-      <a href="/contact.html" ><span class="mono">07</span>Contact</a>
+      <a href="/index.html" ><span>01</span>Home</a>
+      <a href="/services.html" class="is-active" aria-current="page"><span>02</span>Services</a>
+      <a href="/reviews.html" ><span>03</span>Reviews</a>
+      <a href="/gallery.html" ><span>04</span>Gallery</a>
+      <a href="/about.html" ><span>05</span>About</a>
+      <a href="/blog.html" ><span>06</span>Blog</a>
+      <a href="/contact.html" ><span>07</span>Contact</a>
     </nav>
-    <div class="menu__quick">
-      <a href="tel:+18764655975"><svg class="icon"><use href="#i-call"/></svg>Call</a>
-      <a href="https://wa.me/18764655975" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>
-      <a href="https://maps.google.com/?q=Nick+technology+group+Portmore" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>Directions</a>
-    </div>
-    <p class="menu__foot mono"><span class="status" data-status><i></i><span data-status-text>Checking hours</span></span> · Mon–Sat 8:30–6:30</p>
+    <p class="menu__foot"><span class="status" data-status><i></i><span data-status-text>Mon–Sat 8:30–6:30</span></span><a href="https://maps.google.com/?q=Nick+technology+group+Portmore" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a></p>
   </div>
 </div>
 
@@ -241,15 +187,15 @@
       </h1>
       <p class="lead" data-hero-in>From dead laptops to full CCTV systems. One shop, one fair price, one person who actually cares. Every job starts with a free diagnosis.</p>
     </div>
-    <div class="callout guarantee" data-hero-in>
+    <div class="callout guarantee" data-hero-cta data-hero-in>
       <div class="callout__main">
-        <span class="callout__icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+        <span class="callout__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
         <div>
           <h2>Free diagnostics &amp; 30-day guarantee</h2>
           <p>You get the exact price before we touch anything. If it isn't fixed right, we make it right.</p>
         </div>
       </div>
-      <a class="btn btn--copper" href="/contact.html" data-magnetic><span class="btn__label" data-text="Get a free quote">Get a free quote</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--copper btn--lg" href="tel:+18764655975" data-track="call_hero"><svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>Call (876) 465-5975</a>
     </div>
   </div>
 </section>
@@ -258,137 +204,151 @@
   <div class="container">
     <div class="filter-bar" data-filter-bar="svc-list" role="group" aria-label="Filter services">
       <button type="button" data-filter="all" aria-pressed="true">All services</button>
-      <button type="button" data-filter="repair" aria-pressed="false"><svg class="icon"><use href="#i-wrench"/></svg>Repair</button>
-      <button type="button" data-filter="security" aria-pressed="false"><svg class="icon"><use href="#i-cctv"/></svg>Security</button>
-      <button type="button" data-filter="smart-home" aria-pressed="false"><svg class="icon"><use href="#i-tv"/></svg>Smart home</button>
-      <button type="button" data-filter="power" aria-pressed="false"><svg class="icon"><use href="#i-bolt"/></svg>Power &amp; network</button>
+      <button type="button" data-filter="repair" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg>Repair</button>
+      <button type="button" data-filter="security" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-cctv"/></svg>Security</button>
+      <button type="button" data-filter="smart-home" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-tv"/></svg>Smart home</button>
+      <button type="button" data-filter="power" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg>Power &amp; network</button>
       <span class="filter-bar__count mono"><b>15</b> services · 4 groups</span>
     </div>
 
     <div id="svc-list">
       <div class="svc-group" id="repair" data-cat="repair">
         <div class="svc-group__head"><h2>Repair &amp; <em>revival</em></h2><p class="mono">05 services</p></div>
-        <div class="svc-row" data-preview-img="assets/img/phones-bench.webp">
+        <div class="svc-row" data-preview-img="/assets/img/phones-bench.webp">
           <span class="svc-row__num mono">01</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-phone"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
           <h3><a href="/phone-repair-jamaica.html">Phone repair</a></h3>
           <p>Cracked screens, dying batteries, charging-port trouble. We fix Androids and iPhones, often while you wait.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20phone%20repair." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20phone%20repair." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/shop-laptop.webp">
+        <div class="svc-row" data-preview-img="/assets/img/shop-laptop.webp">
           <span class="svc-row__num mono">02</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-laptop"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-laptop"/></svg></span>
           <h3>Laptop repair &amp; revival</h3>
           <p>Won't turn on? Running slow? Broken screen? We diagnose for free and tell you straight what it'll cost.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20laptop%20repair." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20laptop%20repair." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
         <div class="svc-row">
           <span class="svc-row__num mono">03</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-drive"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-drive"/></svg></span>
           <h3>Data recovery</h3>
           <p>Deleted files, crashed hard drives, corrupted memory cards. We've pulled precious files back from the brink for years.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20data%20recovery." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20data%20recovery." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
         <div class="svc-row">
           <span class="svc-row__num mono">04</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-bug"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-bug"/></svg></span>
           <h3>Virus removal</h3>
           <p>Viruses, spyware and ransomware cleaned out safely, without losing the files that matter.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20think%20my%20computer%20has%20a%20virus." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20think%20my%20computer%20has%20a%20virus." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/shop-gaming-setup.webp">
+        <div class="svc-row" data-preview-img="/assets/img/shop-gaming-setup.webp">
           <span class="svc-row__num mono">05</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-chip"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-chip"/></svg></span>
           <h3>PC upgrades</h3>
           <p>More RAM, a faster SSD, a better GPU. Make the machine you have up to 3× faster for a fraction of the price of a new one.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20to%20upgrade%20my%20PC." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20to%20upgrade%20my%20PC." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
       </div>
 
       <div class="svc-group" id="security" data-cat="security">
         <div class="svc-group__head"><h2>Security &amp; <em>access</em></h2><p class="mono">05 services</p></div>
-        <div class="svc-row" data-preview-img="assets/img/wall-live-sm.webp">
+        <div class="svc-row" data-preview-img="/assets/img/wall-live-sm.webp">
           <span class="svc-row__num mono">06</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-cctv"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-cctv"/></svg></span>
           <h3><a href="/cctv-installation-jamaica.html">CCTV camera installation</a></h3>
           <p>Professional camera systems, installed properly, with remote access set up so you can check your home or business from your phone.</p>
-          <div class="svc-row__cta"><span class="tag mono">Free site visit</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20CCTV%20installation." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Free site visit</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20CCTV%20installation." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/install-ladder-sm.webp">
+        <div class="svc-row" data-preview-img="/assets/img/install-ladder-sm.webp">
           <span class="svc-row__num mono">07</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-home-shield"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-home-shield"/></svg></span>
           <h3>Full home security systems</h3>
           <p>Cameras, alarms, motion sensors and app control. One package, installed properly from start to finish.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20home%20security%20system." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20a%20home%20security%20system." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
         <div class="svc-row">
           <span class="svc-row__num mono">08</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-gate"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-gate"/></svg></span>
           <h3>Automatic gate openers</h3>
           <p>Residential and commercial. Installed, programmed and serviced. Drive up, the gate opens, done.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20an%20automatic%20gate%20opener." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20an%20automatic%20gate%20opener." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
         <div class="svc-row">
           <span class="svc-row__num mono">09</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-intercom"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-intercom"/></svg></span>
           <h3>Intercom systems</h3>
           <p>See and speak to visitors before they come in. Solutions for homes and offices.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20an%20intercom%20system." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20an%20intercom%20system." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/smart-lock-installed.webp">
+        <div class="svc-row" data-preview-img="/assets/img/smart-lock-installed.webp">
           <span class="svc-row__num mono">10</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-keypad"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-keypad"/></svg></span>
           <h3>Access control systems</h3>
           <p>Keycard, keypad and fob entry. Control exactly who goes where, with a log of every entry.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20access%20control." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20a%20quote%20for%20access%20control." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
       </div>
 
       <div class="svc-group" id="smart-home" data-cat="smart-home">
         <div class="svc-group__head"><h2>Smart home &amp; <em>office</em></h2><p class="mono">03 services</p></div>
-        <div class="svc-row" data-preview-img="assets/img/shop-smart-tv.webp">
+        <div class="svc-row" data-preview-img="/assets/img/shop-smart-tv.webp">
           <span class="svc-row__num mono">11</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-tv"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-tv"/></svg></span>
           <h3>Smart TV setup</h3>
           <p>Wall mounting, wiring, streaming apps and network setup. Your TV works the moment we leave.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20help%20setting%20up%20a%20smart%20TV." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27d%20like%20help%20setting%20up%20a%20smart%20TV." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/shop-printers.webp">
+        <div class="svc-row" data-preview-img="/assets/img/shop-printers.webp">
           <span class="svc-row__num mono">12</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-printer"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-printer"/></svg></span>
           <h3>Printer setup</h3>
           <p>Network configuration, ink issues and driver problems. We make printing boring again.</p>
-          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20a%20printer." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Custom quote</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20a%20printer." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
-        <div class="svc-row" data-preview-img="assets/img/shop-tablet.webp">
+        <div class="svc-row" data-preview-img="/assets/img/shop-tablet.webp">
           <span class="svc-row__num mono">13</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-tablet"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-tablet"/></svg></span>
           <h3>Tablet sales &amp; setup</h3>
           <p>New tablets sold with full setup included, and honest help choosing the right one.</p>
-          <div class="svc-row__cta"><span class="tag mono">In store</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20what%20tablets%20do%20you%20have%20in%20stock%3F" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Ask">Ask</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">In store</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20what%20tablets%20do%20you%20have%20in%20stock%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask</a></div>
         </div>
       </div>
 
       <div class="svc-group" id="power" data-cat="power">
         <div class="svc-group__head"><h2>Power &amp; <em>network</em></h2><p class="mono">02 services</p></div>
-        <div class="svc-row" data-preview-img="assets/img/forza-titan-700-sm.webp">
+        <div class="svc-row" data-preview-img="/assets/img/forza-titan-700-sm.webp">
           <span class="svc-row__num mono">14</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-power"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg></span>
           <h3>Portable power solutions</h3>
           <p>Forza Titan power stations from 100W to 1200W, solar panels, battery backup and off-grid charging. Stay powered anywhere in Jamaica, even when JPS isn't.</p>
-          <div class="svc-row__cta"><span class="tag mono">In store</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27m%20interested%20in%20a%20portable%20power%20station." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Ask">Ask</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">In store</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%27m%20interested%20in%20a%20portable%20power%20station." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask</a></div>
         </div>
         <div class="svc-row">
           <span class="svc-row__num mono">15</span>
-          <span class="svc-row__icon"><svg class="icon"><use href="#i-wifi"/></svg></span>
+          <span class="svc-row__icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
           <h3><a href="/networking-solutions-jamaica.html">Networking &amp; Wi-Fi</a></h3>
           <p>Wi-Fi that reaches every room, tidy Cat6 cabling and business networks designed to be fast, secure and manageable.</p>
-          <div class="svc-row__cta"><span class="tag mono">Free assessment</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20my%20network." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Quote">Quote</span></a></div>
+          <div class="svc-row__cta"><span class="tag mono">Free assessment</span><a class="btn btn--ghost btn--sm" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20my%20network." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quote</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<aside class="cta-inline" aria-label="Call Nick Technology">
+  <div class="container cta-inline__inner" data-reveal>
+    <div class="cta-inline__copy">
+      <p class="cta-inline__title">Not sure what's wrong? <em>Just call.</em></p>
+      <p class="cta-inline__text">Describe the problem and Nicholas will tell you the next step. Diagnosis is free, and you get the exact price before any work starts.</p>
+    </div>
+    <div class="cta-inline__actions">
+      <a class="btn btn--copper btn--lg" href="tel:+18764655975" data-track="call_inline"><svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>Call (876) 465-5975</a>
+      <a class="btn btn--ghost btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_inline"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</aside>
+
 
 <div class="hover-preview" data-hover-preview aria-hidden="true"><img src="/assets/img/phones-bench.webp" alt=""></div>
 
@@ -396,80 +356,70 @@
   <div class="container">
     <div class="sec-head sec-head--split">
       <div>
-        <p class="eyebrow mono"><span class="idx">↳</span> Go deeper</p>
-        <h2 class="h2" data-split>Our <em>specialities.</em></h2>
+        <p class="eyebrow"><span class="idx">↳</span> Go deeper</p>
+        <h2 class="h2" data-reveal>Our <em>specialities.</em></h2>
       </div>
       <p class="sec-head__aside" data-reveal>Detailed pages for the jobs we're asked about most, with pricing guidance, what's included and real work.</p>
     </div>
     <div class="specialty" data-stagger>
-      <a class="spec-card" href="/cctv-installation-jamaica.html" data-cursor="view">
+      <a class="spec-card" href="/cctv-installation-jamaica.html">
         <img src="/assets/img/wall-coast-sm.webp" alt="" width="800" height="389" loading="lazy">
         <span class="tag mono">Security</span>
         <h3>CCTV installation</h3>
         <p>From 4-camera homes to enterprise video walls, with phone access on every system.</p>
-        <span class="link-arrow">Explore CCTV <svg class="icon"><use href="#i-arrow-r"/></svg></span>
+        <span class="link-arrow">Explore CCTV <svg class="icon" aria-hidden="true"><use href="#i-arrow-r"/></svg></span>
       </a>
       <a class="spec-card" href="/phone-repair-jamaica.html">
-        <span class="spec-card__art" aria-hidden="true"><svg class="icon"><use href="#i-screen"/></svg></span>
+        <span class="spec-card__art" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-screen"/></svg></span>
         <span class="tag mono">Repair</span>
         <h3>Phone repair</h3>
         <p>Screens, batteries, ports and water damage. Most screen swaps take around 30 minutes.</p>
-        <span class="link-arrow">Explore phone repair <svg class="icon"><use href="#i-arrow-r"/></svg></span>
+        <span class="link-arrow">Explore phone repair <svg class="icon" aria-hidden="true"><use href="#i-arrow-r"/></svg></span>
       </a>
       <a class="spec-card" href="/networking-solutions-jamaica.html">
-        <span class="spec-card__art" aria-hidden="true"><svg class="icon"><use href="#i-network"/></svg></span>
+        <span class="spec-card__art" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg></span>
         <span class="tag mono">Network</span>
         <h3>Networking</h3>
         <p>Wi-Fi with no dead zones, structured cabling and secure business networks.</p>
-        <span class="link-arrow">Explore networking <svg class="icon"><use href="#i-arrow-r"/></svg></span>
+        <span class="link-arrow">Explore networking <svg class="icon" aria-hidden="true"><use href="#i-arrow-r"/></svg></span>
       </a>
     </div>
 
     <div class="callout" style="margin-top: 16px;" data-reveal>
       <div class="callout__main">
-        <span class="callout__icon"><svg class="icon"><use href="#i-plus"/></svg></span>
+        <span class="callout__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
         <div>
           <h3>Don't see what you need? Just ask.</h3>
           <p>If it has a wire, a circuit board or connects to the internet, we can probably fix it or set it up.</p>
         </div>
       </div>
-      <a class="btn btn--wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20can%20you%20help%20me%20with%20something%3F" target="_blank" rel="noopener" data-magnetic><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Ask Nicholas">Ask Nicholas</span></a>
+      <a class="btn btn--wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20can%20you%20help%20me%20with%20something%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask Nicholas</a>
     </div>
   </div>
 </section>
 
-<section class="cta-band" aria-labelledby="cta-title">
-  <div class="cta-band__bg" aria-hidden="true">
-    <svg class="cta-band__traces" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" fill="none">
-      <g stroke="currentColor" stroke-width="1.2">
-        <path pathLength="1" d="M0 120h260l40 40h180"/>
-        <path pathLength="1" d="M0 380h180l60-60h160"/>
-        <path pathLength="1" d="M1200 90H930l-50 50H760"/>
-        <path pathLength="1" d="M1200 400H980l-40-40H790"/>
-        <path pathLength="1" d="M420 500v-60l30-30h90"/>
-        <path pathLength="1" d="M780 0v70l-30 30h-90"/>
-      </g>
-      <g fill="currentColor"><circle cx="480" cy="160" r="4"/><circle cx="400" cy="320" r="4"/><circle cx="760" cy="140" r="4"/><circle cx="790" cy="360" r="4"/><circle cx="540" cy="410" r="4"/><circle cx="660" cy="100" r="4"/></g>
-    </svg>
-  </div>
+<section class="cta-band" aria-labelledby="cta-title" data-live>
+  <svg class="cta-band__traces" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.2">
+      <path pathLength="1" d="M0 120h260l40 40h180"/>
+      <path pathLength="1" d="M0 380h180l60-60h160"/>
+      <path pathLength="1" d="M1200 90H930l-50 50H760"/>
+      <path pathLength="1" d="M1200 400H980l-40-40H790"/>
+    </g>
+    <g fill="currentColor"><circle cx="480" cy="160" r="4"/><circle cx="400" cy="320" r="4"/><circle cx="760" cy="140" r="4"/><circle cx="790" cy="360" r="4"/></g>
+  </svg>
   <div class="container cta-band__inner">
-    <p class="eyebrow mono"><span class="dot-live"></span> Ready when you are</p>
-    <h2 class="display" id="cta-title" data-split>Stop putting up with <em>bad tech service.</em></h2>
-    <p class="cta-band__lead">One call to Nicholas and you'll wonder why you went anywhere else. Fair price, honest work, guaranteed results.</p>
-    <div class="cta-band__actions">
-      <a class="orb" href="tel:+18764655975" data-magnetic aria-label="Call Nicholas at 876-465-5975">
-        <svg class="orb__ring" viewBox="0 0 200 200" aria-hidden="true">
-          <defs><path id="orb-circle" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs>
-          <text><textPath href="#orb-circle">CALL NICHOLAS · 876-465-5975 · CALL NICHOLAS · 876-465-5975 ·</textPath></text>
-        </svg>
-        <span class="orb__core"><svg class="icon"><use href="#i-call"/></svg></span>
+    <p class="cta-band__status"><span class="status status--pulse" data-status><i></i><span data-status-text>Mon–Sat 8:30–6:30</span></span><span data-status-cta>Call Nicholas directly</span></p>
+    <h2 class="display" id="cta-title" data-reveal>Stop putting up with <em>bad tech service.</em></h2>
+    <p class="cta-band__lead" data-reveal>One call to Nicholas and you'll wonder why you went anywhere else. Fair price, honest work, guaranteed results.</p>
+    <div class="cta-band__actions" data-reveal>
+      <a class="btn btn--copper cta-call cta-band__call" href="tel:+18764655975" data-track="call_band">
+        <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>
+        <span><b>Call (876) 465-5975</b><small>Free diagnosis · no obligation</small></span>
       </a>
-      <div class="cta-band__buttons">
-        <a class="btn btn--copper btn--lg" href="tel:+18764655975" data-magnetic><svg class="icon"><use href="#i-call"/></svg><span class="btn__label" data-text="Call 876-465-5975">Call 876-465-5975</span></a>
-        <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-magnetic><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="WhatsApp us">WhatsApp us</span></a>
-      </div>
+      <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_band"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
     </div>
-    <ul class="cta-band__fine mono">
+    <ul class="cta-band__fine">
       <li>Free diagnostics</li><li>30-day guarantee</li><li>No hidden fees</li><li>Serving all Jamaica</li>
     </ul>
   </div>
@@ -479,77 +429,72 @@
 </main>
 
 <footer class="footer">
-  <div class="footer__glow" aria-hidden="true"></div>
   <div class="container footer__grid">
     <div class="footer__brand">
       <a class="brand" href="/index.html" aria-label="Nick Technology Group, home">
-        <span class="brand__mark"><img src="/assets/img/nt-mark.webp" alt="" width="40" height="40" loading="lazy"></span>
+        <img class="brand__mark" src="/assets/img/nt-mark.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
         <span class="brand__text"><b>Nick Technology</b><small>NT Group · Est. 2005</small></span>
       </a>
       <p>Honest tech repair and security installs from Greater Portmore, serving all of Jamaica since 2005.</p>
       <div class="footer__social">
-        <a href="https://www.facebook.com/NickTechnology/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
-        <a href="https://www.instagram.com/nicktechnology/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
-        <a href="https://wa.me/18764655975" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg></a>
+        <a href="https://www.facebook.com/NickTechnology/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="https://www.instagram.com/nicktechnology/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="https://wa.me/18764655975" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
       </div>
     </div>
 
-    <div class="footer__col">
-      <p class="footer__title mono">Services</p>
-      <a href="/services.html">Computer repair</a>
-      <a href="/phone-repair-jamaica.html">Phone repair</a>
-      <a href="/cctv-installation-jamaica.html">CCTV installation</a>
-      <a href="/services.html#security">Home security</a>
-      <a href="/services.html#smart-home">Smart TV setup</a>
-      <a href="/networking-solutions-jamaica.html">Networking</a>
-    </div>
-
-    <div class="footer__col">
-      <p class="footer__title mono">Company</p>
-      <a href="/about.html">About Nicholas</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/blog.html">Blog &amp; tips</a>
-      <a href="/contact.html">Contact</a>
-    </div>
-
     <div class="footer__col footer__contact">
-      <p class="footer__title mono">Get in touch</p>
-      <a href="tel:+18764655975" class="footer__big">876-465-5975</a>
-      <a href="tel:+18765354984">876-535-4984 <span class="muted">(backup)</span></a>
+      <p class="footer__title">Call or visit</p>
+      <a href="tel:+18764655975" class="footer__big" data-track="call_footer">(876) 465-5975</a>
+      <a href="tel:+18765354984" data-track="call_footer_backup">(876) 535-4984 <span class="muted">backup</span></a>
       <a href="mailto:COMTEC_ZION@YAHOO.COM">COMTEC_ZION@YAHOO.COM</a>
       <p>2 North Greater Portmore, East Ascot<br>Saint Catherine, Jamaica</p>
-      <p class="mono footer__clock">Portmore time <span data-clock>--:--</span></p>
+      <p><span class="status" data-status><i></i><span data-status-text>Mon–Sat 8:30–6:30</span></span></p>
+    </div>
+
+    <div class="footer__col">
+      <p class="footer__title">Services</p>
+      <a href="/phone-repair-jamaica.html">Phone repair</a>
+      <a href="/services.html#repair">Laptop &amp; computer repair</a>
+      <a href="/cctv-installation-jamaica.html">CCTV installation</a>
+      <a href="/services.html#security">Home security &amp; gates</a>
+      <a href="/networking-solutions-jamaica.html">Networking &amp; Wi-Fi</a>
+      <a href="/services.html#power">Portable power</a>
+    </div>
+
+    <div class="footer__col">
+      <p class="footer__title">Company</p>
+      <a href="/about.html">About Nicholas</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/blog.html">Blog &amp; tips</a>
+      <a href="/contact.html">Contact &amp; directions</a>
     </div>
   </div>
 
-  <div class="footer__word" aria-hidden="true" data-footer-word>
-    <span>N</span><span>I</span><span>C</span><span>K</span><span class="gap"></span><span>T</span><span>E</span><span>C</span><span>H</span>
-  </div>
+  <div class="footer__word" aria-hidden="true"><span>NICK</span><span>TECH</span></div>
 
   <div class="container footer__bar">
-    <p>© <span data-year>2026</span> Nick Technology (NT Group). All rights reserved.</p>
+    <p>© 2026 Nick Technology (NT Group). All rights reserved.</p>
     <p class="footer__jm"><svg class="jm-flag" viewBox="0 0 12 6" aria-hidden="true"><rect width="12" height="6" fill="#009b3a"/><path d="M0 0l6 3-6 3zM12 0 6 3l6 3z" fill="#000"/><path d="M0 0l12 6M12 0 0 6" stroke="#fed100" stroke-width="1"/></svg>Proudly Jamaican. Built on honest work.</p>
-    <a href="#main" class="footer__top" data-to-top>Back to top <svg class="icon"><use href="#i-arrow-up"/></svg></a>
+    <a href="#main" class="footer__top">Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
   </div>
 </footer>
 
 <div class="dock" data-dock>
-  <a class="dock__btn dock__btn--call" href="tel:+18764655975"><svg class="icon"><use href="#i-call"/></svg>Call now</a>
-  <a class="dock__btn dock__btn--wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  <a class="dock__call" href="tel:+18764655975" data-track="call_dock">
+    <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>
+    <span><b>Call now</b><small>(876) 465-5975</small></span>
+  </a>
+  <a class="dock__wa" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_dock">
+    <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span>
+  </a>
 </div>
 
-<a class="fab" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="Chat with Nicholas on WhatsApp" data-magnetic>
-  <svg class="icon"><use href="#i-whatsapp"/></svg>
+<a class="fab" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="Chat with Nicholas on WhatsApp" data-track="whatsapp_fab">
+  <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
   <span class="fab__tip">Chat with Nicholas</span>
 </a>
 
-<button class="to-top" type="button" aria-label="Back to top" data-to-top>
-  <svg class="to-top__ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" pathLength="1"/></svg>
-  <svg class="icon"><use href="#i-arrow-up"/></svg>
-</button>
-
-
-<script src="/assets/js/start.js" defer></script>
 </body>
 </html>

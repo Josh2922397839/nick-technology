@@ -1,35 +1,25 @@
-<section class="cta-band" aria-labelledby="cta-title">
-  <div class="cta-band__bg" aria-hidden="true">
-    <svg class="cta-band__traces" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" fill="none">
-      <g stroke="currentColor" stroke-width="1.2">
-        <path pathLength="1" d="M0 120h260l40 40h180"/>
-        <path pathLength="1" d="M0 380h180l60-60h160"/>
-        <path pathLength="1" d="M1200 90H930l-50 50H760"/>
-        <path pathLength="1" d="M1200 400H980l-40-40H790"/>
-        <path pathLength="1" d="M420 500v-60l30-30h90"/>
-        <path pathLength="1" d="M780 0v70l-30 30h-90"/>
-      </g>
-      <g fill="currentColor"><circle cx="480" cy="160" r="4"/><circle cx="400" cy="320" r="4"/><circle cx="760" cy="140" r="4"/><circle cx="790" cy="360" r="4"/><circle cx="540" cy="410" r="4"/><circle cx="660" cy="100" r="4"/></g>
-    </svg>
-  </div>
+<section class="cta-band" aria-labelledby="cta-title" data-live>
+  <svg class="cta-band__traces" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.2">
+      <path pathLength="1" d="M0 120h260l40 40h180"/>
+      <path pathLength="1" d="M0 380h180l60-60h160"/>
+      <path pathLength="1" d="M1200 90H930l-50 50H760"/>
+      <path pathLength="1" d="M1200 400H980l-40-40H790"/>
+    </g>
+    <g fill="currentColor"><circle cx="480" cy="160" r="4"/><circle cx="400" cy="320" r="4"/><circle cx="760" cy="140" r="4"/><circle cx="790" cy="360" r="4"/></g>
+  </svg>
   <div class="container cta-band__inner">
-    <p class="eyebrow mono"><span class="dot-live"></span> Ready when you are</p>
-    <h2 class="display" id="cta-title" data-split>Stop putting up with <em>bad tech service.</em></h2>
-    <p class="cta-band__lead">One call to Nicholas and you'll wonder why you went anywhere else. Fair price, honest work, guaranteed results.</p>
-    <div class="cta-band__actions">
-      <a class="orb" href="tel:+18764655975" data-magnetic aria-label="Call Nicholas at 876-465-5975">
-        <svg class="orb__ring" viewBox="0 0 200 200" aria-hidden="true">
-          <defs><path id="orb-circle" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs>
-          <text><textPath href="#orb-circle">CALL NICHOLAS · 876-465-5975 · CALL NICHOLAS · 876-465-5975 ·</textPath></text>
-        </svg>
-        <span class="orb__core"><svg class="icon"><use href="#i-call"/></svg></span>
+    <p class="cta-band__status"><span class="status status--pulse" data-status><i></i><span data-status-text>Mon–Sat 8:30–6:30</span></span><span data-status-cta>Call Nicholas directly</span></p>
+    <h2 class="display" id="cta-title" data-reveal>Stop putting up with <em>bad tech service.</em></h2>
+    <p class="cta-band__lead" data-reveal>One call to Nicholas and you'll wonder why you went anywhere else. Fair price, honest work, guaranteed results.</p>
+    <div class="cta-band__actions" data-reveal>
+      <a class="btn btn--copper cta-call cta-band__call" href="tel:+18764655975" data-track="call_band">
+        <svg class="icon" aria-hidden="true"><use href="#i-call"/></svg>
+        <span><b>Call (876) 465-5975</b><small>Free diagnosis · no obligation</small></span>
       </a>
-      <div class="cta-band__buttons">
-        <a class="btn btn--copper btn--lg" href="tel:+18764655975" data-magnetic><svg class="icon"><use href="#i-call"/></svg><span class="btn__label" data-text="Call 876-465-5975">Call 876-465-5975</span></a>
-        <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-magnetic><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="WhatsApp us">WhatsApp us</span></a>
-      </div>
+      <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" data-track="whatsapp_band"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
     </div>
-    <ul class="cta-band__fine mono">
+    <ul class="cta-band__fine">
       <li>Free diagnostics</li><li>30-day guarantee</li><li>No hidden fees</li><li>Serving all Jamaica</li>
     </ul>
   </div>

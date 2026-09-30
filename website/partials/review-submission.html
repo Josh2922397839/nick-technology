@@ -1,7 +1,7 @@
 <section class="section" id="write-review" style="padding-top: 0;">
   <div class="container review-compose">
     <div>
-      <p class="eyebrow mono"><span class="idx">01</span> Your experience</p>
+      <p class="eyebrow"><span class="idx">01</span> Your experience</p>
       <h2 class="h2">Had work done? <em>Share it.</em></h2>
       <p class="lead" style="margin-top: 24px;">Tell your neighbours how it went. Add photos of your repaired device or finished installation.</p>
       <p class="muted" style="margin-top: 16px;">Your name, review and photos will appear publicly on this website.</p>
@@ -42,7 +42,7 @@
   </div>
 </section>
 
-<dialog class="review-dialog" id="review-admin-dialog" aria-labelledby="review-admin-title" data-lenis-prevent>
+<dialog class="review-dialog" id="review-admin-dialog" aria-labelledby="review-admin-title">
   <button type="button" class="review-dialog__close" data-close-dialog aria-label="Close review management">×</button>
   <h2 id="review-admin-title">Manage reviews</h2>
   <p class="muted">Enter your existing admin key to delete customer reviews.</p>
@@ -56,7 +56,7 @@
   </form>
 </dialog>
 
-<dialog class="review-dialog" id="review-delete-dialog" aria-labelledby="review-delete-title" data-lenis-prevent>
+<dialog class="review-dialog" id="review-delete-dialog" aria-labelledby="review-delete-title">
   <h2 id="review-delete-title">Delete this review?</h2>
   <p class="muted" id="review-delete-description"></p>
   <p class="form-error" id="review-delete-error" role="alert"></p>
@@ -66,8 +66,8 @@
   </div>
 </dialog>
 
-<dialog class="review-dialog review-dialog--photo" id="review-photo-dialog" aria-label="Customer review photo" data-lenis-prevent>
+<dialog class="review-dialog review-dialog--photo" id="review-photo-dialog" aria-label="Customer review photo">
   <button type="button" class="review-dialog__close" data-close-dialog aria-label="Close photo">×</button>
   <img id="review-full-photo" alt="Customer review photo">
 </dialog>
-<script src="assets/js/reviews.js" defer></script>
+<script src="{{reviews_js}}" defer></script>

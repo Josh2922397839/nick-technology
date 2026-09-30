@@ -15,13 +15,13 @@ og_image: assets/img/wall-live.webp
         <span class="hero__line"><span><em>actually work.</em></span></span>
       </h1>
       <p class="lead" data-hero-in>Slow Wi-Fi, dead zones, connections that keep dropping. We design, install and troubleshoot networks for single homes right up to multi-floor offices.</p>
-      <div class="page-hero__ctas" data-hero-in>
-        <a class="btn btn--copper btn--lg" href="tel:+18764655975" data-magnetic><svg class="icon"><use href="#i-call"/></svg><span class="btn__label" data-text="Call 876-465-5975">Call 876-465-5975</span></a>
-        <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20my%20network." target="_blank" rel="noopener" data-magnetic><svg class="icon"><use href="#i-whatsapp"/></svg><span class="btn__label" data-text="Free assessment">Free assessment</span></a>
+      <div class="page-hero__ctas" data-hero-cta data-hero-in>
+        <a class="btn btn--copper cta-call" href="tel:+18764655975" data-track="call_hero"><svg class="icon" aria-hidden="true"><use href="#i-call"/></svg><span><b>Call (876) 465-5975</b><small>Free assessment · most issues fixed same day</small></span></a>
+        <a class="btn btn--wa btn--lg" href="https://wa.me/18764655975?text=Hi%20Nicholas%2C%20I%20need%20help%20with%20my%20network." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Free assessment</a>
       </div>
     </div>
 
-    <div class="net-hero" data-hero-in>
+    <div class="net-hero" data-live data-hero-in>
       <svg class="netmap" viewBox="0 0 520 360" role="img" aria-label="Animated diagram of a business network with staff and guest VLANs">
         <defs><radialGradient id="net-glow-2"><stop offset="0" stop-color="#e2894a" stop-opacity=".5"/><stop offset="1" stop-color="#e2894a" stop-opacity="0"/></radialGradient></defs>
         <circle cx="260" cy="150" r="120" fill="url(#net-glow-2)"/>
@@ -48,39 +48,39 @@ og_image: assets/img/wall-live.webp
   <div class="container">
     <div class="sec-head sec-head--split">
       <div>
-        <p class="eyebrow mono"><span class="idx">01</span> Networking services</p>
-        <h2 class="h2" data-split>Fast, secure <em>&amp; tidy.</em></h2>
+        <p class="eyebrow"><span class="idx">01</span> Networking services</p>
+        <h2 class="h2" data-reveal>Fast, secure <em>&amp; tidy.</em></h2>
       </div>
       <p class="sec-head__aside" data-reveal>Most network problems are fixed the same day. Bigger builds get a clear plan and a firm quote first.</p>
     </div>
     <div class="grid-3" data-stagger>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-wifi"/></svg></span><span class="card__num mono">01</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span><span class="card__num mono">01</span></div>
         <h3>Wi-Fi installation &amp; tuning</h3>
         <p>No more dead zones. Enterprise-grade access points, placed and tuned for full coverage across the whole property.</p>
       </article>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-cable"/></svg></span><span class="card__num mono">02</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-cable"/></svg></span><span class="card__num mono">02</span></div>
         <h3>Structured cabling</h3>
         <p>Cat6 and Cat6a runs for offices, homes and CCTV systems. Clean, labelled and ready for the future.</p>
       </article>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-network"/></svg></span><span class="card__num mono">03</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg></span><span class="card__num mono">03</span></div>
         <h3>Network design</h3>
         <p>VLANs, firewalls, QoS and guest networks. Designed to be fast, secure and easy to manage.</p>
       </article>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-gauge"/></svg></span><span class="card__num mono">04</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg></span><span class="card__num mono">04</span></div>
         <h3>Speed &amp; performance fixes</h3>
         <p>Buffering, lag and dropouts traced to the real cause, whether that's hardware, configuration or the provider.</p>
       </article>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-lock"/></svg></span><span class="card__num mono">05</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="card__num mono">05</span></div>
         <h3>Network security</h3>
         <p>Firewall setup, intrusion prevention and access controls to keep a business network safe.</p>
       </article>
       <article class="card feature" data-spot>
-        <div class="card__top"><span class="card__icon"><svg class="icon"><use href="#i-printer"/></svg></span><span class="card__num mono">06</span></div>
+        <div class="card__top"><span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-printer"/></svg></span><span class="card__num mono">06</span></div>
         <h3>Printer &amp; device networking</h3>
         <p>Printers, scanners, NAS drives and shared folders, all set up to work together properly.</p>
       </article>
@@ -88,12 +88,14 @@ og_image: assets/img/wall-live.webp
   </div>
 </section>
 
+{{> cta-inline}}
+
 <section class="section theme-paper">
   <div class="container">
     <div class="sec-head sec-head--split">
       <div>
-        <p class="eyebrow mono"><span class="idx">02</span> Case study</p>
-        <h2 class="h2" data-split>Full office <em>network overhaul.</em></h2>
+        <p class="eyebrow"><span class="idx">02</span> Case study</p>
+        <h2 class="h2" data-reveal>Full office <em>network overhaul.</em></h2>
       </div>
       <p class="sec-head__aside" data-reveal>A 15-person business losing connection constantly, with slow speeds all day long.</p>
     </div>
@@ -103,9 +105,9 @@ og_image: assets/img/wall-live.webp
       <div class="kpi"><b style="color: var(--ink);"><span data-count="15">15</span></b><p>Staff back to full speed</p></div>
     </div>
     <div class="grid-3" style="margin-top: 36px;" data-stagger>
-      <div><p class="eyebrow mono" style="margin-bottom: 10px;">Challenge</p><p style="color: var(--text-2);">Constant dropouts and slow speeds were costing staff time every single day.</p></div>
-      <div><p class="eyebrow mono" style="margin-bottom: 10px;">Solution</p><p style="color: var(--text-2);">Swapped the consumer router for an enterprise-grade access point, ran Cat6, and split staff and guest traffic with VLANs.</p></div>
-      <div><p class="eyebrow mono" style="margin-bottom: 10px;">Result</p><p style="color: var(--text-2);">A 10× speed improvement, zero downtime in six months and a noticeable lift in productivity.</p></div>
+      <div><p class="eyebrow" style="margin-bottom: 10px;">Challenge</p><p style="color: var(--text-2);">Constant dropouts and slow speeds were costing staff time every single day.</p></div>
+      <div><p class="eyebrow" style="margin-bottom: 10px;">Solution</p><p style="color: var(--text-2);">Swapped the consumer router for an enterprise-grade access point, ran Cat6, and split staff and guest traffic with VLANs.</p></div>
+      <div><p class="eyebrow" style="margin-bottom: 10px;">Result</p><p style="color: var(--text-2);">A 10× speed improvement, zero downtime in six months and a noticeable lift in productivity.</p></div>
     </div>
   </div>
 </section>
@@ -114,13 +116,13 @@ og_image: assets/img/wall-live.webp
   <div class="container">
     <div class="callout" data-reveal>
       <div class="callout__main">
-        <span class="callout__icon"><svg class="icon"><use href="#i-book"/></svg></span>
+        <span class="callout__icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
         <div>
           <h2>Slow at home? Try this first.</h2>
           <p>Our quick guide covers router placement, channel congestion and old hardware, the three things behind most slow Wi-Fi.</p>
         </div>
       </div>
-      <a class="btn btn--ghost" href="blog.html" data-magnetic><span class="btn__label" data-text="Read the guide">Read the guide</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="blog.html">Read the guide<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
